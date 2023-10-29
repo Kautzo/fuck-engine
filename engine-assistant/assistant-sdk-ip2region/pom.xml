@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>assistant-sdk-ip2region</artifactId>
-    <description>基于 Spring Authorization Server 的 Dante Cloud IP 离线IP地址定位模块</description>
+    <description>基于 Spring Authorization Server 的 IP 离线IP地址定位模块</description>
 
     <dependencies>
         <dependency>

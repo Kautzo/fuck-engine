@@ -12,7 +12,7 @@
 
     <artifactId>assistant-spring-boot-starter</artifactId>
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud Assistant 模块统一 Starter</description>
+    <description>基于 Spring Authorization Server 的 Assistant 模块统一 Starter</description>
 
     <dependencies>
         <dependency>

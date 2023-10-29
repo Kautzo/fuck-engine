@@ -12,7 +12,7 @@
     <artifactId>web-server-spring-boot-starter</artifactId>
 
 
-    <description>Dante Cloud 基础 WebServer 配置模块</description>
+    <description>基础 WebServer 配置模块</description>
 
     <dependencies>
         <dependency>

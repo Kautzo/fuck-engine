@@ -12,7 +12,7 @@
 
     <artifactId>cache-spring-boot-starter</artifactId>
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud Cache 模块统一 Starter</description>
+    <description>基于 Spring Authorization Server 的 Cache 模块统一 Starter</description>
 
     <dependencies>
         <dependency>

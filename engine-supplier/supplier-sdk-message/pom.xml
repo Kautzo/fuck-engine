@@ -12,7 +12,7 @@
     <artifactId>supplier-sdk-message</artifactId>
 
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud 消息应用支持模块</description>
+    <description>基于 Spring Authorization Server 的 消息应用支持模块</description>
 
     <dependencies>
         <dependency>

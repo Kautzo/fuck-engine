@@ -13,7 +13,7 @@
     <artifactId>oauth2-core</artifactId>
 
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
+    <description>基于 Spring Authorization Server 的 基础核心组件模块</description>
 
     <dependencies>
         <dependency>
