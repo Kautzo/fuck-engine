@@ -1,0 +1,2 @@
+cn.fuck.engine.message.autoconfigure.MessageAutoConfiguration
+cn.fuck.engine.message.websocket.autoconfigre.MessageWebSocketAutoConfiguration

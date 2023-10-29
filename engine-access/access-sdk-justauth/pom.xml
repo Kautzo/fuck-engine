@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>engine-access</artifactId>
+        <groupId>cn.fuck.engine</groupId>
+        <version>3.1.5.1</version>
+    </parent>
+
+    <artifactId>access-sdk-justauth</artifactId>
+
+    <description>基于 Spring Authorization Server 的 JustAuth 外部接入组件模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>access-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>cache-sdk-jetcache</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

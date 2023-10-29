@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>engine-cache</artifactId>
+        <groupId>cn.fuck.engine</groupId>
+        <version>3.1.5.1</version>
+    </parent>
+
+    <artifactId>cache-sdk-jetcache</artifactId>
+
+    <description>JetCache 组件相关代码模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>assistant-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>cache-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>cache-sdk-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>cache-sdk-caffeine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-lettuce</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-redis-lettuce</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>

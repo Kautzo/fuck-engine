@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>engine-sms</artifactId>
+        <groupId>cn.fuck.engine</groupId>
+        <version>3.1.5.1</version>
+    </parent>
+
+    <artifactId>sms-spring-boot-starter</artifactId>
+
+
+    <description>Dante Engine 短信整合组件模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>cache-sdk-jetcache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-aliyun</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-chinamobile</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-huawei</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-netease</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-qiniu</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-tencent</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>sms-sdk-upyun</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

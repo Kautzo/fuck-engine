@@ -1,0 +1,5 @@
+cn.fuck.engine.rest.autoconfigure.RestAutoConfiguration
+cn.fuck.engine.rest.autoconfigure.RestWebMvcAutoConfiguration
+cn.fuck.engine.rest.autoconfigure.RestCryptoAutoConfiguration
+cn.fuck.engine.rest.autoconfigure.RestTemplateAutoConfiguration
+cn.fuck.engine.rest.autoconfigure.RestServiceAutoConfiguration

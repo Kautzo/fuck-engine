@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.fuck.engine</groupId>
+        <artifactId>dependencies</artifactId>
+        <version>3.1.5.1</version>
+        <relativePath>dependencies/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>fuck-engine</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>dependencies</module>
+        <module>engine-assistant</module>
+        <module>engine-cache</module>
+        <module>engine-data</module>
+        <module>engine-rest</module>
+        <module>engine-captcha</module>
+        <module>engine-message</module>
+        <module>engine-oauth2</module>
+        <module>engine-facility</module>
+        <module>engine-access</module>
+        <module>engine-sms</module>
+        <module>engine-supplier</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

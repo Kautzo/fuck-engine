@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>fuck-engine</artifactId>
+        <groupId>cn.fuck.engine</groupId>
+        <version>3.1.5.1</version>
+    </parent>
+
+    <artifactId>engine-facility</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>facility-core</module>
+        <module>facility-alibaba-spring-boot-starter</module>
+        <module>facility-tencent-spring-boot-starter</module>
+        <module>facility-original-spring-boot-starter</module>
+        <module>facility-gateway-spring-boot-starter</module>
+    </modules>
+
+</project>

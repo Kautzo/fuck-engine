@@ -1,0 +1,3 @@
+cn.fuck.engine.cache.autoconfigure.CacheAutoConfiguration
+cn.fuck.engine.cache.jetcache.configuration.CacheJetCacheAutoConfiguration
+cn.fuck.engine.cache.redisson.configuration.CacheRedissonAutoConfiguration

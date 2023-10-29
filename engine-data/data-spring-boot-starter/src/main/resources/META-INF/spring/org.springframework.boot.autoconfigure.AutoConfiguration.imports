@@ -1,0 +1,3 @@
+cn.fuck.engine.data.autoconfigure.DataAutoConfiguration
+cn.fuck.engine.data.jpa.autoconfigure.DataJpaAutoConfiguration
+cn.fuck.engine.data.tenant.autoconfigure.DataTenantAutoConfiguration
