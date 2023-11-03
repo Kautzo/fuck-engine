@@ -2,8 +2,7 @@ package cn.fuck.engine.oauth2.authentication.provider;
 
 import cn.fuck.engine.oauth2.core.definition.domain.FuckUser;
 import cn.fuck.engine.oauth2.core.utils.PrincipalUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,11 +32,9 @@ import java.util.*;
  * <p>Description: 抽象的认证Provider </p>
  * <p>
  * 提取公共的通用认证基类，方便设置返回Token的信息设置
- * @date : 2022/10/14 12:46
  */
+@Slf4j
 public abstract class AbstractAuthenticationProvider implements AuthenticationProvider {
-
-    private final Log logger = LogFactory.getLog(getClass());
 
     private static final OAuth2TokenType ID_TOKEN_TOKEN_TYPE = new OAuth2TokenType(OidcParameterNames.ID_TOKEN);
 
@@ -56,8 +53,8 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
             throw new OAuth2AuthenticationException(error);
         }
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Generated access token");
+        if (log.isTraceEnabled()) {
+            log.trace("Generated access token");
         }
 
         OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER,
@@ -88,8 +85,8 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
                 throw new OAuth2AuthenticationException(error);
             }
 
-            if (this.logger.isTraceEnabled()) {
-                this.logger.trace("Generated refresh token");
+            if (log.isTraceEnabled()) {
+                log.trace("Generated refresh token");
             }
 
             refreshToken = (OAuth2RefreshToken) generatedRefreshToken;
@@ -129,8 +126,8 @@ public abstract class AbstractAuthenticationProvider implements AuthenticationPr
                 throw new OAuth2AuthenticationException(error);
             }
 
-            if (this.logger.isTraceEnabled()) {
-                this.logger.trace("Generated id token");
+            if (log.isTraceEnabled()) {
+                log.trace("Generated id token");
             }
 
             idToken = new OidcIdToken(generatedIdToken.getTokenValue(), generatedIdToken.getIssuedAt(),

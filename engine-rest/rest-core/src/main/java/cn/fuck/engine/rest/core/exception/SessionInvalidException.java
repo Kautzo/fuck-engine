@@ -6,7 +6,6 @@ import cn.fuck.engine.rest.core.constants.RestErrorCodes;
 
 /**
  * <p>Description: Session 不可用错误 </p>
- * @date : 2021/10/4 16:46
  */
 public class SessionInvalidException extends PlatformException {
 

@@ -1,16 +1,15 @@
 package cn.fuck.engine.oauth2.authentication.configuration;
 
 import cn.fuck.engine.assistant.core.definition.exception.ErrorCodeMapperBuilderCustomizer;
-import cn.fuck.engine.oauth2.authentication.customizer.HerodotusJwtTokenCustomizer;
-import cn.fuck.engine.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
+import cn.fuck.engine.oauth2.authentication.customizer.FuckJwtTokenCustomizer;
+import cn.fuck.engine.oauth2.authentication.customizer.FuckOpaqueTokenCustomizer;
 import cn.fuck.engine.oauth2.authentication.customizer.OAuth2ErrorCodeMapperBuilderCustomizer;
 import cn.fuck.engine.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import cn.fuck.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.fuck.engine.oauth2.authentication.stamp.LockedUserDetailsStampManager;
 import cn.fuck.engine.oauth2.authentication.stamp.SignInFailureLimitedStampManager;
 import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -21,13 +20,11 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 
 /**
  * <p>Description: OAuth2 认证基础模块配置 </p>
- * @date : 2023/5/13 15:40
  */
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 public class OAuth2AuthenticationConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
@@ -58,14 +55,14 @@ public class OAuth2AuthenticationConfiguration {
 
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer() {
-        HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer();
+        FuckJwtTokenCustomizer customizer = new FuckJwtTokenCustomizer();
         log.trace("[FUCK] |- Bean [OAuth2 Jwt Token Customizer] Auto Configure.");
         return customizer;
     }
 
     @Bean
     public OAuth2TokenCustomizer<OAuth2TokenClaimsContext> opaqueTokenCustomizer() {
-        HerodotusOpaqueTokenCustomizer customizer = new HerodotusOpaqueTokenCustomizer();
+        FuckOpaqueTokenCustomizer customizer = new FuckOpaqueTokenCustomizer();
         log.trace("[FUCK] |- Bean [OAuth2 Opaque Token Customizer] Auto Configure.");
         return customizer;
     }

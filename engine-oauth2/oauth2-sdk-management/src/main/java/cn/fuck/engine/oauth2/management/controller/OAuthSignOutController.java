@@ -2,7 +2,6 @@ package cn.fuck.engine.oauth2.management.controller;
 
 import cn.fuck.engine.message.core.event.AccountReleaseFromCacheEvent;
 import cn.fuck.engine.assistant.core.domain.Result;
-import cn.fuck.engine.oauth2.management.service.OAuth2ComplianceService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -36,12 +35,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class OAuthSignOutController {
 
     private final OAuth2AuthorizationService authorizationService;
-    private final OAuth2ComplianceService complianceService;
     private final ApplicationContext applicationContext;
 
-    public OAuthSignOutController(OAuth2AuthorizationService authorizationService, OAuth2ComplianceService complianceService, ApplicationContext applicationContext) {
+    public OAuthSignOutController(OAuth2AuthorizationService authorizationService, ApplicationContext applicationContext) {
         this.authorizationService = authorizationService;
-        this.complianceService = complianceService;
         this.applicationContext = applicationContext;
     }
 
@@ -57,7 +54,8 @@ public class OAuthSignOutController {
         OAuth2Authorization authorization = authorizationService.findByToken(accessToken, OAuth2TokenType.ACCESS_TOKEN);
         if (ObjectUtils.isNotEmpty(authorization)) {
             authorizationService.remove(authorization);
-            complianceService.save(authorization.getPrincipalName(), authorization.getRegisteredClientId(), "退出系统", request);
+            //TODO 登出日志
+//            complianceService.save(authorization.getPrincipalName(), authorization.getRegisteredClientId(), "退出系统", request);
             applicationContext.publishEvent(new AccountReleaseFromCacheEvent(authorization.getPrincipalName()));
         }
         return Result.success("注销成功");

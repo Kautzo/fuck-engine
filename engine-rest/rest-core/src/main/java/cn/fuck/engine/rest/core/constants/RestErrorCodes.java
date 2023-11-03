@@ -4,7 +4,6 @@ import cn.fuck.engine.assistant.core.exception.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Cache 相关错误代码 </p>
- * @date : 2022/5/2 13:25
  */
 public interface RestErrorCodes {
 

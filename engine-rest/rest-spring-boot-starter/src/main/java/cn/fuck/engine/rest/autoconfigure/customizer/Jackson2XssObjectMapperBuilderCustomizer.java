@@ -12,7 +12,6 @@ import java.util.List;
 
 /**
  * <p>Description: Jackson Xss Customizer </p>
- * @date : 2023/4/29 16:30
  */
 public class Jackson2XssObjectMapperBuilderCustomizer implements BaseObjectMapperBuilderCustomizer {
 

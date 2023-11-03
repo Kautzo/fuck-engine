@@ -7,6 +7,7 @@ import cn.fuck.engine.assistant.core.domain.SecretKey;
 import cn.fuck.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import cn.fuck.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
 import cn.fuck.engine.rest.core.exception.SessionInvalidException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.data.id.IdUtil;
@@ -17,11 +18,9 @@ import java.time.Duration;
 
 /**
  * <p>Description: 接口加密解密处理器 </p>
- * @date : 2021/10/4 14:29
  */
+@Slf4j
 public class HttpCryptoProcessor extends AbstractStampManager<String, SecretKey> {
-
-    private static final Logger log = LoggerFactory.getLogger(HttpCryptoProcessor.class);
 
     private final AsymmetricCryptoProcessor asymmetricCryptoProcessor;
 

@@ -103,7 +103,7 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
         // 线程池线程数，心跳连接开线程
         taskScheduler.setPoolSize(1);
         // 线程名前缀
-        taskScheduler.setThreadNamePrefix("herodotus-websocket-heartbeat-thread-");
+        taskScheduler.setThreadNamePrefix("fuck-websocket-heartbeat-thread-");
         // 初始化
         taskScheduler.initialize();
 

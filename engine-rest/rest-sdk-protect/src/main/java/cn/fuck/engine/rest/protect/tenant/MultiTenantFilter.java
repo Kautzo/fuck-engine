@@ -15,7 +15,6 @@ import java.io.IOException;
 
 /**
  * <p>Description: 多租户过滤器 </p>
- * @date : 2022/9/11 15:03
  */
 public class MultiTenantFilter extends GenericFilterBean {
 
@@ -23,7 +22,7 @@ public class MultiTenantFilter extends GenericFilterBean {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-        String tenantId = HeaderUtils.getHerodotusTenantId(request);
+        String tenantId = HeaderUtils.getFuckTenantId(request);
         TenantContextHolder.setTenantId(StringUtils.isBlank(tenantId) ? DefaultConstants.TENANT_ID : tenantId);
 
         filterChain.doFilter(servletRequest, servletResponse);

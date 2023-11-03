@@ -1,7 +1,7 @@
 package cn.fuck.engine.oauth2.core.exception;
 
 import cn.fuck.engine.assistant.core.definition.constants.ErrorCodes;
-import cn.fuck.engine.assistant.core.definition.exception.HerodotusException;
+import cn.fuck.engine.assistant.core.definition.exception.FuckException;
 import cn.fuck.engine.assistant.core.domain.Feedback;
 import cn.fuck.engine.assistant.core.domain.Result;
 import org.springframework.security.core.AuthenticationException;
@@ -10,7 +10,7 @@ import org.springframework.security.core.AuthenticationException;
  * <p>Description: 平台认证基础Exception </p>
  * @date : 2021/10/16 14:41
  */
-public class PlatformAuthenticationException extends AuthenticationException implements HerodotusException {
+public class PlatformAuthenticationException extends AuthenticationException implements FuckException {
 
     public PlatformAuthenticationException(String msg, Throwable cause) {
         super(msg, cause);

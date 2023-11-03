@@ -8,7 +8,6 @@ import java.util.List;
  * <p>Description: OpenApi Server 处理器 </p>
  * <p>
  * 单体和分布式架构，提供给OpenAPI展示的地址不同。
- * @date : 2022/1/16 18:56
  */
 public interface OpenApiServerResolver {
 

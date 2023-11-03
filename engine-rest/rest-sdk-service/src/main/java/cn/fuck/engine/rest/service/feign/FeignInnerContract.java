@@ -3,9 +3,8 @@ package cn.fuck.engine.rest.service.feign;
 import cn.fuck.engine.assistant.core.utils.http.HeaderUtils;
 import cn.fuck.engine.rest.core.annotation.Inner;
 import feign.MethodMetadata;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.support.SpringMvcContract;
 
 import java.lang.annotation.Annotation;
@@ -15,11 +14,9 @@ import static org.springframework.core.annotation.AnnotatedElementUtils.findMerg
 
 /**
  * <p>Description: 自定义 Inner 处理器 </p>
- * @date : 2022/5/31 11:28
  */
+@Slf4j
 public class FeignInnerContract extends SpringMvcContract {
-
-    private static final Logger log = LoggerFactory.getLogger(FeignInnerContract.class);
 
     @Override
     protected void processAnnotationOnMethod(MethodMetadata data, Annotation methodAnnotation, Method method) {
@@ -28,7 +25,7 @@ public class FeignInnerContract extends SpringMvcContract {
             Inner inner = findMergedAnnotation(method, Inner.class);
             if (ObjectUtils.isNotEmpty(inner)) {
                 log.debug("[FUCK] |- Found inner annotation on Feign interface, add header!");
-                data.template().header(HeaderUtils.X_HERODOTUS_FROM_IN, "true");
+                data.template().header(HeaderUtils.X_Fuck_FROM_IN, "true");
             }
         }
 

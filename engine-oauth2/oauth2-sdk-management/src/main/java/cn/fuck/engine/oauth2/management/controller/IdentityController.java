@@ -8,7 +8,7 @@ import cn.fuck.engine.assistant.core.domain.SecretKey;
 import cn.fuck.engine.oauth2.management.dto.Session;
 import cn.fuck.engine.oauth2.management.dto.SessionCreate;
 import cn.fuck.engine.oauth2.management.dto.SessionExchange;
-import cn.fuck.engine.oauth2.management.service.InterfaceSecurityService;
+import cn.fuck.engine.oauth2.management.service.impl.InterfaceSecurityService;
 import cn.fuck.engine.rest.core.annotation.Crypto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author gengwei.zheng
  * @see <a href="https://conkeyn.iteye.com/blog/2296406">参考文档</a>
  */
 @RestController

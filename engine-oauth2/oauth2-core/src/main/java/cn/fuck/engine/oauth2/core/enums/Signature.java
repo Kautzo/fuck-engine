@@ -1,10 +1,12 @@
 package cn.fuck.engine.oauth2.core.enums;
 
 import cn.fuck.engine.assistant.core.definition.enums.BaseUiEnum;
+import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +15,8 @@ import java.util.Map;
 
 /**
  * <p>Description: OAuth2 Signature </p>
- * @date : 2022/3/2 16:15
  */
+@Getter
 @Schema(name = "签名算法")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Signature implements BaseUiEnum<Integer> {
@@ -48,6 +50,8 @@ public enum Signature implements BaseUiEnum<Integer> {
         }
     }
 
+    @JsonValue
+    @EnumValue
     @Schema(title = "枚举值")
     private final Integer value;
     @Schema(name = "文字")
@@ -66,22 +70,4 @@ public enum Signature implements BaseUiEnum<Integer> {
         return JSON_STRUCTURE;
     }
 
-    /**
-     * 不加@JsonValue，转换的时候转换出完整的对象。
-     * 加了@JsonValue，只会显示相应的属性的值
-     * <p>
-     * 不使用@JsonValue @JsonDeserializer类里面要做相应的处理
-     *
-     * @return Enum枚举值
-     */
-    @JsonValue
-    @Override
-    public Integer getValue() {
-        return value;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
-    }
 }

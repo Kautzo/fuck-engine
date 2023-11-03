@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 平台端点属性 </p>
- * @date : 2022/3/6 12:00
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_ENDPOINT)
 public class EndpointProperties {

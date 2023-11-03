@@ -1,18 +1,3 @@
-/*
- * Copyright (c) 2020-2030 郑庚伟 ZHENGGENGWEI (码匠君) (herodotus@aliyun.com & www.herodotus.cn)
- *
- * Dante Engine licensed under the GNU LESSER GENERAL PUBLIC LICENSE 3.0;
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * <http://www.gnu.org/licenses/lgpl.html>
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package cn.fuck.engine.oauth2.authentication.utils;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
@@ -43,7 +28,6 @@ import java.util.Map;
  * 新版 spring-security-oauth2-authorization-server 很多代码都是“包”级可访问的，外部无法使用。为了方便扩展将其提取出来，便于使用。
  * <p>
  * 代码内容与原包代码基本一致。
- * @date : 2022/2/25 9:57
  */
 public final class OAuth2ConfigurerUtils {
 

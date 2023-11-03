@@ -12,14 +12,13 @@ import java.util.List;
 
 /**
  * <p>Description: Http Header 工具类 </p>
- * @date : 2023/9/2 16:39
  */
 public class HeaderUtils {
 
-    public static final String X_HERODOTUS_SESSION_ID = "X-Herodotus-Session-id";
-    public static final String X_HERODOTUS_FROM_IN = "X-Herodotus-From-In";
-    public static final String X_HERODOTUS_TENANT_ID = "X-Herodotus-Tenant-Id";
-    public static final String X_HERODOTUS_OPEN_ID = "X-Herodotus-Open-Id";
+    public static final String X_Fuck_SESSION_ID = "X-Fuck-Session-id";
+    public static final String X_Fuck_FROM_IN = "X-Fuck-From-In";
+    public static final String X_Fuck_TENANT_ID = "X-Fuck-Tenant-Id";
+    public static final String X_Fuck_OPEN_ID = "X-Fuck-Open-Id";
 
     /**
      * 获取头信息
@@ -78,53 +77,53 @@ public class HeaderUtils {
     }
 
     /**
-     * 获取自定义 X_HERODOTUS_SESSION 头信息
+     * 获取自定义 X_FUCK_SESSION 头信息
      *
      * @param httpServletRequest {@link HttpServletRequest}
-     * @return X_HERODOTUS_SESSION 头信息
+     * @return X_FUCK_SESSION 头信息
      */
-    public static String getHerodotusSession(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_HERODOTUS_SESSION_ID);
+    public static String getFuckSession(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, X_Fuck_SESSION_ID);
     }
 
     /**
-     * 获取自定义 X_HERODOTUS_SESSION 请求头内容
+     * 获取自定义 X_FUCK_SESSION 请求头内容
      *
      * @param serverHttpRequest {@link ServerHttpRequest}
-     * @return X_HERODOTUS_SESSION 请求头内容
+     * @return X_FUCK_SESSION 请求头内容
      */
-    public static String getHerodotusSession(ServerHttpRequest serverHttpRequest) {
-        return getHeader(serverHttpRequest, X_HERODOTUS_SESSION_ID);
+    public static String getFuckSession(ServerHttpRequest serverHttpRequest) {
+        return getHeader(serverHttpRequest, X_Fuck_SESSION_ID);
     }
 
     /**
-     * 获取自定义 X_HERODOTUS_SESSION 请求头内容
+     * 获取自定义 X_FUCK_SESSION 请求头内容
      *
      * @param httpInputMessage {@link HttpInputMessage}
-     * @return X_HERODOTUS_SESSION 请求头内容
+     * @return X_FUCK_SESSION 请求头内容
      */
-    public static String getHerodotusSession(HttpInputMessage httpInputMessage) {
-        return getHeader(httpInputMessage.getHeaders(), X_HERODOTUS_SESSION_ID);
+    public static String getFuckSession(HttpInputMessage httpInputMessage) {
+        return getHeader(httpInputMessage.getHeaders(), X_Fuck_SESSION_ID);
     }
 
     /**
-     * 获取自定义 X_HERODOTUS_TENANT_ID 请求头内容
+     * 获取自定义 X_FUCK_TENANT_ID 请求头内容
      *
      * @param httpServletRequest {@link HttpServletRequest}
-     * @return X_HERODOTUS_TENANT_ID 请求头内容
+     * @return X_FUCK_TENANT_ID 请求头内容
      */
-    public static String getHerodotusTenantId(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_HERODOTUS_TENANT_ID);
+    public static String getFuckTenantId(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, X_Fuck_TENANT_ID);
     }
 
     /**
-     * 获取自定义 X_HERODOTUS_FROM_IN 请求头内容
+     * 获取自定义 X_FUCK_FROM_IN 请求头内容
      *
      * @param httpServletRequest {@link HttpServletRequest}
-     * @return X_HERODOTUS_FROM_IN 请求头内容
+     * @return X_FUCK_FROM_IN 请求头内容
      */
-    public static String getHerodotusFromIn(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_HERODOTUS_FROM_IN);
+    public static String getFuckFromIn(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, X_Fuck_FROM_IN);
     }
 
     /**

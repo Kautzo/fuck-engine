@@ -5,7 +5,6 @@ import cn.fuck.engine.rest.core.constants.RestErrorCodes;
 
 /**
  * <p>Description: 操作频繁Exception </p>
- * @date : 2021/8/25 17:29
  */
 public class FrequentRequestsException extends IllegalOperationException {
 

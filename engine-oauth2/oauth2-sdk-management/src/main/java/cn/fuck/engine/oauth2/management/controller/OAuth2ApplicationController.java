@@ -1,13 +1,11 @@
 package cn.fuck.engine.oauth2.management.controller;
 
 import cn.fuck.engine.assistant.core.domain.Result;
-import cn.fuck.engine.data.core.service.WriteableService;
+import cn.fuck.engine.oauth2.management.dto.OAuth2ApplicationDTO;
 import cn.fuck.engine.oauth2.management.entity.OAuth2Application;
 import cn.fuck.engine.oauth2.management.service.OAuth2ApplicationService;
-import cn.fuck.engine.rest.core.controller.BaseWriteableRestController;
+import cn.fuck.engine.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * <p>Description: OAuth2应用管理接口 </p>
- * @date : 2022/3/1 18:52
  */
 @RestController
 @RequestMapping("/authorize/application")
@@ -25,27 +25,28 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 应用管理接口")
 })
-public class OAuth2ApplicationController extends BaseWriteableRestController<OAuth2Application, String> {
+public class OAuth2ApplicationController extends BaseController<OAuth2ApplicationService, OAuth2Application, OAuth2Application, OAuth2ApplicationDTO, OAuth2ApplicationDTO, OAuth2Application> {
 
-    private final OAuth2ApplicationService applicationService;
-
-    public OAuth2ApplicationController(OAuth2ApplicationService applicationService) {
-        this.applicationService = applicationService;
+    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
+    @PutMapping("/updateScope")
+    public Result<?> updateScope(@RequestParam(name = "applicationId") String applicationId,
+                                 @RequestParam(name = "scopeIds") String[] scopeIds) {
+        baseService.updateScope(applicationId, Set.of(scopeIds));
+        return Result.success();
     }
 
     @Override
-    public WriteableService<OAuth2Application, String> getWriteableService() {
-        return this.applicationService;
+    public void handlerSave(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
+        baseService.handlerSave(oAuth2ApplicationDTO);
     }
 
-    @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
-    @Parameters({
-            @Parameter(name = "appKey", required = true, description = "appKey"),
-            @Parameter(name = "scopes[]", required = true, description = "Scope对象组成的数组")
-    })
-    @PutMapping
-    public Result<OAuth2Application> authorize(@RequestParam(name = "applicationId") String scopeId, @RequestParam(name = "scopes[]") String[] scopes) {
-        OAuth2Application application = applicationService.authorize(scopeId, scopes);
-        return result(application);
+    @Override
+    public void handlerUpdate(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
+        baseService.handlerUpdate(oAuth2ApplicationDTO);
+    }
+
+    @Override
+    public Boolean handlerDelete(List<String> ids) {
+        return baseService.handlerDelete(ids);
     }
 }

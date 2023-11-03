@@ -18,7 +18,6 @@ import java.util.List;
 
 /**
  * <p>Description: Rest 请求加解密配置 </p>
- * @date : 2022/5/31 9:48
  */
 @AutoConfiguration
 @Import({

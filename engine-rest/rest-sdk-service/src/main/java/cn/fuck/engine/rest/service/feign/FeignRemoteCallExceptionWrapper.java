@@ -5,7 +5,6 @@ import cn.fuck.engine.assistant.core.exception.PlatformException;
 
 /**
  * <p>Description: Feign Fallback 错误统一封装器 </p>
- * @date : 2022/5/30 11:31
  */
 public class FeignRemoteCallExceptionWrapper extends PlatformException {
 

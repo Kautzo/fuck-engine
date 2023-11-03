@@ -7,7 +7,6 @@ import cn.fuck.engine.assistant.core.domain.Result;
 import cn.fuck.engine.rest.core.annotation.AccessLimited;
 import cn.fuck.engine.rest.core.annotation.Crypto;
 import cn.fuck.engine.rest.core.annotation.Idempotent;
-import cn.fuck.engine.rest.core.controller.Controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -27,7 +26,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 验证码Controller </p>
- * @date : 2021/12/12 10:44
  */
 @RestController
 @RequestMapping("/open/captcha")
@@ -37,7 +35,7 @@ import java.util.Map;
         @Tag(name = "OAuth2 认证服务器开放接口"),
         @Tag(name = "验证码接口")
 })
-public class CaptchaController implements Controller {
+public class CaptchaController {
 
     private final CaptchaRendererFactory captchaRendererFactory;
 

@@ -24,7 +24,6 @@ import java.io.IOException;
 
 /**
  * <p> Description : 表单登录失败处理器 </p>
- * @date : 2020/1/26 18:08
  * @see SimpleUrlAuthenticationFailureHandler
  */
 public class OAuth2FormLoginAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {

@@ -18,7 +18,6 @@ import java.util.*;
 
 /**
  * <p>Description: 社交认证 Converter </p>
- * @date : 2022/3/31 14:16
  */
 public class OAuth2SocialCredentialsAuthenticationConverter extends AbstractAuthenticationConverter {
 

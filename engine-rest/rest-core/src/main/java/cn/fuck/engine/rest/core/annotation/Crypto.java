@@ -6,7 +6,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 加密解密标记注解 </p>
- * @date : 2021/10/4 11:48
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,12 +1,12 @@
 package cn.fuck.engine.oauth2.authorization.customizer;
 
 import cn.fuck.engine.assistant.core.enums.Target;
-import cn.fuck.engine.oauth2.authorization.introspector.HerodotusOpaqueTokenIntrospector;
+import cn.fuck.engine.oauth2.authorization.introspector.FuckOpaqueTokenIntrospector;
 import cn.fuck.engine.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.fuck.engine.assistant.core.definition.BearerTokenResolver;
-import cn.fuck.engine.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
-import cn.fuck.engine.oauth2.core.response.HerodotusAccessDeniedHandler;
-import cn.fuck.engine.oauth2.core.response.HerodotusAuthenticationEntryPoint;
+import cn.fuck.engine.oauth2.authorization.converter.FuckJwtAuthenticationConverter;
+import cn.fuck.engine.oauth2.core.response.FuckAccessDeniedHandler;
+import cn.fuck.engine.oauth2.core.response.FuckAuthenticationEntryPoint;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,7 +17,6 @@ import org.springframework.security.oauth2.server.resource.web.DefaultBearerToke
 
 /**
  * <p>Description: OAuth2ResourceServerConfigurer 扩展配置</p>
- * @date : 2023/8/31 23:27
  */
 public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
 
@@ -28,7 +27,7 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
     public OAuth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
         this.jwtDecoder = jwtDecoder;
         this.authorizationProperties = authorizationProperties;
-        this.opaqueTokenIntrospector = new HerodotusOpaqueTokenIntrospector(resourceServerProperties);
+        this.opaqueTokenIntrospector = new FuckOpaqueTokenIntrospector(resourceServerProperties);
         ;
     }
 
@@ -43,16 +42,16 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
                     .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
         } else {
             configurer
-                    .jwt(jwt -> jwt.decoder(this.jwtDecoder).jwtAuthenticationConverter(new HerodotusJwtAuthenticationConverter()))
+                    .jwt(jwt -> jwt.decoder(this.jwtDecoder).jwtAuthenticationConverter(new FuckJwtAuthenticationConverter()))
                     .bearerTokenResolver(new DefaultBearerTokenResolver());
         }
 
         configurer
-                .accessDeniedHandler(new HerodotusAccessDeniedHandler())
-                .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint());
+                .accessDeniedHandler(new FuckAccessDeniedHandler())
+                .authenticationEntryPoint(new FuckAuthenticationEntryPoint());
     }
 
     public BearerTokenResolver createBearerTokenResolver() {
-        return new HerodotusBearerTokenResolver(this.jwtDecoder, this.opaqueTokenIntrospector, this.isRemoteValidate());
+        return new FuckBearerTokenResolver(this.jwtDecoder, this.opaqueTokenIntrospector, this.isRemoteValidate());
     }
 }

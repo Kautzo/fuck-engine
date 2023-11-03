@@ -9,7 +9,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 枚举值校验注解 </p>
- * @date : 2022/6/13 15:58
  */
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
 @Retention(RetentionPolicy.RUNTIME)

@@ -1,14 +1,12 @@
 package cn.fuck.engine.message.core.domain;
 
-import cn.fuck.engine.assistant.core.definition.domain.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 /**
  * <p>Description: 用户状态变更实体 </p>
- * @date : 2022/7/10 16:15
  */
-public class UserStatus extends AbstractEntity {
+public class UserStatus {
 
 
     private String userId;

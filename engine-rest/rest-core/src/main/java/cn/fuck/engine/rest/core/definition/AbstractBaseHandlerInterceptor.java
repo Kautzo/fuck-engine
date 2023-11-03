@@ -3,21 +3,18 @@ package cn.fuck.engine.rest.core.definition;
 import cn.fuck.engine.assistant.core.utils.http.SessionUtils;
 import cn.fuck.engine.assistant.core.definition.constants.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.crypto.SecureUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * <p>Description: 基础拦截器 </p>
  * <p>
  * 定义拦截器通用方法
- * @date : 2022/10/18 21:40
  */
+@Slf4j
 public abstract class AbstractBaseHandlerInterceptor implements HandlerInterceptor {
-
-    private static final Logger log = LoggerFactory.getLogger(AbstractBaseHandlerInterceptor.class);
 
     protected String generateRequestKey(HttpServletRequest request) {
 

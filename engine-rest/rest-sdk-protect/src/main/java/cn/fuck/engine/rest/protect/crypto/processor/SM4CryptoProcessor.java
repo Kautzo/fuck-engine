@@ -1,21 +1,18 @@
 package cn.fuck.engine.rest.protect.crypto.processor;
 
 import cn.fuck.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.dromara.hutool.core.codec.HexUtil;
 import org.dromara.hutool.crypto.bc.SmUtil;
 import org.dromara.hutool.crypto.symmetric.SM4;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.crypto.SecretKey;
 
 /**
  * <p>Description: 国密对称算法 SM4 处理器 </p>
- * @date : 2022/5/2 16:56
  */
+@Slf4j
 public class SM4CryptoProcessor implements SymmetricCryptoProcessor {
-
-    private static final Logger log = LoggerFactory.getLogger(SM4CryptoProcessor.class);
 
     @Override
     public String createKey() {

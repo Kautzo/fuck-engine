@@ -1,8 +1,8 @@
 package cn.fuck.engine.oauth2.authorization.processor;
 
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusRequest;
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusRequestMatcher;
+import cn.fuck.engine.oauth2.authorization.definition.FuckConfigAttribute;
+import cn.fuck.engine.oauth2.authorization.definition.FuckRequest;
+import cn.fuck.engine.oauth2.authorization.definition.FuckRequestMatcher;
 import cn.fuck.engine.cache.jetcache.utils.JetCacheUtils;
 import cn.fuck.engine.oauth2.core.constants.OAuth2Constants;
 import com.alicp.jetcache.Cache;
@@ -28,12 +28,12 @@ public class SecurityMetadataSourceStorage {
      * 模式匹配权限缓存。主要存储 包含 "*"、"?" 和 "{"、"}" 等特殊字符的路径权限。
      * 该种权限，需要通过遍历，利用 AntPathRequestMatcher 机制进行匹配
      */
-    private final Cache<String, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> compatible;
+    private final Cache<String, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> compatible;
     /**
      * 直接索引权限缓存，主要存储全路径权限
      * 该种权限，直接通过 Map Key 进行获取
      */
-    private final Cache<HerodotusRequest, List<HerodotusConfigAttribute>> indexable;
+    private final Cache<FuckRequest, List<FuckConfigAttribute>> indexable;
 
     public SecurityMetadataSourceStorage() {
         this.compatible = JetCacheUtils.create(OAuth2Constants.CACHE_NAME_SECURITY_METADATA_COMPATIBLE, CacheType.BOTH, null, true, true);
@@ -45,8 +45,8 @@ public class SecurityMetadataSourceStorage {
      *
      * @return 需要进行模式匹配的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> readFromCompatible() {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
+    private LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> readFromCompatible() {
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
         if (MapUtils.isNotEmpty(compatible)) {
             return compatible;
         }
@@ -59,28 +59,28 @@ public class SecurityMetadataSourceStorage {
      *
      * @param compatible 请求路径和权限配置属性映射Map
      */
-    private void writeToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible) {
+    private void writeToCompatible(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> compatible) {
         this.compatible.put(KEY_COMPATIBLE, compatible);
     }
 
     /**
      * 从 indexable 缓存中读取数据
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link HerodotusRequest}
+     * @param fuckRequest 自定义扩展的 AntPathRequestMatchers {@link FuckRequest}
      * @return 权限配置属性对象集合
      */
-    private List<HerodotusConfigAttribute> readFromIndexable(HerodotusRequest herodotusRequest) {
-        return this.indexable.get(herodotusRequest);
+    private List<FuckConfigAttribute> readFromIndexable(FuckRequest fuckRequest) {
+        return this.indexable.get(fuckRequest);
     }
 
     /**
      * 写入 indexable 缓存
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link HerodotusRequest}
+     * @param fuckRequest 自定义扩展的 AntPathRequestMatchers {@link FuckRequest}
      * @param configAttributes 权限配置属性
      */
-    private void writeToIndexable(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
-        this.indexable.put(herodotusRequest, configAttributes);
+    private void writeToIndexable(FuckRequest fuckRequest, List<FuckConfigAttribute> configAttributes) {
+        this.indexable.put(fuckRequest, configAttributes);
     }
 
     /**
@@ -90,9 +90,9 @@ public class SecurityMetadataSourceStorage {
      * @param method 请求 method
      * @return 与请求url 和 method 匹配的权限数据，或者是空集合
      */
-    public List<HerodotusConfigAttribute> getConfigAttribute(String url, String method) {
-        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method);
-        return readFromIndexable(herodotusRequest);
+    public List<FuckConfigAttribute> getConfigAttribute(String url, String method) {
+        FuckRequest fuckRequest = new FuckRequest(url, method);
+        return readFromIndexable(fuckRequest);
     }
 
     /**
@@ -100,7 +100,7 @@ public class SecurityMetadataSourceStorage {
      *
      * @return 如果缓存中存在，则返回请求权限映射Map集合，如果不存在则返回一个空的{@link LinkedHashMap}
      */
-    public LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> getCompatible() {
+    public LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> getCompatible() {
         return readFromCompatible();
     }
 
@@ -110,19 +110,19 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
      * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
+     * @param fuckRequest 请求匹配对象 {@link FuckRequest}
      * @param configAttributes 权限配置 {@link ConfigAttribute}
      */
-    private void appendToCompatible(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.getCompatible();
+    private void appendToCompatible(FuckRequest fuckRequest, List<FuckConfigAttribute> configAttributes) {
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> compatible = this.getCompatible();
 //        compatible.merge(requestMatcher, configAttributes, (oldConfigAttributes, newConfigAttributes) -> {
 //            newConfigAttributes.addAll(oldConfigAttributes);
 //            return newConfigAttributes;
 //        });
 
         // 使用merge会让整个功能的设计更加复杂，暂时改为直接覆盖已有数据，后续视情况再做变更。
-        compatible.put(herodotusRequest, configAttributes);
-        log.trace("[FUCK] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
+        compatible.put(fuckRequest, configAttributes);
+        log.trace("[FUCK] |- Append [{}] to Compatible cache, current size is [{}]", fuckRequest, compatible.size());
         writeToCompatible(compatible);
     }
 
@@ -134,21 +134,21 @@ public class SecurityMetadataSourceStorage {
      *
      * @param configAttributes 请求权限映射Map
      */
-    private void appendToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private void appendToCompatible(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> configAttributes) {
         configAttributes.forEach(this::appendToCompatible);
     }
 
     /**
      * 向 indexable 缓存中添加需请求权限映射。
      * <p>
-     * 如果缓存中不存在以{@link HerodotusRequest}为Key的数据，那么添加数据
-     * 如果缓存中存在以{@link HerodotusRequest}为Key的数据，那么合并数据
+     * 如果缓存中不存在以{@link FuckRequest}为Key的数据，那么添加数据
+     * 如果缓存中存在以{@link FuckRequest}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
-     * @param configAttributes 权限配置 {@link HerodotusConfigAttribute}
+     * @param fuckRequest 请求匹配对象 {@link FuckRequest}
+     * @param configAttributes 权限配置 {@link FuckConfigAttribute}
      */
-    private void appendToIndexable(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
-        writeToIndexable(herodotusRequest, configAttributes);
+    private void appendToIndexable(FuckRequest fuckRequest, List<FuckConfigAttribute> configAttributes) {
+        writeToIndexable(fuckRequest, configAttributes);
     }
 
     /**
@@ -156,7 +156,7 @@ public class SecurityMetadataSourceStorage {
      *
      * @param configAttributes 请求权限映射Map
      */
-    private void appendToIndexable(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private void appendToIndexable(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> configAttributes) {
         configAttributes.forEach(this::appendToIndexable);
     }
 
@@ -166,7 +166,7 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @param isIndexable      true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes, boolean isIndexable) {
+    public void addToStorage(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> configAttributes, boolean isIndexable) {
         if (MapUtils.isNotEmpty(configAttributes)) {
             if (isIndexable) {
                 appendToIndexable(configAttributes);
@@ -184,8 +184,8 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @param isIndexable      true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes, boolean isIndexable) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>();
+    public void addToStorage(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> matchers, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> configAttributes, boolean isIndexable) {
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> result = new LinkedHashMap<>();
         if (MapUtils.isNotEmpty(matchers) && MapUtils.isNotEmpty(configAttributes)) {
             result = checkConflict(matchers, configAttributes);
         }
@@ -202,13 +202,13 @@ public class SecurityMetadataSourceStorage {
      * @param configAttributes 权限数据
      * @return 去除冲突的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> checkConflict(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> configAttributes) {
+    private LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> checkConflict(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> matchers, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> configAttributes) {
 
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>(configAttributes);
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> result = new LinkedHashMap<>(configAttributes);
 
-        for (HerodotusRequest matcher : matchers.keySet()) {
-            for (HerodotusRequest item : configAttributes.keySet()) {
-                HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
+        for (FuckRequest matcher : matchers.keySet()) {
+            for (FuckRequest item : configAttributes.keySet()) {
+                FuckRequestMatcher requestMatcher = new FuckRequestMatcher(matcher);
                 if (requestMatcher.matches(item)) {
                     result.remove(item);
                     log.trace("[FUCK] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());

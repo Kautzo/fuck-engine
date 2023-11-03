@@ -14,8 +14,8 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,22 +23,32 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: 服务信息配置类 </p>
- * @date : 2021/6/13 13:40
+ *
  */
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnSwaggerEnabled
 @EnableConfigurationProperties(SwaggerProperties.class)
 @SecuritySchemes({
-        @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME, type = SecuritySchemeType.OAUTH2, bearerFormat = "JWT", scheme = "bearer",
+        @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME,
+                type = SecuritySchemeType.OAUTH2,
+                bearerFormat = "JWT", scheme = "bearer",
                 flows = @OAuthFlows(
-                        password = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all")),
-                        clientCredentials = @OAuthFlow(authorizationUrl = "${herodotus.endpoint.authorization-uri}", tokenUrl = "${herodotus.endpoint.access-token-uri}", refreshUrl = "${herodotus.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
-//                        authorizationCode = @OAuthFlow(authorizationUrl = "${herodotus.platform.endpoint.user-authorization-uri}", tokenUrl = "${herodotus.platform.endpoint.access-token-uri}", refreshUrl = "${herodotus.platform.endpoint.access-token-uri}", scopes = @OAuthScope(name = "all"))
+                        password = @OAuthFlow(authorizationUrl = "${fuck.endpoint.authorization-uri}",
+                                tokenUrl = "${fuck.endpoint.access-token-uri}",
+                                refreshUrl = "${fuck.endpoint.access-token-uri}",
+                                scopes = @OAuthScope(name = "all")),
+                        clientCredentials = @OAuthFlow(authorizationUrl = "${fuck.endpoint.authorization-uri}",
+                                tokenUrl = "${fuck.endpoint.access-token-uri}",
+                                refreshUrl = "${fuck.endpoint.access-token-uri}",
+                                scopes = @OAuthScope(name = "all"))
+//                        authorizationCode = @OAuthFlow(authorizationUrl = "${fuck.platform.endpoint.user-authorization-uri}",
+//                                tokenUrl = "${fuck.platform.endpoint.access-token-uri}",
+//                                refreshUrl = "${fuck.platform.endpoint.access-token-uri}",
+//                                scopes = @OAuthScope(name = "all"))
                 )),
 })
 public class SpringdocConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(SpringdocConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
@@ -58,16 +68,23 @@ public class SpringdocConfiguration {
     }
 
     @Bean
+    public GroupedOpenApi defaultOpenApi() {
+        return GroupedOpenApi.builder()
+                .group("default")
+                .packagesToScan("cn.fuck")
+                .build();
+    }
+
+    @Bean
     @ConditionalOnMissingBean
     public OpenAPI createOpenApi(OpenApiServerResolver openApiServerResolver) {
         return new OpenAPI()
                 .servers(openApiServerResolver.getServers())
-                .info(new Info().title("Herodotus Cloud")
-                        .description("Herodotus Cloud Microservices Architecture")
+                .info(new Info().title("FUCK Cloud")
+                        .description("FUCK Cloud")
                         .version("Swagger V3")
                         .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Herodotus Cloud Documentation")
-                        .url(" https://www.herodotus.cn"));
+                        .description("GTB Cloud Documentation"));
     }
 }

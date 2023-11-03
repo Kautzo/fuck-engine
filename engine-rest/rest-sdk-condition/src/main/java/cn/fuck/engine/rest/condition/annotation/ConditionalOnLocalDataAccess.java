@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 本地数据访问策略条件注解 </p>
- * @date : 2021/8/6 21:28
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

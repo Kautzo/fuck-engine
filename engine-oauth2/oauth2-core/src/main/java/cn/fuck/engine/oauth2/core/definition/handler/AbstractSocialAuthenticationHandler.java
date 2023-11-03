@@ -1,6 +1,5 @@
 package cn.fuck.engine.oauth2.core.definition.handler;
 
-import cn.fuck.engine.access.core.exception.AccessIdentityVerificationFailedException;
 import cn.fuck.engine.assistant.core.domain.AccessPrincipal;
 import cn.fuck.engine.oauth2.core.definition.domain.FuckUser;
 import cn.fuck.engine.oauth2.core.definition.domain.SocialUserDetails;
@@ -13,7 +12,6 @@ import org.springframework.security.core.AuthenticationException;
  * <p>Description: 抽象的社交登录处理器 </p>
  * <p>
  * 实现社交登录和手机号码登录的主要流程逻辑
- * @date : 2021/5/16 17:38
  */
 public abstract class AbstractSocialAuthenticationHandler implements SocialAuthenticationHandler {
 
@@ -23,9 +21,8 @@ public abstract class AbstractSocialAuthenticationHandler implements SocialAuthe
      * @param source          社交登录提供者分类
      * @param accessPrincipal 社交登录所需要的参数信息
      * @return 认证成功后返回的信息 {@link SocialUserDetails}
-     * @throws AccessIdentityVerificationFailedException 社交登录认证出错
      */
-    public abstract SocialUserDetails identity(String source, AccessPrincipal accessPrincipal) throws AccessIdentityVerificationFailedException;
+    public abstract SocialUserDetails identity(String source, AccessPrincipal accessPrincipal);
 
     /**
      * 根据社交登录返回的用户信息，查询系统中是否有响应的信息

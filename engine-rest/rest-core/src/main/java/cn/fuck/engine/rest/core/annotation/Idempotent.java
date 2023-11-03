@@ -4,7 +4,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 幂等标识注解 </p>
- * @date : 2021/8/22 14:25
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})

@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * <p>Description: Security Metadata 数据同步监听 </p>
- * @date : 2021/8/6 12:23
  */
 public class RemoteSecurityMetadataSyncListener implements ApplicationListener<RemoteSecurityMetadataSyncEvent> {
 

@@ -4,7 +4,6 @@ import cn.fuck.engine.assistant.core.definition.constants.BaseConstants;
 
 /**
  * <p>Description: Rest 模块常量 </p>
- * @date : 2022/1/19 23:13
  */
 public interface RestConstants extends BaseConstants {
 

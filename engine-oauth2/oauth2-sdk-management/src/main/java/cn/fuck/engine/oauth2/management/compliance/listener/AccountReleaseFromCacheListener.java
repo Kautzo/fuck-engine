@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationListener;
 
 /**
  * <p>Description: TODO </p>
- * @date : 2023/5/14 14:33
  */
 public class AccountReleaseFromCacheListener implements ApplicationListener<AccountReleaseFromCacheEvent> {
 

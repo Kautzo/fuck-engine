@@ -1,6 +1,6 @@
 package cn.fuck.engine.oauth2.core.definition.service;
 
-import cn.fuck.engine.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import cn.fuck.engine.oauth2.core.definition.domain.FuckGrantedAuthority;
 
 import java.util.Set;
 
@@ -16,5 +16,5 @@ public interface ClientDetailsService {
      * @param clientId 客户端ID
      * @return 客户端权限集合
      */
-    Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId);
+    Set<FuckGrantedAuthority> findAuthoritiesById(String clientId);
 }

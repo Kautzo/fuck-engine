@@ -1,39 +1,29 @@
 package cn.fuck.engine.rest.core.controller;
 
-import cn.fuck.engine.assistant.core.definition.domain.AbstractEntity;
-import cn.fuck.engine.assistant.core.domain.Result;
-import cn.fuck.engine.data.core.service.ReadableService;
+import cn.fuck.engine.data.core.entity.MPEntity;
+import cn.fuck.engine.data.core.service.BaseService;
 
-import java.io.Serializable;
 
 /**
- * <p> Description : 通用Controller </p>
+ * SuperNoPoiController
  * <p>
- * 单独提取出一些公共方法，是为了解决某些支持feign的controller，requestMapping 不方便统一编写的问题。
- * @date : 2020/4/30 11:00
+ * 继承该类，就拥有了如下方法：
+ * 1，page 分页查询，并支持子类扩展4个方法：handlerQueryParams、query、handlerWrapper、handlerResult
+ * 2，save 保存，并支持子类扩展方法：handlerSave
+ * 3，update 修改，并支持子类扩展方法：handlerUpdate
+ * 4，delete 删除，并支持子类扩展方法：handlerDelete
+ * 5，get 单体查询， 根据ID直接查询DB
+ * 6，detail 单体详情查询， 根据ID直接查询DB
+ * 7，list 列表查询，根据参数条件，查询列表
+ * <p>
+ *
  */
-public abstract class BaseController<E extends AbstractEntity, ID extends Serializable> implements WriteableController<E, ID> {
+public abstract class BaseController<Service extends BaseService<Entity>, Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
+        extends BaseAbstractController<Service, Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
+        implements SaveController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
+        UpdateController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
+        DeleteController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
+        QueryController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
 
-    /**
-     * 获取Service
-     *
-     * @return Service
-     */
-    @Override
-    public ReadableService<E, ID> getReadableService() {
-        return this.getWriteableService();
-    }
 
-    @Override
-    public Result<E> saveOrUpdate(E domain) {
-        E savedDomain = getWriteableService().saveAndFlush(domain);
-        return result(savedDomain);
-    }
-
-    @Override
-    public Result<String> delete(ID id) {
-        Result<String> result = result(String.valueOf(id));
-        getWriteableService().deleteById(id);
-        return result;
-    }
 }

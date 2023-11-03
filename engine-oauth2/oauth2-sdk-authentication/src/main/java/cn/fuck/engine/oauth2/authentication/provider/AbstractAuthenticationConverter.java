@@ -13,7 +13,6 @@ import java.util.List;
 
 /**
  * <p>Description: 抽象的认证 Converter </p>
- * @date : 2023/6/21 6:23
  */
 public abstract class AbstractAuthenticationConverter implements AuthenticationConverter {
 

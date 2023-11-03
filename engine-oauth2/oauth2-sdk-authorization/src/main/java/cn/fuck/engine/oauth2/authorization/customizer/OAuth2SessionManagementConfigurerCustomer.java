@@ -7,7 +7,6 @@ import org.springframework.security.core.session.SessionRegistry;
 
 /**
  * <p>Description: SessionManagementConfigurer 扩展配置 </p>
- * @date : 2023/8/31 21:32
  */
 public class OAuth2SessionManagementConfigurerCustomer implements Customizer<SessionManagementConfigurer<HttpSecurity>> {
 
@@ -20,6 +19,6 @@ public class OAuth2SessionManagementConfigurerCustomer implements Customizer<Ses
 
     @Override
     public void customize(SessionManagementConfigurer<HttpSecurity> configurer) {
-        configurer.sessionAuthenticationStrategy(new HerodotusSessionAuthenticationStrategy(sessionRegistry));
+        configurer.sessionAuthenticationStrategy(new FuckSessionAuthenticationStrategy(sessionRegistry));
     }
 }

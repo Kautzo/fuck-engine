@@ -109,7 +109,7 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
      * @param message {@link Message}
      * @param channel {@link MessageChannel}
      * @param sent    boolean值参数表示该调用的返回值
-     * @param ex      失败时抛出的 HerodotusException
+     * @param ex      失败时抛出的 FuckException
      */
     @Override
     public void afterSendCompletion(Message<?> message, MessageChannel channel, boolean sent, Exception ex) {
@@ -146,7 +146,7 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
      *
      * @param message {@link Message}
      * @param channel {@link MessageChannel}
-     * @param ex      失败时抛出的 HerodotusException
+     * @param ex      失败时抛出的 FuckException
      */
     @Override
     public void afterReceiveCompletion(Message<?> message, MessageChannel channel, Exception ex) {

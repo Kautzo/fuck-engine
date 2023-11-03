@@ -8,7 +8,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 /**
  * <p>Description: 表单登录 Details 定义 </p>
- * @date : 2022/4/12 10:32
  */
 public class FormLoginWebAuthenticationDetails extends WebAuthenticationDetails {
 

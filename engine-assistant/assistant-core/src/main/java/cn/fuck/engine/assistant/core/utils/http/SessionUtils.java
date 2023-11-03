@@ -89,7 +89,7 @@ public class SessionUtils {
     public static String analyseSessionId(HttpServletRequest httpServletRequest) {
         String sessionId = getSessionId(httpServletRequest);
         if (StringUtils.isBlank(sessionId)) {
-            sessionId = HeaderUtils.getHerodotusSession(httpServletRequest);
+            sessionId = HeaderUtils.getFuckSession(httpServletRequest);
         }
         return sessionId;
     }
@@ -103,7 +103,7 @@ public class SessionUtils {
     public static String analyseSessionId(ServerHttpRequest serverHttpRequest) {
         String sessionId = getSessionIdFromHeader(serverHttpRequest);
         if (StringUtils.isBlank(sessionId)) {
-            sessionId = HeaderUtils.getHerodotusSession(serverHttpRequest);
+            sessionId = HeaderUtils.getFuckSession(serverHttpRequest);
         }
         return sessionId;
     }
@@ -117,7 +117,7 @@ public class SessionUtils {
     public static String analyseSessionId(HttpInputMessage httpInputMessage) {
         String sessionId = getSessionIdFromHeader(httpInputMessage);
         if (StringUtils.isBlank(sessionId)) {
-            sessionId = HeaderUtils.getHerodotusSession(httpInputMessage);
+            sessionId = HeaderUtils.getFuckSession(httpInputMessage);
         }
         return sessionId;
     }

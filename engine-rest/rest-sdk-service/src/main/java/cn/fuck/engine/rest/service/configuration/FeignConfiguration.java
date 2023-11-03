@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * <p> Description : 自定义通用的Feign Fallback处理工厂(基于Sentinel) </p>
  * <p>
- * @date : 2020/3/1 18:35
  * @see <a href="https://blog.csdn.net/ttzommed/article/details/90669320">参考文档</a>
  */
 @Configuration(proxyBeanMethods = false)

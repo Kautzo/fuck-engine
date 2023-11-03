@@ -6,7 +6,6 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * <p>Description: 社交登录处理器 </p>
- * @date : 2021/4/4 17:34
  */
 public interface SocialAuthenticationHandler {
 

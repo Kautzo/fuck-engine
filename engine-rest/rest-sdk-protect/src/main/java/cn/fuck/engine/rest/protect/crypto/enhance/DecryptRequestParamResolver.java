@@ -24,7 +24,6 @@ import java.util.List;
 
 /**
  * <p>Description: @RequestParam 解密处理器 </p>
- * @date : 2021/10/10 12:17
  */
 public class DecryptRequestParamResolver implements HandlerMethodArgumentResolver {
 
@@ -101,7 +100,7 @@ public class DecryptRequestParamResolver implements HandlerMethodArgumentResolve
                     return (values.length == 1 ? values[0] : values);
                 }
             } else {
-                log.warn("[FUCK] |- Cannot find Herodotus Cloud custom session header. Use interface crypto founction need add X_HERODOTUS_SESSION to request header.");
+                log.warn("[FUCK] |- Cannot find FUCK Cloud custom session header. Use interface crypto founction need add X_FUCK_SESSION to request header.");
             }
         }
 

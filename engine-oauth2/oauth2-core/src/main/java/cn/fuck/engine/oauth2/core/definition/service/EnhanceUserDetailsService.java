@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * <p>Description: 自定义UserDetailsService接口，方便以后扩展 </p>
- * @date : 2021/1/17 12:49
  */
 public interface EnhanceUserDetailsService extends UserDetailsService {
 
@@ -32,5 +31,5 @@ public interface EnhanceUserDetailsService extends UserDetailsService {
      * @return {@link FuckUser}
      * @throws UsernameNotFoundException 用户不存在
      */
-    FuckUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException;
+    FuckUser loadFuckUserByUsername(String username) throws UsernameNotFoundException;
 }

@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>Description: URL 路径类别 </p>
- * @date : 2022/3/9 19:06
  */
 public enum Category {
 

@@ -1,6 +1,6 @@
 package cn.fuck.engine.cache.caffeine.configuration;
 
-import cn.fuck.engine.cache.caffeine.enhance.HerodotusCaffeineCacheManager;
+import cn.fuck.engine.cache.caffeine.enhance.FuckCaffeineCacheManager;
 import cn.fuck.engine.cache.core.properties.CacheProperties;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
@@ -46,9 +46,9 @@ public class CacheCaffeineConfiguration {
     @Bean
     @ConditionalOnMissingBean(CaffeineCacheManager.class)
     public CaffeineCacheManager caffeineCacheManager(Caffeine<Object, Object> caffeine) {
-        HerodotusCaffeineCacheManager herodotusCaffeineCacheManager = new HerodotusCaffeineCacheManager(cacheProperties);
-        herodotusCaffeineCacheManager.setCaffeine(caffeine);
+        FuckCaffeineCacheManager fuckCaffeineCacheManager = new FuckCaffeineCacheManager(cacheProperties);
+        fuckCaffeineCacheManager.setCaffeine(caffeine);
         log.trace("[FUCK] |- Bean [Caffeine Cache Manager] Auto Configure.");
-        return herodotusCaffeineCacheManager;
+        return fuckCaffeineCacheManager;
     }
 }

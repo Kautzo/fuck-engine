@@ -2,6 +2,7 @@ package cn.fuck.engine.rest.protect.crypto.processor;
 
 import cn.fuck.engine.assistant.core.domain.SecretKey;
 import cn.fuck.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
 import org.dromara.hutool.core.codec.HexUtil;
@@ -17,11 +18,9 @@ import org.slf4j.LoggerFactory;
  * <p>Description: 国密 SM2 算法处理 </p>
  * <p>
  * 主要用于前后端数据加密处理，与 sm-crypto 交互
- * @date : 2022/5/1 19:29
  */
+@Slf4j
 public class SM2CryptoProcessor implements AsymmetricCryptoProcessor {
-
-    private static final Logger log = LoggerFactory.getLogger(SM2CryptoProcessor.class);
 
     @Override
     public SecretKey createSecretKey() {

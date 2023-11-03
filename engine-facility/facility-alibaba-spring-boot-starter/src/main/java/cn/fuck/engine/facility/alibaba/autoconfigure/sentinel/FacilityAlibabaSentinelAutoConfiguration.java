@@ -1,7 +1,7 @@
 package cn.fuck.engine.facility.alibaba.autoconfigure.sentinel;
 
 import cn.fuck.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
-import cn.fuck.engine.facility.alibaba.autoconfigure.sentinel.enhance.HerodotusSentinelFeign;
+import cn.fuck.engine.facility.alibaba.autoconfigure.sentinel.enhance.FuckSentinelFeign;
 import cn.fuck.engine.assistant.core.domain.Result;
 import com.alibaba.cloud.sentinel.feign.SentinelFeignAutoConfiguration;
 import com.alibaba.csp.sentinel.SphU;
@@ -44,7 +44,7 @@ public class FacilityAlibabaSentinelAutoConfiguration {
     @ConditionalOnMissingBean
     @ConditionalOnProperty(name = "feign.sentinel.enabled")
     public Feign.Builder feignSentinelBuilder() {
-        return HerodotusSentinelFeign.builder();
+        return FuckSentinelFeign.builder();
     }
 
     /**

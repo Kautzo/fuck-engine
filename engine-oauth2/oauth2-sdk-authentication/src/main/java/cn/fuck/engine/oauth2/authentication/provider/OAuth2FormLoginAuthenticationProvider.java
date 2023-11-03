@@ -11,10 +11,9 @@ import cn.fuck.engine.oauth2.core.exception.OAuth2CaptchaArgumentIllegalExceptio
 import cn.fuck.engine.oauth2.core.exception.OAuth2CaptchaHasExpiredException;
 import cn.fuck.engine.oauth2.core.exception.OAuth2CaptchaIsEmptyException;
 import cn.fuck.engine.oauth2.core.exception.OAuth2CaptchaMismatchException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
@@ -24,12 +23,10 @@ import org.springframework.security.core.userdetails.UserDetails;
  * <p>Description: OAuth2 (Security) 表单登录 Provider </p>
  * <p>
  * 扩展的OAuth2表单登录Provider，以支持表单登录的验证码
- * @date : 2022/4/12 10:21
  * @see org.springframework.security.authentication.dao.DaoAuthenticationProvider
  */
+@Slf4j
 public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProvider {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationProvider.class);
 
     private final CaptchaRendererFactory captchaRendererFactory;
 

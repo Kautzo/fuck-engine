@@ -14,7 +14,6 @@ import java.util.Map;
 
 /**
  * <p>Description: OAuth2 认证模式枚举 </p>
- * @date : 2021/10/16 14:39
  */
 @Schema(title = "OAuth2 认证模式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

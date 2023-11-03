@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>engine-oauth2</artifactId>
+        <groupId>cn.fuck.engine</groupId>
+        <version>3.1.5.1</version>
+    </parent>
+
+    <artifactId>oauth2-sdk-data</artifactId>
+
+
+    <description>Spring Authorization Server 数据存储核心组件模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>oauth2-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

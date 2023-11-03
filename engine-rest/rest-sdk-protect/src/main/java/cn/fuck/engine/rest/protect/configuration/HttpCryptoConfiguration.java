@@ -20,7 +20,6 @@ import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: Rest 加密配置 </p>
- * @date : 2022/1/14 21:11
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(CryptoProperties.class)
@@ -38,7 +37,8 @@ public class HttpCryptoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public HttpCryptoProcessor httpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor, SymmetricCryptoProcessor symmetricCryptoProcessor) {
+    public HttpCryptoProcessor httpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor,
+                                                   SymmetricCryptoProcessor symmetricCryptoProcessor) {
         HttpCryptoProcessor httpCryptoProcessor = new HttpCryptoProcessor(asymmetricCryptoProcessor, symmetricCryptoProcessor);
         log.trace("[FUCK] |- Bean [Interface Crypto Processor] Auto Configure.");
         return httpCryptoProcessor;

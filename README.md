@@ -3,13 +3,6 @@
 ```
 gtb-engine
 ├── dependencies -- 工程Maven顶级依赖，统一控制版本和依赖
-├── engine-access -- 外部登录接入模块
-├    ├── access-core -- 外部登录通用代码
-├    ├── access-sdk-all -- 外部登录集成
-├    ├── access-sdk-justauth -- JustAuth登录
-├    ├── access-sdk-wxapp -- 微信小程序登录
-├    ├── access-sdk-wxmpp -- 微信公众号登录
-├    └── access-spring-boot-starter -- 外部登录  模块统一 Starter
 ├── engine-assistant -- 核心通用代码包
 ├    ├── assistant-core -- 核心通用代码
 ├    └── assistant-autoconfigure -- Assistant  模块统一 Starter
@@ -35,9 +28,7 @@ gtb-engine
 ├── engine-facility -- 微服务基础设施模块
 ├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配模块
 ├    ├── facility-core -- 基础设施共性通用代码
-├    ├── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配模块
-├    ├── facility-original-spring-boot-starter -- 面向 Spring Cloud 原生全家桶的微服务基础设施适配模块
-├    └── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块
+├    └── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配模块
 ├── engine-message -- 消息模块
 ├    ├── message-core -- 消息共性通用代码
 ├    ├── message-kafka-spring-boot-starter -- 基础 Kafka 配置 Starter

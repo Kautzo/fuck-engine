@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 令牌格式 </p>
- * @date : 2022/3/25 0:02
  */
 @Schema(name = "令牌格式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

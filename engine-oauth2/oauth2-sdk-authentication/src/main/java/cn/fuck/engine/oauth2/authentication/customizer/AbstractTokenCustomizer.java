@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 /**
  * <p>Description: TokenCustomizer 通用处理 </p>
- * @date : 2022/10/12 10:20
  */
 public abstract class AbstractTokenCustomizer {
 
@@ -58,9 +57,6 @@ public abstract class AbstractTokenCustomizer {
     private void putUserInfo(Map<String, Object> attributes, Object object) {
         if (ObjectUtils.isNotEmpty(object) && object instanceof FuckUser principal) {
             attributes.put(BaseConstants.OPEN_ID, principal.getUserId());
-            attributes.put(BaseConstants.ROLES, principal.getRoles());
-            attributes.put(BaseConstants.AVATAR, principal.getAvatar());
-            attributes.put(BaseConstants.EMPLOYEE_ID, principal.getEmployeeId());
         }
     }
 }

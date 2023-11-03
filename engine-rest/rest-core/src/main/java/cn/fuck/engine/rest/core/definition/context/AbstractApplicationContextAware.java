@@ -8,8 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * <p>Description: 抽象 JPA 实体变更 Listener</p>
- * @date : 2021/8/11 18:12
+ * <p>Description: 抽象实体变更 Listener</p>
  */
 public abstract class AbstractApplicationContextAware implements ApplicationContextAware {
 

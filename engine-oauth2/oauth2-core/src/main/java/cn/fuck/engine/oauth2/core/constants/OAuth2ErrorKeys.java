@@ -2,7 +2,6 @@ package cn.fuck.engine.oauth2.core.constants;
 
 /**
  * <p>Description: 扩展 OAuth2 错误代码 </p>
- * @date : 2022/7/9 12:59
  */
 public interface OAuth2ErrorKeys {
 

@@ -51,7 +51,7 @@ public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
         String sessionId = SessionUtils.analyseSessionId(request);
 
         if (StringUtils.isBlank(sessionId)) {
-            log.warn("[FUCK] |- Cannot find Herodotus Cloud custom session header. Use interface crypto function need add X_HERODOTUS_SESSION_ID to request header.");
+            log.warn("[FUCK] |- Cannot find FUCK Cloud custom session header. Use interface crypto function need add X_FUCK_SESSION_ID to request header.");
             return body;
         }
 

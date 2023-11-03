@@ -3,8 +3,7 @@ package cn.fuck.engine.oauth2.authentication.consumer;
 import cn.fuck.engine.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider;
 import cn.fuck.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;
 import cn.fuck.engine.oauth2.core.definition.service.ClientDetailsService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.core.OAuth2Token;
@@ -18,11 +17,9 @@ import java.util.function.Consumer;
  * <p>Description: OAuth2ClientCredentialsAuthenticationProvider 扩展 </p>
  * <p>
  * 用于替换 SAS 默认配置的 OAuth2ClientCredentialsAuthenticationProvider，以实现功能的扩展
- * @date : 2023/9/1 14:29
  */
+@Slf4j
 public class OAuth2ClientCredentialsAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2ClientCredentialsAuthenticationProviderConsumer.class);
 
     private final HttpSecurity httpSecurity;
     private final ClientDetailsService clientDetailsService;

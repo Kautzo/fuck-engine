@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configurers.FormLoginC
 
 /**
  * <p>Description: FormLoginConfigurer 扩展配置 </p>
- * @date : 2023/9/1 8:45
  */
 public class OAuth2FormLoginConfigurerCustomizer implements Customizer<FormLoginConfigurer<HttpSecurity>> {
 

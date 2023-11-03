@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: Undertow 配置解决 启动的一个WARN问题 </p>
- * @date : 2019/11/17 16:07
  */
 @Configuration(proxyBeanMethods = false)
 public class UndertowWebServerFactoryCustomizer implements WebServerFactoryCustomizer<UndertowServletWebServerFactory> {

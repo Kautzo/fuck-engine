@@ -24,7 +24,7 @@
 
         <dependency>
             <groupId>cn.fuck.engine</groupId>
-            <artifactId>oauth2-sdk-data-jpa</artifactId>
+            <artifactId>oauth2-sdk-data</artifactId>
         </dependency>
 
         <dependency>

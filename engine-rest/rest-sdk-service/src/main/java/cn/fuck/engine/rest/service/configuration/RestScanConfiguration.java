@@ -5,8 +5,7 @@ import cn.fuck.engine.rest.condition.annotation.ConditionalOnScanEnabled;
 import cn.fuck.engine.rest.condition.properties.ScanProperties;
 import cn.fuck.engine.rest.service.processor.RequestMappingScanner;
 import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,15 +14,13 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: 接口扫描配置 </p>
- * @date : 2022/1/16 18:40
  */
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(RequestMappingScanEventManager.class)
 @ConditionalOnScanEnabled
 @EnableConfigurationProperties(ScanProperties.class)
 public class RestScanConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(RestScanConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

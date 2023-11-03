@@ -1,8 +1,8 @@
 package cn.fuck.engine.oauth2.authorization.processor;
 
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusRequest;
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusRequestMatcher;
+import cn.fuck.engine.oauth2.authorization.definition.FuckConfigAttribute;
+import cn.fuck.engine.oauth2.authorization.definition.FuckRequest;
+import cn.fuck.engine.oauth2.authorization.definition.FuckRequestMatcher;
 import cn.fuck.engine.assistant.core.utils.http.HeaderUtils;
 import cn.fuck.engine.rest.core.utils.WebUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -60,7 +60,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
             return new AuthorizationDecision(true);
         }
 
-        String feignInnerFlag = HeaderUtils.getHerodotusFromIn(request);
+        String feignInnerFlag = HeaderUtils.getFuckFromIn(request);
         if (StringUtils.isNotBlank(feignInnerFlag)) {
             log.trace("[FUCK] |- Is feign inner invoke : [{}], Passed!", url);
             return new AuthorizationDecision(true);
@@ -71,7 +71,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
             return new AuthorizationDecision(authentication.get().isAuthenticated());
         }
 
-        List<HerodotusConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
+        List<FuckConfigAttribute> configAttributes = findConfigAttribute(url, method, request);
         if (CollectionUtils.isEmpty(configAttributes)) {
             log.warn("[FUCK] |- NO PRIVILEGES : [{}].", url);
 
@@ -85,7 +85,7 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
             return new AuthorizationDecision(false);
         }
 
-        for (HerodotusConfigAttribute configAttribute : configAttributes) {
+        for (FuckConfigAttribute configAttribute : configAttributes) {
             WebExpressionAuthorizationManager webExpressionAuthorizationManager = new WebExpressionAuthorizationManager(configAttribute.getAttribute());
             AuthorizationDecision decision = webExpressionAuthorizationManager.check(authentication, object);
             if (decision.isGranted()) {
@@ -97,20 +97,20 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         return new AuthorizationDecision(false);
     }
 
-    private List<HerodotusConfigAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
+    private List<FuckConfigAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
 
         log.debug("[FUCK] |- Current Request is : [{}] - [{}]", url, method);
 
-        List<HerodotusConfigAttribute> configAttributes = this.securityMetadataSourceStorage.getConfigAttribute(url, method);
+        List<FuckConfigAttribute> configAttributes = this.securityMetadataSourceStorage.getConfigAttribute(url, method);
         if (CollectionUtils.isNotEmpty(configAttributes)) {
             log.debug("[FUCK] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
             return configAttributes;
         } else {
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.securityMetadataSourceStorage.getCompatible();
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> compatible = this.securityMetadataSourceStorage.getCompatible();
             if (MapUtils.isNotEmpty(compatible)) {
                 // 支持含有**通配符的路径搜索
-                for (Map.Entry<HerodotusRequest, List<HerodotusConfigAttribute>> entry : compatible.entrySet()) {
-                    HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(entry.getKey());
+                for (Map.Entry<FuckRequest, List<FuckConfigAttribute>> entry : compatible.entrySet()) {
+                    FuckRequestMatcher requestMatcher = new FuckRequestMatcher(entry.getKey());
                     if (requestMatcher.matches(request)) {
                         log.debug("[FUCK] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
                         return entry.getValue();

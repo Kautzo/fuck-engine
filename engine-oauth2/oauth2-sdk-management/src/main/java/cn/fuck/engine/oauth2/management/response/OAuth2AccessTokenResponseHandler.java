@@ -8,11 +8,10 @@ import cn.fuck.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.security.core.Authentication;
@@ -31,11 +30,9 @@ import java.util.Map;
 
 /**
  * <p>Description: 自定义 Security 认证成功处理器 </p>
- * @date : 2022/2/25 16:53
  */
+@Slf4j
 public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHandler {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AccessTokenResponseHandler.class);
 
     private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
             new OAuth2AccessTokenResponseHttpMessageConverter();
@@ -75,7 +72,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
         } else {
             String sessionId = SessionUtils.analyseSessionId(request);
             Object details = authentication.getDetails();
-            if (isHerodotusUserInfoPattern(sessionId, details)) {
+            if (isFuckUserInfoPattern(sessionId, details)) {
                 PrincipalDetails authenticationDetails = (PrincipalDetails) details;
                 String data = Jackson2Utils.toJson(authenticationDetails);
                 String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
@@ -92,7 +89,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
         this.accessTokenHttpResponseConverter.write(accessTokenResponse, null, httpResponse);
     }
 
-    private boolean isHerodotusUserInfoPattern(String sessionId, Object details) {
+    private boolean isFuckUserInfoPattern(String sessionId, Object details) {
         return StringUtils.isNotBlank(sessionId) && ObjectUtils.isNotEmpty(details) && details instanceof PrincipalDetails;
     }
 

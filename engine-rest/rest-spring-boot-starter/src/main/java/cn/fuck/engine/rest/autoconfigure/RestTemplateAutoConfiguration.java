@@ -5,6 +5,7 @@ import cn.fuck.engine.rest.condition.annotation.ConditionalOnUseOkHttp3RestClien
 import cn.fuck.engine.rest.condition.annotation.ConditionalOnUseSimpleRestClient;
 import feign.hc5.ApacheHttp5Client;
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,10 @@ import java.io.IOException;
 
 /**
  * <p>Description: Rest Template Configuration </p>
- * @date : 2020/5/29 17:32
  */
+@Slf4j
 @AutoConfiguration(after = {FeignAutoConfiguration.class})
 public class RestTemplateAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(RestTemplateAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

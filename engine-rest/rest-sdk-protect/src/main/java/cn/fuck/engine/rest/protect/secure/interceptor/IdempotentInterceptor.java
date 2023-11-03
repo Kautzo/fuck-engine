@@ -6,6 +6,7 @@ import cn.fuck.engine.rest.core.definition.AbstractBaseHandlerInterceptor;
 import cn.fuck.engine.rest.core.exception.RepeatSubmissionException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +18,9 @@ import java.time.format.DateTimeParseException;
 
 /**
  * <p>Description: 幂等拦截器 </p>
- * @date : 2021/8/22 15:31
  */
+@Slf4j
 public class IdempotentInterceptor extends AbstractBaseHandlerInterceptor {
-
-    private static final Logger log = LoggerFactory.getLogger(IdempotentInterceptor.class);
 
     private static final String IDEMPOTENT_ATTRIBUTE = "Idempotent";
 
@@ -33,7 +32,6 @@ public class IdempotentInterceptor extends AbstractBaseHandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
         log.trace("[FUCK] |- IdempotentInterceptor preHandle postProcess.");
 
         if (!(handler instanceof HandlerMethod handlerMethod)) {

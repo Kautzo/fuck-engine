@@ -15,7 +15,6 @@ import java.util.List;
  * <p>Description: 安全过滤配置处理器 </p>
  * <p>
  * 对静态资源、开放接口等静态配置进行处理。整合默认配置和配置文件中的配置
- * @date : 2022/3/8 22:57
  */
 @Component
 public class SecurityMatcherConfigurer {

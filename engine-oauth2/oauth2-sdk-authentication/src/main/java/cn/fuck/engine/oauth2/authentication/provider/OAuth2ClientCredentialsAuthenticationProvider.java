@@ -1,7 +1,7 @@
 package cn.fuck.engine.oauth2.authentication.provider;
 
 import cn.fuck.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
-import cn.fuck.engine.oauth2.core.definition.domain.HerodotusGrantedAuthority;
+import cn.fuck.engine.oauth2.core.definition.domain.FuckGrantedAuthority;
 import cn.fuck.engine.oauth2.core.definition.service.ClientDetailsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -95,7 +95,7 @@ public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthe
             this.logger.trace("Validated token request parameters");
         }
 
-        Set<HerodotusGrantedAuthority> authorities = clientDetailsService.findAuthoritiesById(registeredClient.getClientId());
+        Set<FuckGrantedAuthority> authorities = clientDetailsService.findAuthoritiesById(registeredClient.getClientId());
         if (org.apache.commons.collections4.CollectionUtils.isNotEmpty(authorities)) {
             FieldUtil.setFieldValue(clientPrincipal, "authorities", authorities);
             if (this.logger.isDebugEnabled()) {

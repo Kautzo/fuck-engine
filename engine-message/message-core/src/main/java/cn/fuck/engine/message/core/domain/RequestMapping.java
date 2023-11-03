@@ -1,6 +1,5 @@
 package cn.fuck.engine.message.core.domain;
 
-import cn.fuck.engine.assistant.core.definition.domain.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -8,7 +7,7 @@ import com.google.common.base.Objects;
  * <p>Description: Controller 请求注解元数据封装实体 </p>
  * @date : 2020/6/2 19:52
  */
-public class RequestMapping extends AbstractEntity {
+public class RequestMapping {
 
     private String mappingId;
 

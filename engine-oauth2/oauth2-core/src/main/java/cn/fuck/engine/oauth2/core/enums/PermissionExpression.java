@@ -13,7 +13,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 安全表达式 </p>
- * @date : 2021/8/14 3:49
  */
 @Schema(title = "Security 权限表达式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

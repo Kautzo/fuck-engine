@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configurers.AuthorizeH
 
 /**
  * <p>Description: AuthorizeHttpRequestsConfigurer 扩展配置 </p>
- * @date : 2023/8/31 23:13
  */
 public class OAuth2AuthorizeHttpRequestsConfigurerCustomer implements Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry> {
 

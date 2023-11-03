@@ -10,15 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * <p>Description: 消息互动 </p>
- * @date : 2022/12/6 21:29
  */
 @Configuration(proxyBeanMethods = false)
-@EntityScan(basePackages = {
-        "cn.fuck.engine.supplier.message.entity"
-})
-@EnableJpaRepositories(basePackages = {
-        "cn.fuck.engine.supplier.message.repository",
-})
 @ComponentScan(basePackages = {
         "cn.fuck.engine.supplier.message.service",
         "cn.fuck.engine.supplier.message.controller",

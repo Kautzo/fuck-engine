@@ -1,14 +1,13 @@
 package cn.fuck.engine.data.mybatis.plus.configuration;
 
 import cn.fuck.engine.data.mybatis.plus.enhance.FuckIdentifierGenerator;
-import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.BlockAttackInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * <p>Description: Mybatis Plus 配置</p>
  */
 @Slf4j
+@MapperScan({"cn.fuck.**.mappper*"})
 @Configuration(proxyBeanMethods = false)
 public class MybatisPlusConfiguration {
 
@@ -45,11 +45,6 @@ public class MybatisPlusConfiguration {
 //        log.trace("[FUCK] |- Bean [Block Attack Inner Interceptor] Auto Configure.");
 //        return blockAttackInnerInterceptor;
 //    }
-
-    @Bean
-    public MetaObjectHandler mybatisPlusMetaObjectHandler() {
-        return new FuckMetaObjectHandler();
-    }
 
     @Bean
     public IdentifierGenerator identifierGenerator() {

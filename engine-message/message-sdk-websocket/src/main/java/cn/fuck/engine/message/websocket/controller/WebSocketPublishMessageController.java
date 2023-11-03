@@ -7,10 +7,9 @@ import cn.fuck.engine.message.websocket.definition.WebSocketMessageSender;
 import cn.fuck.engine.message.websocket.domain.WebSocketMessage;
 import cn.fuck.engine.message.websocket.domain.WebSocketPrincipal;
 import cn.fuck.engine.rest.core.definition.context.AbstractApplicationContextAware;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -19,12 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>Description: 前端使用的 publish 响应接口 </p>
- * @date : 2022/12/5 17:49
  */
+@Slf4j
 @RestController
 public class WebSocketPublishMessageController extends AbstractApplicationContextAware {
-
-    private static final Logger log = LoggerFactory.getLogger(WebSocketPublishMessageController.class);
 
     private final WebSocketMessageSender webSocketMessageSender;
 
@@ -61,7 +58,6 @@ public class WebSocketPublishMessageController extends AbstractApplicationContex
                 WebSocketPrincipal sender = (WebSocketPrincipal) headerAccessor.getUser();
                 detail.setSenderId(sender.getUserId());
                 detail.setSenderName(sender.getUserName());
-                detail.setSenderAvatar(sender.getAvatar());
             }
 
             this.publishEvent(new LocalSendDialogueMessageEvent(detail));

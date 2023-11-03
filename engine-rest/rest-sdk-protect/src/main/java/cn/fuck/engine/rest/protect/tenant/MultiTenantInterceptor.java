@@ -6,23 +6,20 @@ import cn.fuck.engine.assistant.core.definition.constants.DefaultConstants;
 import cn.fuck.engine.assistant.core.utils.http.HeaderUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
  * <p>Description: 多租户拦截器 </p>
- * @date : 2022/9/6 11:16
  */
+@Slf4j
 public class MultiTenantInterceptor implements HandlerInterceptor {
-
-    private static final Logger log = LoggerFactory.getLogger(MultiTenantInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String tenantId = HeaderUtils.getHerodotusTenantId(request);
+        String tenantId = HeaderUtils.getFuckTenantId(request);
         if (StringUtils.isBlank(tenantId)) {
             tenantId = DefaultConstants.TENANT_ID;
         }
@@ -31,10 +28,10 @@ public class MultiTenantInterceptor implements HandlerInterceptor {
 
         String path = request.getRequestURI();
         String sessionId = SessionUtils.getSessionId(request);
-        String herodotusSessionId = HeaderUtils.getHerodotusSession(request);
+        String fuckSessionId = HeaderUtils.getFuckSession(request);
 
         log.debug("[FUCK] |- SESSION ID for [{}] is : [{}].", path, sessionId);
-        log.debug("[FUCK] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);
+        log.debug("[FUCK] |- SESSION ID of FUCK for [{}] is : [{}].", path, fuckSessionId);
 
         return true;
     }

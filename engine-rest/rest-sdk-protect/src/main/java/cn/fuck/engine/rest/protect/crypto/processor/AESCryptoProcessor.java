@@ -1,22 +1,19 @@
 package cn.fuck.engine.rest.protect.crypto.processor;
 
 import cn.fuck.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.dromara.hutool.core.codec.binary.Base64;
 import org.dromara.hutool.core.text.StrUtil;
 import org.dromara.hutool.core.util.ByteUtil;
 import org.dromara.hutool.core.util.RandomUtil;
 import org.dromara.hutool.crypto.SecureUtil;
 import org.dromara.hutool.crypto.symmetric.AES;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * <p>Description: AES 加密算法处理器 </p>
- * @date : 2022/5/2 16:56
  */
+@Slf4j
 public class AESCryptoProcessor implements SymmetricCryptoProcessor {
-
-    private static final Logger log = LoggerFactory.getLogger(AESCryptoProcessor.class);
 
     @Override
     public String createKey() {

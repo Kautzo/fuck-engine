@@ -5,7 +5,7 @@ import cn.fuck.engine.assistant.core.definition.constants.ErrorCodes;
 import cn.fuck.engine.assistant.core.domain.Feedback;
 
 /**
- * <p> Description : 非法加密Key HerodotusException </p>
+ * <p> Description : 非法加密Key FuckException </p>
  * @date : 2020/1/28 17:32
  */
 public class IllegalSymmetricKeyException extends PlatformAuthenticationException {

@@ -1,6 +1,7 @@
 package cn.fuck.engine.rest.condition.properties;
 
 import cn.fuck.engine.rest.condition.constants.RestConstants;
+import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -11,8 +12,8 @@ import java.util.stream.Stream;
 
 /**
  * <p>Description: 接口扫描配置 </p>
- * @date : 2022/1/16 18:58
  */
+@Data
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_REST_SCAN)
 public class ScanProperties {
 
@@ -31,16 +32,8 @@ public class ScanProperties {
      */
     private boolean justScanRestController = false;
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
     public List<String> getScanGroupIds() {
-        List<String> defaultGroupIds = Stream.of("cn.herodotus").collect(Collectors.toList());
+        List<String> defaultGroupIds = Stream.of("cn.fuck").toList();
 
         if (CollectionUtils.isEmpty(this.scanGroupIds)) {
             this.scanGroupIds = new ArrayList<>();
@@ -50,15 +43,4 @@ public class ScanProperties {
         return scanGroupIds;
     }
 
-    public void setScanGroupIds(List<String> scanGroupIds) {
-        this.scanGroupIds = scanGroupIds;
-    }
-
-    public boolean isJustScanRestController() {
-        return justScanRestController;
-    }
-
-    public void setJustScanRestController(boolean justScanRestController) {
-        this.justScanRestController = justScanRestController;
-    }
 }

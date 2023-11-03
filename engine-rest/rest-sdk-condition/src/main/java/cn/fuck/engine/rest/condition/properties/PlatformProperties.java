@@ -4,12 +4,13 @@ import cn.fuck.engine.assistant.core.enums.Architecture;
 import cn.fuck.engine.assistant.core.enums.Protocol;
 import cn.fuck.engine.assistant.core.enums.Target;
 import cn.fuck.engine.rest.condition.constants.RestConstants;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 平台服务相关配置 </p>
- * @date : 2019/11/17 15:22
  */
+@Data
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_PLATFORM)
 public class PlatformProperties {
 
@@ -27,27 +28,4 @@ public class PlatformProperties {
      */
     private Protocol protocol = Protocol.HTTP;
 
-    public Architecture getArchitecture() {
-        return architecture;
-    }
-
-    public void setArchitecture(Architecture architecture) {
-        this.architecture = architecture;
-    }
-
-    public Target getDataAccessStrategy() {
-        return dataAccessStrategy;
-    }
-
-    public void setDataAccessStrategy(Target dataAccessStrategy) {
-        this.dataAccessStrategy = dataAccessStrategy;
-    }
-
-    public Protocol getProtocol() {
-        return protocol;
-    }
-
-    public void setProtocol(Protocol protocol) {
-        this.protocol = protocol;
-    }
 }

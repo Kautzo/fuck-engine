@@ -6,21 +6,18 @@ import cn.fuck.engine.oauth2.authentication.stamp.LockedUserDetailsStampManager;
 import cn.fuck.engine.data.core.enums.DataItemStatus;
 import cn.fuck.engine.oauth2.core.definition.domain.FuckUser;
 import cn.fuck.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>Description: 账户锁定处理服务 </p>
- * @date : 2022/7/8 19:25
  */
+@Slf4j
 @Service
 public class OAuth2AccountStatusManager {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AccountStatusManager.class);
 
     private final UserDetailsService userDetailsService;
     private final AccountStatusEventManager accountStatusEventManager;
@@ -38,7 +35,7 @@ public class OAuth2AccountStatusManager {
 
     private String getUserId(String username) {
         EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();
-        FuckUser user = enhanceUserDetailsService.loadHerodotusUserByUsername(username);
+        FuckUser user = enhanceUserDetailsService.loadFuckUserByUsername(username);
         if (ObjectUtils.isNotEmpty(user)) {
             return user.getUserId();
         }

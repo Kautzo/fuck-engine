@@ -23,11 +23,6 @@
 
         <dependency>
             <groupId>cn.fuck.engine</groupId>
-            <artifactId>access-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.fuck.engine</groupId>
             <artifactId>captcha-core</artifactId>
         </dependency>
 

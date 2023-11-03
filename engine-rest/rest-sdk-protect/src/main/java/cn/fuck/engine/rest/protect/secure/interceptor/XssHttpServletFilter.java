@@ -2,20 +2,17 @@ package cn.fuck.engine.rest.protect.secure.interceptor;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
 /**
  * <p>Description: Xss 过滤器 </p>
- * @date : 2021/8/30 23:34
  */
+@Slf4j
 @Component
 public class XssHttpServletFilter implements Filter {
-
-    private static final Logger log = LoggerFactory.getLogger(XssHttpServletFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {

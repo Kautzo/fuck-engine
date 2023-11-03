@@ -6,14 +6,13 @@ import java.util.List;
 
 /**
  * <p>Description: Web配置常量 </p>
- * @date : 2023/5/3 23:03
  */
 public class WebResources {
 
     public static final List<String> DEFAULT_IGNORED_STATIC_RESOURCES = Lists.newArrayList(
             "/error/**",
             "/plugins/**",
-            "/herodotus/**",
+            "/fuck/**",
             "/static/**",
             "/webjars/**",
             "/assets/**",

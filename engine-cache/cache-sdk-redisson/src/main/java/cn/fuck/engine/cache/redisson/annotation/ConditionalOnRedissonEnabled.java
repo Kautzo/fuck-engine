@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 是否开启 Redisson 条件注解 </p>
- * @date : 2021/10/22 14:40
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.resource.WebJarsResourceResolver;
 
 /**
  * <p>Description: WebMvcAutoConfiguration </p>
- * @date : 2020/3/4 11:00
  */
 @AutoConfiguration
 @Import({

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: Web 自动配置 </p>
- * @date : 2022/1/14 15:43
  */
 @AutoConfiguration
 @Import({

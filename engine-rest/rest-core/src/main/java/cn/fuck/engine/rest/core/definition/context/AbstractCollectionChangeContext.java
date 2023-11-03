@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * <p>Description: 实体集合属性变更监听器 </p>
- * @date : 2021/8/11 18:12
  */
 public abstract class AbstractCollectionChangeContext extends AbstractApplicationContextAware {
 

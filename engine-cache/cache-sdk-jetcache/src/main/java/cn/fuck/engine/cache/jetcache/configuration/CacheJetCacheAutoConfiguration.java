@@ -55,11 +55,11 @@ public class CacheJetCacheAutoConfiguration {
     @Bean
     @Primary
     @ConditionalOnMissingBean
-    public FuckCacheManager herodotusCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory,
+    public FuckCacheManager fuckCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory,
                                                   CacheProperties cacheProperties) {
         FuckCacheManager fuckCacheManager = new FuckCacheManager(jetCacheCreateCacheFactory, cacheProperties);
         fuckCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
-        log.trace("[FUCK] |- Bean [Jet Cache Herodotus Cache Manager] Auto Configure.");
+        log.trace("[FUCK] |- Bean [Jet Cache FUCK Cache Manager] Auto Configure.");
         return fuckCacheManager;
     }
 }

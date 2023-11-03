@@ -1,7 +1,7 @@
 package cn.fuck.engine.oauth2.core.exception;
 
 import cn.fuck.engine.assistant.core.definition.constants.ErrorCodes;
-import cn.fuck.engine.assistant.core.definition.exception.HerodotusException;
+import cn.fuck.engine.assistant.core.definition.exception.FuckException;
 import cn.fuck.engine.assistant.core.domain.Feedback;
 import cn.fuck.engine.assistant.core.domain.Result;
 import org.springframework.security.authentication.AccountStatusException;
@@ -15,7 +15,7 @@ import org.springframework.security.core.Authentication;
  * @date : 2022/4/12 22:33
  * @see org.springframework.security.authentication.ProviderManager#authenticate(Authentication)
  */
-public class OAuth2CaptchaException extends AccountStatusException implements HerodotusException {
+public class OAuth2CaptchaException extends AccountStatusException implements FuckException {
 
     public OAuth2CaptchaException(String msg) {
         super(msg);

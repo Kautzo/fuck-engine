@@ -1,14 +1,13 @@
 package cn.fuck.engine.assistant.core.exception;
 
 import cn.fuck.engine.assistant.core.definition.constants.ErrorCodes;
-import cn.fuck.engine.assistant.core.definition.exception.AbstractHerodotusException;
+import cn.fuck.engine.assistant.core.definition.exception.AbstractFuckException;
 import cn.fuck.engine.assistant.core.domain.Feedback;
 
 /**
  * <p>Description: 平台基础Exception </p>
- * @date : 2019/12/18 15:31
  */
-public class PlatformException extends AbstractHerodotusException {
+public class PlatformException extends AbstractFuckException {
 
     public PlatformException() {
         super();

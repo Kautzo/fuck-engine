@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 
 /**
  * <p>Description: RequestMapping扫描器 </p>
- * @date : 2020/6/2 19:52
  */
 public class RequestMappingScanner implements ApplicationListener<ApplicationReadyEvent> {
 

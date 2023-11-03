@@ -7,7 +7,6 @@ import org.springframework.core.env.Environment;
 
 /**
  * <p>Description: 策略模块配置获取器 </p>
- * @date : 2022/2/1 19:23
  */
 public class RestPropertyFinder {
 

@@ -8,7 +8,6 @@ import org.springframework.core.Ordered;
 
 /**
  * <p>Description: Rest 错误代码映射定义 </p>
- * @date : 2023/9/26 23:20
  */
 public class RestErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
     @Override

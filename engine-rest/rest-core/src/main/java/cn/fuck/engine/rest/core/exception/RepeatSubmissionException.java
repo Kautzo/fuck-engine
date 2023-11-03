@@ -5,7 +5,6 @@ import cn.fuck.engine.rest.core.constants.RestErrorCodes;
 
 /**
  * <p>Description: 重复提交Exception </p>
- * @date : 2021/8/25 17:43
  */
 public class RepeatSubmissionException extends IllegalOperationException {
 

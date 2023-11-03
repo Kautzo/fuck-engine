@@ -6,7 +6,7 @@ import cn.fuck.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.fuck.engine.oauth2.core.constants.OAuth2ErrorKeys;
 import cn.fuck.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
 import cn.fuck.engine.oauth2.core.exception.AccountEndpointLimitedException;
-import cn.fuck.engine.oauth2.data.jpa.storage.JpaOAuth2AuthorizationService;
+import cn.fuck.engine.oauth2.data.storage.FuckOAuth2AuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -95,8 +95,8 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
         }
 
         if (authenticationProperties.getSignInEndpointLimited().getEnabled() && !authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-                int count = jpaOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
+            if (authorizationService instanceof FuckOAuth2AuthorizationService fuckOAuth2AuthorizationService) {
+                int count = fuckOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
                 if (count >= authenticationProperties.getSignInEndpointLimited().getMaximum()) {
                     throw new AccountEndpointLimitedException("Use same endpoint signIn exceed limit");
                 }
@@ -104,8 +104,8 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
         }
 
         if (!authenticationProperties.getSignInEndpointLimited().getEnabled() && authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-                List<OAuth2Authorization> authorizations = jpaOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
+            if (authorizationService instanceof FuckOAuth2AuthorizationService fuckOAuth2AuthorizationService) {
+                List<OAuth2Authorization> authorizations = fuckOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
                 if (CollectionUtils.isNotEmpty(authorizations)) {
                     authorizations.forEach(authorization -> {
                         OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
@@ -113,7 +113,7 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
                             authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
                         }
                         log.debug("[FUCK] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
-                        jpaOAuth2AuthorizationService.save(authorization);
+                        fuckOAuth2AuthorizationService.save(authorization);
                     });
                 }
             }

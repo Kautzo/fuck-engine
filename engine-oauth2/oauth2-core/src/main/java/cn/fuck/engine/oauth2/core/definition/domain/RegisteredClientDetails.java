@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 
 /**
  * <p>Description: RegisteredClient 属性定义 </p>
- * @date : 2023/5/12 23:10
  */
 public interface RegisteredClientDetails {
 

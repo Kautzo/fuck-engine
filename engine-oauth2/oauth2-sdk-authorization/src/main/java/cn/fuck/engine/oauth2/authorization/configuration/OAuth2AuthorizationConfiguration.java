@@ -5,7 +5,6 @@ import cn.fuck.engine.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequest
 import cn.fuck.engine.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;
 import cn.fuck.engine.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.fuck.engine.assistant.core.definition.BearerTokenResolver;
-import cn.fuck.engine.oauth2.authorization.auditing.SecurityAuditorAware;
 import cn.fuck.engine.oauth2.authorization.listener.RemoteSecurityMetadataSyncListener;
 import cn.fuck.engine.oauth2.authorization.processor.SecurityAuthorizationManager;
 import cn.fuck.engine.oauth2.authorization.processor.SecurityMatcherConfigurer;
@@ -23,7 +22,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 
@@ -63,7 +61,8 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SecurityAuthorizationManager securityAuthorizationManager(SecurityMetadataSourceStorage securityMetadataSourceStorage, SecurityMatcherConfigurer securityMatcherConfigurer) {
+    public SecurityAuthorizationManager securityAuthorizationManager(SecurityMetadataSourceStorage securityMetadataSourceStorage,
+                                                                     SecurityMatcherConfigurer securityMatcherConfigurer) {
         SecurityAuthorizationManager securityAuthorizationManager = new SecurityAuthorizationManager(securityMetadataSourceStorage, securityMatcherConfigurer);
         log.trace("[FUCK] |- Bean [Authorization Manager] Auto Configure.");
         return securityAuthorizationManager;
@@ -71,7 +70,8 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public OAuth2AuthorizeHttpRequestsConfigurerCustomer authorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer, SecurityAuthorizationManager securityAuthorizationManager) {
+    public OAuth2AuthorizeHttpRequestsConfigurerCustomer authorizeHttpRequestsConfigurerCustomer(SecurityMatcherConfigurer securityMatcherConfigurer,
+                                                                                                 SecurityAuthorizationManager securityAuthorizationManager) {
         OAuth2AuthorizeHttpRequestsConfigurerCustomer OAuth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(securityMatcherConfigurer, securityAuthorizationManager);
         log.trace("[FUCK] |- Bean [Authorize Http Requests Configurer Customer] Auto Configure.");
         return OAuth2AuthorizeHttpRequestsConfigurerCustomer;
@@ -79,7 +79,8 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer(SecurityMetadataSourceStorage securityMetadataSourceStorage, SecurityMatcherConfigurer securityMatcherConfigurer) {
+    public SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer(SecurityMetadataSourceStorage securityMetadataSourceStorage,
+                                                                         SecurityMatcherConfigurer securityMatcherConfigurer) {
         SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer = new SecurityMetadataSourceAnalyzer(securityMetadataSourceStorage, securityMatcherConfigurer);
         log.trace("[FUCK] |- Bean [Security Metadata Source Analyzer] Auto Configure.");
         return securityMetadataSourceAnalyzer;
@@ -87,7 +88,8 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer, ServiceMatcher serviceMatcher) {
+    public RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener(SecurityMetadataSourceAnalyzer securityMetadataSourceAnalyzer,
+                                                                                 ServiceMatcher serviceMatcher) {
         RemoteSecurityMetadataSyncListener remoteSecurityMetadataSyncListener = new RemoteSecurityMetadataSyncListener(securityMetadataSourceAnalyzer, serviceMatcher);
         log.trace("[FUCK] |- Bean [Security Metadata Refresh Listener] Auto Configure.");
         return remoteSecurityMetadataSyncListener;
@@ -95,7 +97,9 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties, JwtDecoder jwtDecoder, OAuth2ResourceServerProperties resourceServerProperties) {
+    public OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer(OAuth2AuthorizationProperties authorizationProperties,
+                                                                                         JwtDecoder jwtDecoder,
+                                                                                         OAuth2ResourceServerProperties resourceServerProperties) {
         OAuth2ResourceServerConfigurerCustomer oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(authorizationProperties, jwtDecoder, resourceServerProperties);
         log.trace("[FUCK] |- Bean [OAuth2 Resource Server Configurer Customer] Auto Configure.");
         return oauth2ResourceServerConfigurerCustomer;
@@ -108,13 +112,6 @@ public class OAuth2AuthorizationConfiguration {
         BearerTokenResolver bearerTokenResolver = oauth2ResourceServerConfigurerCustomer.createBearerTokenResolver();
         log.trace("[FUCK] |- Bean [Bearer Token Resolver] Auto Configure.");
         return bearerTokenResolver;
-    }
-
-    @Bean
-    public AuditorAware<String> auditorAware() {
-        SecurityAuditorAware securityAuditorAware = new SecurityAuditorAware();
-        log.debug("[FUCK] |- Bean [Security Auditor Aware] Auto Configure.");
-        return securityAuditorAware;
     }
 
     @Bean

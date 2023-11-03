@@ -21,7 +21,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 登出成功监听 </p>
- * @date : 2021/12/18 17:58
  */
 public class AuthenticationFailureListener implements ApplicationListener<AbstractAuthenticationFailureEvent> {
 

@@ -4,6 +4,7 @@ import cn.fuck.engine.assistant.core.enums.Target;
 import cn.fuck.engine.oauth2.core.constants.OAuth2Constants;
 import cn.fuck.engine.oauth2.core.enums.Certificate;
 import com.google.common.base.MoreObjects;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
@@ -12,8 +13,8 @@ import java.util.List;
  * <p>Description: OAuth2 配置属性 </p>
  * <p>
  * 仅认证服务会使用到的安全相关配置，这是与 OAuth2Properties 的主要区别。
- * @date : 2022/3/6 16:36
  */
+@Data
 @ConfigurationProperties(prefix = OAuth2Constants.PROPERTY_OAUTH2_AUTHORIZATION)
 public class OAuth2AuthorizationProperties {
 
@@ -36,38 +37,7 @@ public class OAuth2AuthorizationProperties {
      */
     private Matcher matcher = new Matcher();
 
-    public Target getValidate() {
-        return validate;
-    }
-
-    public void setValidate(Target validate) {
-        this.validate = validate;
-    }
-
-    public Boolean getStrict() {
-        return strict;
-    }
-
-    public void setStrict(Boolean strict) {
-        this.strict = strict;
-    }
-
-    public Jwk getJwk() {
-        return jwk;
-    }
-
-    public void setJwk(Jwk jwk) {
-        this.jwk = jwk;
-    }
-
-    public Matcher getMatcher() {
-        return matcher;
-    }
-
-    public void setMatcher(Matcher matcher) {
-        this.matcher = matcher;
-    }
-
+    @Data
     public static class Jwk {
 
         /**
@@ -77,70 +47,20 @@ public class OAuth2AuthorizationProperties {
         /**
          * jks证书文件路径
          */
-        private String jksKeyStore = "classpath*:certificate/herodotus-cloud.jks";
+        private String jksKeyStore = "classpath*:certificate/fuck-cloud.jks";
         /**
          * jks证书密码
          */
-        private String jksKeyPassword = "Herodotus-Cloud";
+        private String jksKeyPassword = "Fuck-Cloud";
         /**
          * jks证书密钥库密码
          */
-        private String jksStorePassword = "Herodotus-Cloud";
+        private String jksStorePassword = "Fuck-Cloud";
         /**
          * jks证书别名
          */
-        private String jksKeyAlias = "herodotus-cloud";
+        private String jksKeyAlias = "fuck-cloud";
 
-        public Certificate getCertificate() {
-            return certificate;
-        }
-
-        public void setCertificate(Certificate certificate) {
-            this.certificate = certificate;
-        }
-
-        public String getJksKeyStore() {
-            return jksKeyStore;
-        }
-
-        public void setJksKeyStore(String jksKeyStore) {
-            this.jksKeyStore = jksKeyStore;
-        }
-
-        public String getJksKeyPassword() {
-            return jksKeyPassword;
-        }
-
-        public void setJksKeyPassword(String jksKeyPassword) {
-            this.jksKeyPassword = jksKeyPassword;
-        }
-
-        public String getJksStorePassword() {
-            return jksStorePassword;
-        }
-
-        public void setJksStorePassword(String jksStorePassword) {
-            this.jksStorePassword = jksStorePassword;
-        }
-
-        public String getJksKeyAlias() {
-            return jksKeyAlias;
-        }
-
-        public void setJksKeyAlias(String jksKeyAlias) {
-            this.jksKeyAlias = jksKeyAlias;
-        }
-
-        @Override
-        public String toString() {
-            return MoreObjects.toStringHelper(this)
-                    .add("certificate", certificate)
-                    .add("jksKeyStore", jksKeyStore)
-                    .add("jksKeyPassword", jksKeyPassword)
-                    .add("jksStorePassword", jksStorePassword)
-                    .add("jksKeyAlias", jksKeyAlias)
-                    .toString();
-        }
 
         private enum Strategy {
             STANDARD, CUSTOM
@@ -152,6 +72,7 @@ public class OAuth2AuthorizationProperties {
      * <p>
      * permitAll 比较常用，因此先只增加该项。后续可根据需要添加
      */
+    @Data
     public static class Matcher {
         /**
          * 静态资源过滤
@@ -166,28 +87,5 @@ public class OAuth2AuthorizationProperties {
          */
         private List<String> hasAuthenticated;
 
-        public List<String> getStaticResources() {
-            return staticResources;
-        }
-
-        public void setStaticResources(List<String> staticResources) {
-            this.staticResources = staticResources;
-        }
-
-        public List<String> getPermitAll() {
-            return permitAll;
-        }
-
-        public void setPermitAll(List<String> permitAll) {
-            this.permitAll = permitAll;
-        }
-
-        public List<String> getHasAuthenticated() {
-            return hasAuthenticated;
-        }
-
-        public void setHasAuthenticated(List<String> hasAuthenticated) {
-            this.hasAuthenticated = hasAuthenticated;
-        }
     }
 }

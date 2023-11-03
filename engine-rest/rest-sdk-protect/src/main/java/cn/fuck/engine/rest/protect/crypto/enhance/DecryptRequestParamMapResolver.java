@@ -31,7 +31,6 @@ import java.util.Map;
  * 主要针对具备以下几种条件情况，用该处理器进行处理
  * 1. 使用未指定名称的 @RequestParam 注解，同时参数类型为Map的。
  * 2. 使用了@Crypto注解，且requestDecrypt参数为 true。或者 请求路径是 '/oauth/token'
- * @date : 2021/10/5 16:40
  */
 public class DecryptRequestParamMapResolver implements HandlerMethodArgumentResolver {
 
@@ -127,7 +126,7 @@ public class DecryptRequestParamMapResolver implements HandlerMethodArgumentReso
                     return result;
                 }
             } else {
-                log.warn("[FUCK] |- Cannot find Herodotus Cloud custom session header. Use interface crypto founction need add X_HERODOTUS_SESSION to request header.");
+                log.warn("[FUCK] |- Cannot find FUCK Cloud custom session header. Use interface crypto founction need add X_FUCK_SESSION to request header.");
             }
         }
 

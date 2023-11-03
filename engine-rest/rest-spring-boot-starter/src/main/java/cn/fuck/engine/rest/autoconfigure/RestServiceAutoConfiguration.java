@@ -4,15 +4,14 @@ import cn.fuck.engine.rest.service.configuration.FeignConfiguration;
 import cn.fuck.engine.rest.service.configuration.RestScanConfiguration;
 import cn.fuck.engine.rest.service.configuration.SpringdocConfiguration;
 import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: Rest 服务基础内容配置 </p>
- * @date : 2023/10/3 22:55
  */
+@Slf4j
 @AutoConfiguration
 @Import({
         FeignConfiguration.class,
@@ -20,8 +19,6 @@ import org.springframework.context.annotation.Import;
         SpringdocConfiguration.class
 })
 public class RestServiceAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(RestServiceAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

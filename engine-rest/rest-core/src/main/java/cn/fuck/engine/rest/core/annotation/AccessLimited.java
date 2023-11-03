@@ -5,7 +5,6 @@ import java.time.Duration;
 
 /**
  * <p>Description: 接口防刷注解 </p>
- * @date : 2021/8/25 21:45
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})

@@ -224,37 +224,7 @@
                 <artifactId>spring-boot-admin-starter-server</artifactId>
                 <version>${spring-boot-admin.version}</version>
             </dependency>
-            <!--Dante Engine-->
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-sdk-justauth</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-sdk-wxapp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-sdk-wxmpp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-sdk-all</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>access-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            <!--FUCK Engine-->
             <dependency>
                 <groupId>cn.fuck.engine</groupId>
                 <artifactId>assistant-core</artifactId>
@@ -332,16 +302,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.fuck.engine</groupId>
-                <artifactId>data-sdk-jpa</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>data-sdk-tenant</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
                 <artifactId>data-sdk-mybatis-plus</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -412,7 +372,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.fuck.engine</groupId>
-                <artifactId>oauth2-sdk-data-jpa</artifactId>
+                <artifactId>oauth2-sdk-data</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -507,22 +467,28 @@
             </dependency>
             <dependency>
                 <groupId>cn.fuck.engine</groupId>
-                <artifactId>supplier-sdk-upms-logic</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
-                <artifactId>supplier-sdk-upms-rest</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.fuck.engine</groupId>
                 <artifactId>supplier-sdk-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.fuck.engine</groupId>
                 <artifactId>supplier-sdk-tenant</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.fuck.engine</groupId>
+                <artifactId>upms-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.fuck.engine</groupId>
+                <artifactId>upms-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.fuck.engine</groupId>
+                <artifactId>upms-biz</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

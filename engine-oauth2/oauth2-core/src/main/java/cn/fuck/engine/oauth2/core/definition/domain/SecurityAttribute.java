@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * <p>Description: Security Metadata 传输数据实体 </p>
- * @date : 2021/8/8 15:51
  */
 public class SecurityAttribute implements Serializable {
 

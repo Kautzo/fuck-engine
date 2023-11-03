@@ -2,7 +2,6 @@ package cn.fuck.engine.oauth2.management.compliance.listener;
 
 import cn.fuck.engine.oauth2.authentication.stamp.SignInFailureLimitedStampManager;
 import cn.fuck.engine.assistant.core.domain.PrincipalDetails;
-import cn.fuck.engine.oauth2.management.service.OAuth2ComplianceService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -19,18 +18,15 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  * <p>Description: 登录成功事件监听 </p>
- * @date : 2022/7/7 20:58
  */
 public class AuthenticationSuccessListener implements ApplicationListener<AuthenticationSuccessEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(AuthenticationSuccessListener.class);
 
     private final SignInFailureLimitedStampManager stampManager;
-    private final OAuth2ComplianceService complianceService;
 
-    public AuthenticationSuccessListener(SignInFailureLimitedStampManager stampManager, OAuth2ComplianceService complianceService) {
+    public AuthenticationSuccessListener(SignInFailureLimitedStampManager stampManager) {
         this.stampManager = stampManager;
-        this.complianceService = complianceService;
     }
 
     @Override
@@ -52,8 +48,9 @@ public class AuthenticationSuccessListener implements ApplicationListener<Authen
             if (ObjectUtils.isNotEmpty(requestAttributes) && requestAttributes instanceof ServletRequestAttributes servletRequestAttributes) {
                 HttpServletRequest request = servletRequestAttributes.getRequest();
 
+                //TODO 登录日志
                 if (ObjectUtils.isNotEmpty(request) && StringUtils.isNotBlank(username)) {
-                    complianceService.save(username, clientId, "用户登录", request);
+//                    complianceService.save(username, clientId, "用户登录", request);
                     String key = SecureUtil.md5(username);
                     boolean hasKey = stampManager.containKey(key);
                     if (hasKey) {

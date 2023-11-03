@@ -3,10 +3,9 @@ package cn.fuck.engine.rest.protect.secure.interceptor;
 import cn.fuck.engine.assistant.core.utils.protect.XssUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,11 +21,9 @@ import java.util.stream.Collectors;
  * application/json	json格式文本	HttpServletRequest IO流获取
  * <p>
  * 本过滤器主要针对表单提交的参数过滤
- * @date : 2021/8/29 21:30
  */
+@Slf4j
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
-
-    private static final Logger log = LoggerFactory.getLogger(XssHttpServletRequestWrapper.class);
 
     public XssHttpServletRequestWrapper(HttpServletRequest request) {
         super(request);

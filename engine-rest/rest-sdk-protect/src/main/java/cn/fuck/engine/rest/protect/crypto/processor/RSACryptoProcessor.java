@@ -3,6 +3,7 @@ package cn.fuck.engine.rest.protect.crypto.processor;
 import cn.fuck.engine.assistant.core.definition.constants.SymbolConstants;
 import cn.fuck.engine.assistant.core.domain.SecretKey;
 import cn.fuck.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.hutool.core.codec.binary.Base64;
@@ -10,16 +11,12 @@ import org.dromara.hutool.core.text.StrUtil;
 import org.dromara.hutool.crypto.SecureUtil;
 import org.dromara.hutool.crypto.asymmetric.KeyType;
 import org.dromara.hutool.crypto.asymmetric.RSA;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * <p>Description: RSA 加密算法处理器 </p>
- * @date : 2022/5/1 19:31
  */
+@Slf4j
 public class RSACryptoProcessor implements AsymmetricCryptoProcessor {
-
-    private static final Logger log = LoggerFactory.getLogger(RSACryptoProcessor.class);
 
     private static final String PKCS8_PUBLIC_KEY_BEGIN = "-----BEGIN PUBLIC KEY-----";
     private static final String PKCS8_PUBLIC_KEY_END = "-----END PUBLIC KEY-----";

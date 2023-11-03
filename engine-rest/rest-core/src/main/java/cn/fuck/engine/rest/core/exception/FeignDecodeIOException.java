@@ -6,7 +6,6 @@ import cn.fuck.engine.rest.core.constants.RestErrorCodes;
 
 /**
  * <p>Description: Feign 解码 IO 错误 </p>
- * @date : 2022/5/30 11:17
  */
 public class FeignDecodeIOException extends PlatformException {
 

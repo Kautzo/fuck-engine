@@ -4,7 +4,6 @@ import cn.fuck.engine.assistant.core.definition.constants.BaseConstants;
 
 /**
  * <p>Description: OAuth2 模块通用常量 </p>
- * @date : 2022/2/25 9:44
  */
 public interface OAuth2Constants extends BaseConstants {
 

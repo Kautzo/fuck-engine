@@ -9,7 +9,6 @@ import java.time.Duration;
 
 /**
  * <p>Description: 跟踪标记配置属性 </p>
- * @date : 2021/8/24 15:53
  */
 @ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_SECURE)
 public class SecureProperties {

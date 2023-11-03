@@ -9,7 +9,6 @@ import org.dromara.hutool.crypto.SecureUtil;
 
 /**
  * <p>Description: 登录失败次数限制签章管理 </p>
- * @date : 2022/7/6 23:36
  */
 public class SignInFailureLimitedStampManager extends AbstractCountStampManager {
 

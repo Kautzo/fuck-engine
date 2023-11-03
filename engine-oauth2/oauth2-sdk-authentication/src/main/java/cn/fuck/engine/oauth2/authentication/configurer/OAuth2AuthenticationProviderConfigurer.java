@@ -15,7 +15,6 @@ import org.springframework.security.oauth2.server.authorization.token.OAuth2Toke
 
 /**
  * <p>Description: 自定义 AuthenticationProvider 配置器 </p>
- * @date : 2023/9/1 15:46
  */
 public class OAuth2AuthenticationProviderConfigurer extends AbstractHttpConfigurer<OAuth2AuthenticationProviderConfigurer, HttpSecurity> {
 

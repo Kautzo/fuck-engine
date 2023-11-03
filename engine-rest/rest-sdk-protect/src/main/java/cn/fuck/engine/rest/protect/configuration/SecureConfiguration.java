@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: 接口安全配置 </p>
- * @date : 2021/10/4 17:28
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({SecureProperties.class})

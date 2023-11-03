@@ -4,8 +4,7 @@ import cn.fuck.engine.oauth2.authentication.properties.OAuth2AuthenticationPrope
 import cn.fuck.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.fuck.engine.oauth2.core.definition.FuckGrantType;
 import cn.fuck.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.Authentication;
@@ -34,11 +33,9 @@ import java.util.Set;
 
 /**
  * <p>Description: 自定义 OAuth2 密码模式认证 Provider </p>
- * @date : 2022/2/22 16:02
  */
+@Slf4j
 public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
-
-    private static final Logger log = LoggerFactory.getLogger(OAuth2ResourceOwnerPasswordAuthenticationProvider.class);
 
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
 

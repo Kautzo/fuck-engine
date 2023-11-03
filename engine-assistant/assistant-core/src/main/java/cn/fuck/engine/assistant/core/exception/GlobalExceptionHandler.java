@@ -1,7 +1,7 @@
 package cn.fuck.engine.assistant.core.exception;
 
 import cn.fuck.engine.assistant.core.definition.constants.ErrorCodes;
-import cn.fuck.engine.assistant.core.definition.exception.HerodotusException;
+import cn.fuck.engine.assistant.core.definition.exception.FuckException;
 import cn.fuck.engine.assistant.core.domain.Feedback;
 import cn.fuck.engine.assistant.core.domain.Result;
 import org.apache.commons.lang3.StringUtils;
@@ -48,9 +48,9 @@ public class GlobalExceptionHandler {
 
         log.trace("[FUCK] |- Global Exception Handler, Path : [{}], Exception：", path, ex);
 
-        if (ex instanceof HerodotusException exception) {
+        if (ex instanceof FuckException exception) {
             Result<String> result = exception.getResult();
-            result.path(path);
+            result.setPath(path);
             log.error("[FUCK] |- Global Exception Handler, Error is : {}", result);
             return result;
         } else {
@@ -63,7 +63,7 @@ public class GlobalExceptionHandler {
                 log.warn("[FUCK] |- Global Exception Handler,  Can not find the exception name [{}] in dictionary, please do optimize ", exceptionName);
             }
 
-            result.path(path);
+            result.setPath(path);
             result.stackTrace(ex.getStackTrace());
             result.detail(ex.getMessage());
 

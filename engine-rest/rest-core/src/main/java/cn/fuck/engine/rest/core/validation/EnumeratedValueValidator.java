@@ -6,7 +6,6 @@ import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * <p>Description: 枚举值校验逻辑 </p>
- * @date : 2022/6/13 15:58
  */
 public class EnumeratedValueValidator implements ConstraintValidator<EnumeratedValue, Object> {
 

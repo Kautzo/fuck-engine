@@ -1,7 +1,7 @@
 package cn.fuck.engine.oauth2.authorization.processor;
 
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
-import cn.fuck.engine.oauth2.authorization.definition.HerodotusRequest;
+import cn.fuck.engine.oauth2.authorization.definition.FuckConfigAttribute;
+import cn.fuck.engine.oauth2.authorization.definition.FuckRequest;
 import cn.fuck.engine.oauth2.authorization.enums.Category;
 import cn.fuck.engine.assistant.core.definition.constants.SymbolConstants;
 import cn.fuck.engine.oauth2.core.definition.domain.SecurityAttribute;
@@ -18,7 +18,6 @@ import java.util.*;
 
 /**
  * <p>Description: SecurityMetadata异步处理Service </p>
- * @date : 2021/8/1 17:43
  */
 @Component
 public class SecurityMetadataSourceAnalyzer {
@@ -50,8 +49,8 @@ public class SecurityMetadataSourceAnalyzer {
      * @param category  分组类别
      * @param resources 权限数据
      */
-    private void appendToGroup(Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> container, Category category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> resources) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> value = new LinkedHashMap<>();
+    private void appendToGroup(Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> container, Category category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> resources) {
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> value = new LinkedHashMap<>();
 
         if (container.containsKey(category)) {
             value = container.get(category);
@@ -68,12 +67,12 @@ public class SecurityMetadataSourceAnalyzer {
      * @param securityMatchers 静态权限数据
      * @return 分组后的权限数据
      */
-    private Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> groupSecurityMatchers(LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> securityMatchers) {
+    private Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> groupSecurityMatchers(LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> securityMatchers) {
 
-        Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> group = new LinkedHashMap<>();
+        Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> group = new LinkedHashMap<>();
 
         securityMatchers.forEach((key, value) -> {
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> resources = new LinkedHashMap<>();
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> resources = new LinkedHashMap<>();
             resources.put(key, value);
             appendToGroup(group, Category.getCategory(key.getPattern()), resources);
         });
@@ -103,17 +102,17 @@ public class SecurityMetadataSourceAnalyzer {
      * @param securityAttribute {@link SecurityAttribute}
      * @return security权限定义集合
      */
-    private List<HerodotusConfigAttribute> analysis(SecurityAttribute securityAttribute) {
+    private List<FuckConfigAttribute> analysis(SecurityAttribute securityAttribute) {
 
-        List<HerodotusConfigAttribute> attributes = new ArrayList<>();
+        List<FuckConfigAttribute> attributes = new ArrayList<>();
 
         if (StringUtils.isNotBlank(securityAttribute.getPermissions())) {
             String[] permissions = org.springframework.util.StringUtils.commaDelimitedListToStringArray(securityAttribute.getPermissions());
-            Arrays.stream(permissions).forEach(item -> attributes.add(new HerodotusConfigAttribute(hasAuthority(item))));
+            Arrays.stream(permissions).forEach(item -> attributes.add(new FuckConfigAttribute(hasAuthority(item))));
         }
 
         if (StringUtils.isNotBlank(securityAttribute.getWebExpression())) {
-            attributes.add(new HerodotusConfigAttribute(securityAttribute.getWebExpression()));
+            attributes.add(new FuckConfigAttribute(securityAttribute.getWebExpression()));
         }
 
         return attributes;
@@ -127,19 +126,19 @@ public class SecurityMetadataSourceAnalyzer {
      * @param configAttributes Security权限{@link ConfigAttribute}
      * @return 保存请求和权限的映射的Map
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> convert(String url, String methods, List<HerodotusConfigAttribute> configAttributes) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>();
+    private LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> convert(String url, String methods, List<FuckConfigAttribute> configAttributes) {
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> result = new LinkedHashMap<>();
         if (StringUtils.isBlank(methods)) {
-            result.put(new HerodotusRequest(url), configAttributes);
+            result.put(new FuckRequest(url), configAttributes);
         } else {
             // 如果methods是以逗号分隔的字符串，那么进行拆分处理
             if (StringUtils.contains(methods, SymbolConstants.COMMA)) {
                 String[] multiMethod = StringUtils.split(methods, SymbolConstants.COMMA);
                 for (String method : multiMethod) {
-                    result.put(new HerodotusRequest(url, method), configAttributes);
+                    result.put(new FuckRequest(url, method), configAttributes);
                 }
             } else {
-                result.put(new HerodotusRequest(url, methods), configAttributes);
+                result.put(new FuckRequest(url, methods), configAttributes);
             }
         }
 
@@ -152,12 +151,12 @@ public class SecurityMetadataSourceAnalyzer {
      * @param securityAttributes 权限数据
      * @return 分组后的权限数据
      */
-    private Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> groupingSecurityMetadata(List<SecurityAttribute> securityAttributes) {
+    private Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> groupingSecurityMetadata(List<SecurityAttribute> securityAttributes) {
 
-        Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> group = new LinkedHashMap<>();
+        Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> group = new LinkedHashMap<>();
 
         securityAttributes.forEach(securityAttribute -> {
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> resources = convert(securityAttribute.getUrl(), securityAttribute.getRequestMethod(), analysis(securityAttribute));
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> resources = convert(securityAttribute.getUrl(), securityAttribute.getRequestMethod(), analysis(securityAttribute));
             appendToGroup(group, Category.getCategory(securityAttribute.getUrl()), resources);
         });
 
@@ -174,14 +173,14 @@ public class SecurityMetadataSourceAnalyzer {
      *
      * @return RequestMatchers 中配置的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> getRequestMatchers() {
+    private LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> getRequestMatchers() {
 
         List<String> permitAllMatcher = securityMatcherConfigurer.getPermitAllList();
 
         if (CollectionUtils.isNotEmpty(permitAllMatcher)) {
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> result = new LinkedHashMap<>();
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> result = new LinkedHashMap<>();
             permitAllMatcher.forEach(item -> {
-                result.put(new HerodotusRequest(item), List.of(new HerodotusConfigAttribute(PermissionExpression.PERMIT_ALL.getValue())));
+                result.put(new FuckRequest(item), List.of(new FuckConfigAttribute(PermissionExpression.PERMIT_ALL.getValue())));
             });
             return result;
         }
@@ -201,14 +200,14 @@ public class SecurityMetadataSourceAnalyzer {
 
         log.debug("[FUCK] |- [3] Process local configured security metadata.");
 
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> requestMatchers = getRequestMatchers();
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> requestMatchers = getRequestMatchers();
         if (MapUtils.isNotEmpty(requestMatchers)) {
-            Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> grouping = groupSecurityMatchers(requestMatchers);
+            Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> grouping = groupSecurityMatchers(requestMatchers);
 
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> wildcards = grouping.get(Category.WILDCARD);
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> wildcards = grouping.get(Category.WILDCARD);
             securityMetadataSourceStorage.addToStorage(wildcards, false);
 
-            LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> fullPaths = grouping.get(Category.FULL_PATH);
+            LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> fullPaths = grouping.get(Category.FULL_PATH);
             securityMetadataSourceStorage.addToStorage(fullPaths, true);
         }
     }
@@ -223,27 +222,27 @@ public class SecurityMetadataSourceAnalyzer {
     public void processSecurityAttribute(List<SecurityAttribute> securityAttributes) {
 
         // 从缓存中获取全部带有特殊字符的匹配规则
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatibles = securityMetadataSourceStorage.getCompatible();
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> compatibles = securityMetadataSourceStorage.getCompatible();
         // 创建一个临时的 Matcher 容器
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> matchers = new LinkedHashMap<>(compatibles);
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> matchers = new LinkedHashMap<>(compatibles);
 
         // 对分发的 SecurityAttribute 进行分组
-        Map<Category, LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>>> grouping = groupingSecurityMetadata(securityAttributes);
+        Map<Category, LinkedHashMap<FuckRequest, List<FuckConfigAttribute>>> grouping = groupingSecurityMetadata(securityAttributes);
 
         // 拿到带有通配符的分组数据
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> wildcards = grouping.get(Category.WILDCARD);
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> wildcards = grouping.get(Category.WILDCARD);
         if (MapUtils.isNotEmpty(wildcards)) {
             matchers.putAll(wildcards);
             securityMetadataSourceStorage.addToStorage(wildcards, false);
         }
 
         // 拿到带有占位符的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> placeholders = grouping.get(Category.PLACEHOLDER);
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> placeholders = grouping.get(Category.PLACEHOLDER);
         log.debug("[FUCK] |- Store placeholder type security attributes.");
         securityMetadataSourceStorage.addToStorage(matchers, placeholders, false);
 
         // 拿到全路径的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
-        LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> fullPaths = grouping.get(Category.FULL_PATH);
+        LinkedHashMap<FuckRequest, List<FuckConfigAttribute>> fullPaths = grouping.get(Category.FULL_PATH);
         log.debug("[FUCK] |- Store full path type security attributes.");
         securityMetadataSourceStorage.addToStorage(matchers, fullPaths, true);
 

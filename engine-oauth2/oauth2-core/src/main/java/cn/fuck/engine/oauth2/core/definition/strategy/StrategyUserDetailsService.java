@@ -6,7 +6,6 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * <p>Description: 系统用户服务策略定义 </p>
- * @date : 2022/2/17 10:52
  */
 public interface StrategyUserDetailsService {
 

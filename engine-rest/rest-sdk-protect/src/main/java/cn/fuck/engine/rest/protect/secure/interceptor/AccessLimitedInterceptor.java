@@ -6,10 +6,9 @@ import cn.fuck.engine.rest.core.definition.AbstractBaseHandlerInterceptor;
 import cn.fuck.engine.rest.core.exception.FrequentRequestsException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
 
 import java.lang.reflect.Method;
@@ -18,11 +17,9 @@ import java.time.format.DateTimeParseException;
 
 /**
  * <p>Description: 访问防刷拦截器 </p>
- * @date : 2021/8/25 22:09
  */
+@Slf4j
 public class AccessLimitedInterceptor extends AbstractBaseHandlerInterceptor {
-
-    private static final Logger log = LoggerFactory.getLogger(AccessLimitedInterceptor.class);
 
     private AccessLimitedStampManager accessLimitedStampManager;
 
