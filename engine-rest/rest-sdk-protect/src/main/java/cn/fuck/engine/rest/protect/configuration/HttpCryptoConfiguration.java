@@ -1,5 +1,6 @@
 package cn.fuck.engine.rest.protect.configuration;
 
+import cn.fuck.engine.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import cn.fuck.engine.rest.condition.properties.CryptoProperties;
 import cn.fuck.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import cn.fuck.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
@@ -38,7 +39,8 @@ public class HttpCryptoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public HttpCryptoProcessor httpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor,
-                                                   SymmetricCryptoProcessor symmetricCryptoProcessor) {
+                                                   SymmetricCryptoProcessor symmetricCryptoProcessor,
+                                                   JetCacheCreateCacheFactory jetCacheCreateCacheFactory) {
         HttpCryptoProcessor httpCryptoProcessor = new HttpCryptoProcessor(asymmetricCryptoProcessor, symmetricCryptoProcessor);
         log.trace("[FUCK] |- Bean [Interface Crypto Processor] Auto Configure.");
         return httpCryptoProcessor;

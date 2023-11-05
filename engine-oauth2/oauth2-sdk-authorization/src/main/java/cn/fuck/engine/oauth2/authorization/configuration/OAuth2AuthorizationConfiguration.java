@@ -46,7 +46,7 @@ public class OAuth2AuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SecurityMetadataSourceStorage securityMetadataSourceStorage() {
+    public SecurityMetadataSourceStorage securityMetadataSourceStorage(JetCacheCreateCacheFactory jetCacheCreateCacheFactory) {
         SecurityMetadataSourceStorage securityMetadataSourceStorage = new SecurityMetadataSourceStorage();
         log.trace("[FUCK] |- Bean [Security Metadata Source Storage] Auto Configure.");
         return securityMetadataSourceStorage;
