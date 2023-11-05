@@ -4,7 +4,6 @@ import cn.fuck.engine.assistant.core.definition.constants.BaseConstants;
 
 /**
  * <p>Description: 基础设施常量 </p>
- * @date : 2022/2/5 17:33
  */
 public interface FacilityConstants extends BaseConstants {
 

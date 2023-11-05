@@ -11,7 +11,6 @@ import java.time.Duration;
 
 /**
  * <p>Description: 基础绘制器 </p>
- * @date : 2021/12/21 21:46
  */
 public abstract class AbstractRenderer<K, V> extends AbstractStampManager<K, V> implements Renderer {
 

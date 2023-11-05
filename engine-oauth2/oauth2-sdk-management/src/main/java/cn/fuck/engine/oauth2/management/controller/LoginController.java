@@ -22,7 +22,6 @@ import java.util.Map;
 
 /**
  * <p>Description: Security 登录控制器 </p>
- * @date : 2022/3/21 19:52
  * @see org.springframework.security.config.annotation.web.configurers.DefaultLoginPageConfigurer
  * @see org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter
  */

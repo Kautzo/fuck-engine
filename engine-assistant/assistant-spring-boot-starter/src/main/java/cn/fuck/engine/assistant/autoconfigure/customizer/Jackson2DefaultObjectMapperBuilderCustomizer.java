@@ -16,7 +16,6 @@ import java.util.List;
 
 /**
  * <p>Description: 默认 Jackson Custom 配置 </p>
- * @date : 2023/4/29 11:04
  */
 public class Jackson2DefaultObjectMapperBuilderCustomizer implements BaseObjectMapperBuilderCustomizer {
 

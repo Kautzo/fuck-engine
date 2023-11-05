@@ -85,6 +85,6 @@ public class SpringdocConfiguration {
                         .version("Swagger V3")
                         .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("GTB Cloud Documentation"));
+                        .description("FUCK Cloud Documentation"));
     }
 }

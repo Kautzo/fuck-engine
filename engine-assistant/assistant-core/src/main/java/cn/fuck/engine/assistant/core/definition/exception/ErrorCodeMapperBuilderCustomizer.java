@@ -6,7 +6,6 @@ import cn.fuck.engine.assistant.core.exception.ErrorCodeMapperBuilder;
  * <p>Description: ErrorCodeMapperBuilder 回调接口</p>
  * <p>
  * 实现了该接口的Bean，可以在自动配置阶段，通过ErrorCodeMapperBuilder进一步扩展错误码
- * @date : 2023/9/24 23:06
  */
 @FunctionalInterface
 public interface ErrorCodeMapperBuilderCustomizer {

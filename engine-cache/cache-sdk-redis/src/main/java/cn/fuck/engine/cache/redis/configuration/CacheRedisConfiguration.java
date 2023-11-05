@@ -3,8 +3,7 @@ package cn.fuck.engine.cache.redis.configuration;
 import cn.fuck.engine.cache.core.properties.CacheProperties;
 import cn.fuck.engine.cache.redis.enhance.FuckRedisCacheManager;
 import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,10 +22,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * <p>Description: Redis 配置 </p>
  */
+@Slf4j
 @Configuration(proxyBeanMethods = false)
 public class CacheRedisConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(CacheRedisConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

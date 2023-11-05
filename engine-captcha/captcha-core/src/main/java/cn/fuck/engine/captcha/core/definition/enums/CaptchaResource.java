@@ -2,7 +2,6 @@ package cn.fuck.engine.captcha.core.definition.enums;
 
 /**
  * <p>Description: 验证码资源 </p>
- * @date : 2021/12/11 15:27
  */
 public enum CaptchaResource {
 

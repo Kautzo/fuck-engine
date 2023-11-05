@@ -10,12 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>Description: Mybatis Plus 配置</p>
  */
 @Slf4j
-@MapperScan({"cn.fuck.**.mappper*"})
 @Configuration(proxyBeanMethods = false)
 public class MybatisPlusConfiguration {
 

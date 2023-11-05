@@ -5,7 +5,6 @@ import cn.fuck.engine.oauth2.core.constants.OAuth2ErrorCodes;
 
 /**
  * <p>Description: UsernameAlreadyExistsException </p>
- * @date : 2021/5/17 19:04
  */
 public class UsernameAlreadyExistsException extends PlatformAuthenticationException {
 

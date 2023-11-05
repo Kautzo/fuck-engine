@@ -25,7 +25,7 @@ public class FeignInnerContract extends SpringMvcContract {
             Inner inner = findMergedAnnotation(method, Inner.class);
             if (ObjectUtils.isNotEmpty(inner)) {
                 log.debug("[FUCK] |- Found inner annotation on Feign interface, add header!");
-                data.template().header(HeaderUtils.X_Fuck_FROM_IN, "true");
+                data.template().header(HeaderUtils.X_FUCK_FROM_IN, "true");
             }
         }
 

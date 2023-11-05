@@ -19,7 +19,6 @@ import java.util.List;
 
 /**
  * <p>Description: 网易云短信发送处理器 </p>
- * @date : 2021/5/25 16:00
  */
 public class NeteaseSmsSendHandler extends AbstractSmsSendHandler {
 

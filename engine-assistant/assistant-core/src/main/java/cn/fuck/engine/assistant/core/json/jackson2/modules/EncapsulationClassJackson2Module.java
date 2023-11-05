@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 /**
  * <p>Description: Java 封装类 Jackson 处理定义 Module </p>
- * @date : 2023/4/29 16:35
  */
 public class EncapsulationClassJackson2Module extends SimpleModule {
 

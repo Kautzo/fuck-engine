@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * <p>Description: WebSocket发送消息参数实体 </p>
- * @date : 2021/10/24 18:42
  */
 public class WebSocketMessage<T> implements Serializable {
 

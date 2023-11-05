@@ -4,7 +4,6 @@ import cn.fuck.engine.captcha.core.provider.RandomProvider;
 
 /**
  * <p>Description: 验证码字符类型 </p>
- * @date : 2021/12/21 16:26
  */
 public enum CaptchaCharacter {
 

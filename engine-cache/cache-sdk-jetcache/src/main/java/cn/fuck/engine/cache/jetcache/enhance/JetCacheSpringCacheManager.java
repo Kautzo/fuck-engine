@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: 基于 JetCache 的 Spring Cache Manager 扩展 </p>
- * @date : 2022/7/23 14:06
  */
 public class JetCacheSpringCacheManager implements CacheManager {
 

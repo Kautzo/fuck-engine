@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: Ip2Region 配置参数 </p>
- * @date : 2023/10/24 11:39
  */
 @ConfigurationProperties(prefix = BaseConstants.PROPERTY_PREFIX_IP2REGION)
 public class Ip2RegionProperties {

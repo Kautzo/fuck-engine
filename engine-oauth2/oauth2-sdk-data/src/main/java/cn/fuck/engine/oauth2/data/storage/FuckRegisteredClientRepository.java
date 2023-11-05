@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * <p>Description: RegisteredClient服务 </p>
@@ -49,7 +50,7 @@ public class FuckRegisteredClientRepository implements RegisteredClientRepositor
     }
 
     public void removeById(String id) {
-        fuckRegisteredClientServiceImpl.removeById(id);
+        fuckRegisteredClientServiceImpl.removeByIds(Collections.singleton(id));
     }
 
     public void removeByIds(Collection<String> ids) {

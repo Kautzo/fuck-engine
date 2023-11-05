@@ -17,6 +17,10 @@
             <artifactId>data-core</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>oauth2-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -4,14 +4,11 @@ import cn.fuck.engine.rest.core.controller.BaseController;
 import cn.fuck.engine.assistant.core.domain.Result;
 import cn.fuck.engine.rest.core.annotation.Crypto;
 import cn.fuck.engine.upms.dto.SysUserSaveDTO;
+import cn.fuck.engine.upms.dto.SysUserUpdateDTO;
 import cn.fuck.engine.upms.entity.SysUser;
 import cn.fuck.engine.upms.service.SysUserService;
 import cn.fuck.engine.upms.vo.SysUserResultVO;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +24,7 @@ import java.util.List;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统用户管理接口")
 })
-public class SysUserController extends BaseController<SysUserService, SysUser, SysUserSaveDTO, SysUser, SysUser, SysUserResultVO> {
+public class SysUserController extends BaseController<SysUserService, SysUser, SysUserSaveDTO, SysUserUpdateDTO, SysUser, SysUserResultVO> {
 
     /**
      * 给用户分配角色
@@ -54,14 +51,10 @@ public class SysUserController extends BaseController<SysUserService, SysUser, S
     }
 
     @Operation(summary = "根据用户名查询系统用户", description = "通过username查询系统用户数据")
-    @GetMapping("/sign-in/{userName}")
-    public Result<SysUser> getByUserName(@PathVariable("userName") String userName) {
-        SysUser sysUser = baseService.getByUserName(userName);
+    @GetMapping("/getByUserName")
+    public Result<SysUserResultVO> getByUserName(@RequestParam("userName") String userName) {
+        SysUserResultVO sysUser = baseService.getByUserName(userName);
         return Result.content(sysUser);
     }
 
-    @Override
-    public Boolean handlerDelete(List<String> ids) {
-        return baseService.handlerDelete(ids);
-    }
 }

@@ -18,7 +18,6 @@ import java.util.Map;
 
 /**
  * <p>Description: WebSocket 消息接口 </p>
- * @date : 2022/11/18 14:06
  */
 @RestController
 @RequestMapping("/message/websocket")

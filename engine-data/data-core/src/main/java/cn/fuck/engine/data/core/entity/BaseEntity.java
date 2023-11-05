@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -21,7 +22,6 @@ public abstract class BaseEntity extends MPEntity {
 
     @Schema(title = "ID")
     @TableId(type = IdType.ASSIGN_ID)
-    @TableField(value = "id", fill = FieldFill.INSERT)
     protected String id;
 
     @Schema(title = "创建人")
@@ -30,9 +30,8 @@ public abstract class BaseEntity extends MPEntity {
 
     @Schema(title = "数据创建时间")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    @DateTimeFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-    protected Date createTime;
+    protected LocalDateTime createTime;
 
     @Schema(title = "修改人")
     @TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
@@ -40,8 +39,7 @@ public abstract class BaseEntity extends MPEntity {
 
     @Schema(title = "数据更新时间")
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
-    @DateTimeFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
-    protected Date updateTime;
+    protected LocalDateTime updateTime;
 
 }

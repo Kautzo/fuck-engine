@@ -25,7 +25,6 @@ import java.util.Map;
  * 不是开启websocket的必要步骤，根据自身的业务逻辑决定是否添加拦截器
  * <p>
  * 当前主要处理 Token 获取，以及 Token 的验证。如果验证成功，使用返回的用户名进行下一步，如果验证失败返回 false 终止握手。
- * @date : 2022/12/4 21:34
  */
 public class WebSocketAuthenticationHandshakeInterceptor implements HandshakeInterceptor {
 

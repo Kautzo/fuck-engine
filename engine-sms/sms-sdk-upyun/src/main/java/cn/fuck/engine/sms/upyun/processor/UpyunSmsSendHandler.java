@@ -18,7 +18,6 @@ import java.util.List;
 
 /**
  * <p>Description: 又拍云短信发送处理器 </p>
- * @date : 2021/5/25 15:59
  */
 public class UpyunSmsSendHandler extends AbstractSmsSendHandler {
 

@@ -7,14 +7,13 @@ import org.dromara.hutool.core.bean.BeanUtil;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 新增
  *
  */
-public interface SaveController<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends Controller<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface SaveController<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends Controller<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 新增
@@ -24,13 +23,13 @@ public interface SaveController<Entity extends MPEntity, QueryDTO, SaveDTO, Upda
      */
     @Schema(description = "新增")
     @PostMapping
-    default Result<?> save(@RequestBody @Validated SaveDTO saveDTO) {
-        handlerSave(saveDTO);
-        return Result.success();
+    default Result<ResultVO> save(@RequestBody @Validated SaveDTO saveDTO) {
+        return Result.content(handlerSave(saveDTO));
     }
 
-    default void handlerSave(SaveDTO saveDTO) {
-        getBaseService().save(BeanUtil.toBean(saveDTO, getEntityClass()));
+    default ResultVO handlerSave(SaveDTO saveDTO) {
+        Entity entity = getBaseService().save(saveDTO);
+        return BeanUtil.toBean(entity, getResultVOClass());
     }
 
 }

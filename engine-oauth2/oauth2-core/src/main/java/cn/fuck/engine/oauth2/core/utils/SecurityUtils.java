@@ -123,7 +123,7 @@ public class SecurityUtils {
                  * https://blog.csdn.net/m0_37834471/article/details/81814233
                  * cn/itcraftsman/luban/auth/oauth2/OAuth2UserAuthenticationConverter.java
                  */
-//                HerodotusUser user = new HerodotusUser();
+//                FucksUser user = new FuckUser();
 //                BeanUtil.fillBeanWithMap((LinkedHashMap) principal, user, true);
                 return null;
             } else if (principal instanceof String && principal.equals("anonymousUser")) {

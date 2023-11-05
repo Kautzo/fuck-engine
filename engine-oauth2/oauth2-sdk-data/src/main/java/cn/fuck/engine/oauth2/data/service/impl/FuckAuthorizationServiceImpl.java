@@ -1,9 +1,11 @@
 package cn.fuck.engine.oauth2.data.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
+import cn.fuck.engine.data.core.service.impl.BaseManagerImpl;
 import cn.fuck.engine.oauth2.data.entity.FuckAuthorization;
+import cn.fuck.engine.oauth2.data.manager.FuckAuthorizationManager;
 import cn.fuck.engine.oauth2.data.mapper.FuckAuthorizationMapper;
 import cn.fuck.engine.oauth2.data.service.FuckAuthorizationService;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
@@ -21,11 +23,13 @@ import java.util.Optional;
  */
 @Slf4j
 @Service
-public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizationMapper, FuckAuthorization> implements FuckAuthorizationService {
+public class FuckAuthorizationServiceImpl
+        extends BaseServiceImpl<FuckAuthorizationManager, FuckAuthorization, FuckAuthorization, FuckAuthorization, FuckAuthorization, FuckAuthorization>
+        implements FuckAuthorizationService {
 
     @Override
     public Optional<FuckAuthorization> findByState(String state) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getState, state)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByState.");
@@ -34,7 +38,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByAuthorizationCode(String authorizationCode) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getAuthorizationCodeValue, authorizationCode)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByAuthorizationCode.");
@@ -43,7 +47,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByAccessToken(String accessToken) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getAccessTokenValue, accessToken)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByAccessToken.");
@@ -52,7 +56,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByRefreshToken(String refreshToken) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getRefreshTokenValue, refreshToken)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByRefreshToken.");
@@ -61,7 +65,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByOidcIdTokenValue(String idToken) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getOidcIdTokenValue, idToken)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByOidcIdTokenValue.");
@@ -70,7 +74,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByUserCodeValue(String userCode) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getUserCodeValue, userCode)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByUserCodeValue.");
@@ -79,7 +83,7 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
 
     @Override
     public Optional<FuckAuthorization> findByDeviceCodeValue(String deviceCode) {
-        Optional<FuckAuthorization> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getDeviceCodeValue, deviceCode)
                 .last("LIMIT 1"));
         log.debug("[FUCK] |- FuckAuthorizationService Service findByDeviceCodeValue.");
@@ -103,21 +107,21 @@ public class FuckAuthorizationServiceImpl extends BaseServiceImpl<FuckAuthorizat
                 .or()
                 .eq(FuckAuthorization::getDeviceCodeValue, token)
                 .last("LIMIT 1");
-        Optional<FuckAuthorization> result = getOneOpt(queryWrapper);
+        Optional<FuckAuthorization> result = baseManger.getOneOpt(queryWrapper);
         log.trace("[FUCK] |- FuckAuthorization Service findByDetection.");
         return result;
     }
 
     @Override
     public void clearHistoryToken() {
-        remove(Wrappers.lambdaQuery(FuckAuthorization.class)
+        baseManger.remove(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .lt(FuckAuthorization::getRefreshTokenExpiresAt, LocalDateTime.now()));
         log.debug("[FUCK] |- FuckAuthorizationService Service clearExpireAccessToken.");
     }
 
     @Override
     public List<FuckAuthorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
-        List<FuckAuthorization> authorizations = list(Wrappers.lambdaQuery(FuckAuthorization.class)
+        List<FuckAuthorization> authorizations = baseManger.list(Wrappers.lambdaQuery(FuckAuthorization.class)
                 .eq(FuckAuthorization::getRegisteredClientId, registeredClientId)
                 .eq(FuckAuthorization::getPrincipalName, principalName)
                 .ge(FuckAuthorization::getAccessTokenExpiresAt, LocalDateTime.now()));

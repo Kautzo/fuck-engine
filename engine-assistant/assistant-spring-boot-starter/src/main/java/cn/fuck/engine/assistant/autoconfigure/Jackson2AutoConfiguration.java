@@ -14,7 +14,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 
 /**
  * <p>Description: Jackson2 配置 </p>
- * @date : 2022/6/1 0:09
  */
 @AutoConfiguration
 public class Jackson2AutoConfiguration {

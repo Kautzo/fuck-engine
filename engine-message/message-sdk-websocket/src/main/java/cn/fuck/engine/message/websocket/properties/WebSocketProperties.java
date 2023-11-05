@@ -13,7 +13,6 @@ import java.util.List;
 
 /**
  * <p>Description: Web Socket 配置 </p>
- * @date : 2021/10/24 18:38
  */
 @ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_WEBSOCKET)
 public class WebSocketProperties {
@@ -45,7 +44,7 @@ public class WebSocketProperties {
     /**
      * 请求中传递的用户身份标识属性名
      */
-    private String principalHeader = HeaderUtils.X_Fuck_OPEN_ID;
+    private String principalHeader = HeaderUtils.X_FUCK_OPEN_ID;
 
     public InstanceMode getMode() {
         return mode;

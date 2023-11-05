@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -50,7 +51,7 @@ public class FuckOAuth2AuthorizationService implements OAuth2AuthorizationServic
     @Override
     public void remove(OAuth2Authorization authorization) {
         Assert.notNull(authorization, "authorization cannot be null");
-        this.fuckAuthorizationService.removeById(authorization.getId());
+        this.fuckAuthorizationService.removeByIds(Collections.singleton(authorization.getId()));
         log.debug("[FUCK] |- Jpa OAuth2 Authorization Service remove entity.");
         // TODO： 后期还是考虑改为异步任务的形式，先临时放在这里。
         this.fuckAuthorizationService.clearHistoryToken();

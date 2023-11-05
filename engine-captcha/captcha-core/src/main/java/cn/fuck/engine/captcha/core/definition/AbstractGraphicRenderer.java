@@ -17,7 +17,6 @@ import java.awt.*;
 
 /**
  * <p>Description: 抽象的图形验证码 </p>
- * @date : 2021/12/20 20:42
  */
 public abstract class AbstractGraphicRenderer extends AbstractRenderer<String, String> {
 

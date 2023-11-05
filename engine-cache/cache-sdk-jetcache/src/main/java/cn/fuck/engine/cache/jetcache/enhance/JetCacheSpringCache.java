@@ -12,7 +12,6 @@ import java.util.concurrent.Callable;
 
 /**
  * <p>Description: 基于 JetCache 的 Spring Cache 扩展 </p>
- * @date : 2022/7/23 11:11
  */
 public class JetCacheSpringCache extends AbstractValueAdaptingCache {
 

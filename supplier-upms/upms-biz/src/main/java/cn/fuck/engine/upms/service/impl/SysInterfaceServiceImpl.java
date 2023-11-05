@@ -1,10 +1,10 @@
 package cn.fuck.engine.upms.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.message.core.domain.RequestMapping;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.upms.converter.RequestMappingToSysInterfaceConverter;
 import cn.fuck.engine.upms.entity.SysInterface;
-import cn.fuck.engine.upms.mapper.SysInterfaceMapper;
+import cn.fuck.engine.upms.manager.SysInterfaceManager;
 import cn.fuck.engine.upms.service.SysInterfaceService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -20,7 +20,9 @@ import java.util.stream.Collectors;
  * <p>Description: 系统应用程序接口 Service </p>
  */
 @Service
-public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterfaceMapper, SysInterface> implements SysInterfaceService {
+public class SysInterfaceServiceImpl
+        extends BaseServiceImpl<SysInterfaceManager, SysInterface, SysInterface, SysInterface, SysInterface, SysInterface>
+        implements SysInterfaceService {
 
     private final Converter<RequestMapping, SysInterface> toSysInterface = new RequestMappingToSysInterfaceConverter();
 
@@ -31,7 +33,7 @@ public class SysInterfaceServiceImpl extends BaseServiceImpl<SysInterfaceMapper,
      */
     @Override
     public List<SysInterface> getAllocatable() {
-        return baseMapper.getAllocatable();
+        return baseManger.getAllocatable();
     }
 
     @Override

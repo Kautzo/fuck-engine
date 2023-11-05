@@ -6,7 +6,6 @@ import cn.fuck.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: 验证码不匹配错误 </p>
- * @date : 2021/12/15 17:56
  */
 public class CaptchaMismatchException extends PlatformException {
 

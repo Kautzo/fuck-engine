@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * <p>Description: 提取公共操作 </p>
- * @date : 2023/4/29 17:09
  */
 public interface BaseObjectMapperBuilderCustomizer extends Jackson2ObjectMapperBuilderCustomizer, Ordered {
 

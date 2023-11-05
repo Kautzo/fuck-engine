@@ -10,7 +10,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * <p>Description: 移动云短信短信开启条件 </p>
- * @date : 2022/1/27 16:23
  */
 public class ChinaMobileSmsEnabledCondition implements Condition {
 

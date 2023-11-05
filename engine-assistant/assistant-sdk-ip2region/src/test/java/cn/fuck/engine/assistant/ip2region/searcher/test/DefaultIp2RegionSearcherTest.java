@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * <p>Description: Ip2Region 测试 </p>
- * @date : 2023/10/24 14:08
  */
 class DefaultIp2RegionSearcherTest {
 

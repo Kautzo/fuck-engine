@@ -15,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: Captcha 工厂 </p>
- * @date : 2021/12/14 14:38
  */
 @Component
 public class CaptchaRendererFactory {

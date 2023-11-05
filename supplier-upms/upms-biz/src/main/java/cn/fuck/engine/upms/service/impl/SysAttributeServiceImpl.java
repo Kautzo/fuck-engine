@@ -1,11 +1,10 @@
 package cn.fuck.engine.upms.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
+import cn.fuck.engine.upms.domain.listener.SysAttributeEntityListener;
 import cn.fuck.engine.upms.entity.SysAttribute;
 import cn.fuck.engine.upms.entity.SysAttributePermission;
-import cn.fuck.engine.upms.entity.SysPermission;
-import cn.fuck.engine.upms.entity.SysRolePermission;
-import cn.fuck.engine.upms.mapper.SysAttributeMapper;
+import cn.fuck.engine.upms.manager.SysAttributeManager;
 import cn.fuck.engine.upms.service.SysAttributePermissionService;
 import cn.fuck.engine.upms.service.SysAttributeService;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -16,19 +15,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 /**
  * <p>Description: SysAttributeService </p>
  */
 @Slf4j
 @Service
-public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttributeMapper, SysAttribute> implements SysAttributeService {
+public class SysAttributeServiceImpl
+        extends BaseServiceImpl<SysAttributeManager, SysAttribute, SysAttribute, SysAttribute, SysAttribute, SysAttribute>
+        implements SysAttributeService {
 
     @Autowired
     private SysAttributePermissionService sysAttributePermissionService;
+    @Autowired
+    private SysAttributeEntityListener sysAttributeEntityListener;
+
 
     @Override
     @Transactional
@@ -77,16 +80,20 @@ public class SysAttributeServiceImpl extends BaseServiceImpl<SysAttributeMapper,
     }
 
     public List<SysAttribute> getByServiceId(String serviceId) {
-        return list(Wrappers.lambdaQuery(SysAttribute.class)
+        return baseManger.list(Wrappers.lambdaQuery(SysAttribute.class)
                 .eq(SysAttribute::getServiceId, serviceId));
     }
 
     @Override
+    protected void updateAfter(SysAttribute sysAttribute, SysAttribute entity) {
+        sysAttributeEntityListener.postUpdate(sysAttribute);
+    }
+
+    @Override
     @Transactional
-    public Boolean handlerDelete(List<String> ids) {
-        removeByIds(ids);
-        sysAttributePermissionService.remove(Wrappers.lambdaQuery(SysAttributePermission.class)
-                .in(SysAttributePermission::getAttributeId, ids));
+    public boolean removeByIds(Collection<String> idList) {
+        super.removeByIds(idList);
+        sysAttributePermissionService.removeByAttributeIds(idList);
         return Boolean.TRUE;
     }
 

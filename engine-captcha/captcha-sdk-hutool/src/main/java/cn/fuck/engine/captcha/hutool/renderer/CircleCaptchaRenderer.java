@@ -9,7 +9,6 @@ import org.dromara.hutool.swing.captcha.CircleCaptcha;
 
 /**
  * <p>Description: Hutool圆圈干扰验证码绘制器 </p>
- * @date : 2021/12/23 23:09
  */
 public class CircleCaptchaRenderer extends AbstractGraphicRenderer {
 

@@ -1,5 +1,6 @@
 package cn.fuck.engine.rest.protect.configuration;
 
+import cn.fuck.engine.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import cn.fuck.engine.rest.condition.properties.SecureProperties;
 import cn.fuck.engine.rest.protect.secure.interceptor.AccessLimitedInterceptor;
 import cn.fuck.engine.rest.protect.secure.interceptor.IdempotentInterceptor;

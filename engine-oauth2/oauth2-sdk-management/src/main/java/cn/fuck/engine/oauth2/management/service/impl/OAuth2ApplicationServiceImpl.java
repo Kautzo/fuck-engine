@@ -1,16 +1,16 @@
 package cn.fuck.engine.oauth2.management.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.oauth2.data.storage.FuckRegisteredClientRepository;
 import cn.fuck.engine.oauth2.management.converter.OAuth2ApplicationToRegisteredClientConverter;
 import cn.fuck.engine.oauth2.management.dto.OAuth2ApplicationDTO;
 import cn.fuck.engine.oauth2.management.entity.OAuth2Application;
 import cn.fuck.engine.oauth2.management.entity.OAuth2ApplicationScope;
 import cn.fuck.engine.oauth2.management.entity.OAuth2Scope;
-import cn.fuck.engine.oauth2.management.mapper.OAuth2ApplicationMapper;
+import cn.fuck.engine.oauth2.management.manager.OAuth2ApplicationManager;
 import cn.fuck.engine.oauth2.management.service.OAuth2ApplicationScopeService;
 import cn.fuck.engine.oauth2.management.service.OAuth2ApplicationService;
 import cn.fuck.engine.oauth2.management.service.OAuth2ScopeService;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
 import org.dromara.hutool.core.bean.BeanUtil;
@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -30,7 +31,9 @@ import java.util.Set;
  */
 @Slf4j
 @Service
-public class OAuth2ApplicationServiceImpl extends BaseServiceImpl<OAuth2ApplicationMapper, OAuth2Application> implements OAuth2ApplicationService {
+public class OAuth2ApplicationServiceImpl
+        extends BaseServiceImpl<OAuth2ApplicationManager, OAuth2Application, OAuth2ApplicationDTO, OAuth2ApplicationDTO, OAuth2Application, OAuth2Application>
+        implements OAuth2ApplicationService {
 
     @Autowired
     private OAuth2ScopeService scopeService;
@@ -87,46 +90,46 @@ public class OAuth2ApplicationServiceImpl extends BaseServiceImpl<OAuth2Applicat
     }
 
     @Override
-    public OAuth2Application findById(String id) {
-        OAuth2Application byId = super.findById(id);
-        List<OAuth2ApplicationScope> applicationScopeList = applicationScopeService.list(Wrappers.lambdaQuery(OAuth2ApplicationScope.class)
-                .eq(OAuth2ApplicationScope::getApplicationId, id));
-        List<String> scopeIds = applicationScopeList.stream().map(OAuth2ApplicationScope::getScopeId).toList();
-        List<OAuth2Scope> oAuth2Scopes = scopeService.listByIds(scopeIds);
-        byId.setScopes(oAuth2Scopes);
-        return byId;
+    public OAuth2Application getById(String id) {
+        OAuth2Application application = super.getById(id);
+        List<OAuth2ApplicationScope> applicationScopeList = applicationScopeService.getByApplicationId(application.getId());
+        if (CollUtil.isNotEmpty(applicationScopeList)) {
+            List<String> scopeIds = applicationScopeList.stream().map(OAuth2ApplicationScope::getScopeId).toList();
+            List<OAuth2Scope> oAuth2Scopes = scopeService.listByIds(scopeIds);
+            application.setScopes(oAuth2Scopes);
+        }
+        return application;
     }
 
     @Override
-    public OAuth2Application findByClientId(String clientId) {
-        OAuth2Application application = getOne(Wrappers.lambdaQuery(OAuth2Application.class)
-                .eq(OAuth2Application::getClientId, clientId));
-        return findById(application.getId());
+    public OAuth2Application getByClientId(String clientId) {
+        OAuth2Application application = baseManger.getByClientId(clientId);
+        return getById(application.getId());
     }
 
     @Override
     @Transactional
-    public void handlerSave(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
-        OAuth2Application application = BeanUtil.toBean(oAuth2ApplicationDTO, OAuth2Application.class);
-        save(application);
+    public OAuth2Application save(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
+        OAuth2Application application = super.save(oAuth2ApplicationDTO);
         updateScope(application.getId(), oAuth2ApplicationDTO.getScopeIds());
+        return application;
     }
 
     @Override
     @Transactional
-    public void handlerUpdate(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
-        OAuth2Application application = BeanUtil.toBean(oAuth2ApplicationDTO, OAuth2Application.class);
-        updateById(application);
+    public OAuth2Application updateById(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
+        OAuth2Application application = super.updateById(oAuth2ApplicationDTO);
         updateScope(application.getId(), oAuth2ApplicationDTO.getScopeIds());
+        return application;
     }
 
     @Override
     @Transactional
-    public Boolean handlerDelete(List<String> ids) {
-        removeByIds(ids);
-        fuckRegisteredClientRepository.removeByIds(ids);
-        applicationScopeService.remove(Wrappers.lambdaQuery(OAuth2ApplicationScope.class)
-                .in(OAuth2ApplicationScope::getApplicationId, ids));
+    public boolean removeByIds(Collection<String> idList) {
+        super.removeByIds(idList);
+        fuckRegisteredClientRepository.removeByIds(idList);
+        applicationScopeService.removeByApplicationIds(idList);
         return Boolean.TRUE;
     }
+
 }

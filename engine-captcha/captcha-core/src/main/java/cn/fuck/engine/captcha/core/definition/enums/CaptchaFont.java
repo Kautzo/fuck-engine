@@ -2,7 +2,6 @@ package cn.fuck.engine.captcha.core.definition.enums;
 
 /**
  * <p>Description: 字体资源 </p>
- * @date : 2021/12/21 16:00
  */
 public enum CaptchaFont {
     /**

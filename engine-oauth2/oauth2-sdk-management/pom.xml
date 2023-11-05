@@ -32,6 +32,11 @@
             <artifactId>message-security-spring-boot-starter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>cn.fuck.engine</groupId>
+            <artifactId>upms-api</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>org.webjars</groupId>

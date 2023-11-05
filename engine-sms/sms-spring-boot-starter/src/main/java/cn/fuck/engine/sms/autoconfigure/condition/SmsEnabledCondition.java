@@ -10,7 +10,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * <p>Description: 短信开启条件 </p>
- * @date : 2022/1/26 15:33
  */
 public class SmsEnabledCondition implements Condition {
 

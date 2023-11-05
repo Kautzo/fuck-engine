@@ -12,7 +12,6 @@ import java.time.ZoneId;
 
 /**
  * <p>Description: Timestamp 转 LocalDateTime 反序列化器 </p>
- * @date : 2023/9/22 16:46
  */
 public class TimestampToLocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
     @Override

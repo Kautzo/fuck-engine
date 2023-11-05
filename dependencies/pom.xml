@@ -81,6 +81,7 @@
         <camunda-bpm-spring-boot-starter-rest.version>7.20.0</camunda-bpm-spring-boot-starter-rest.version>
         <mybatis-plus-boot-starter.version>3.5.4</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>3.5.4</mybatis-plus-generator.version>
+        <dynamic-datasource.version>4.2.0</dynamic-datasource.version>
         <mybatis.version>3.5.13</mybatis.version>
         <velocity.version>2.3</velocity.version>
 
@@ -696,6 +697,11 @@
                 <version>${mybatis-plus-generator.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+                <version>${dynamic-datasource.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
@@ -885,6 +891,14 @@
                     <include>**/*</include>
                 </includes>
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.json</include>
+                    <include>**/*.ftl</include>
+                </includes>
             </resource>
         </resources>
         <extensions>

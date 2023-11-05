@@ -11,7 +11,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 验证码类别 </p>
- * @date : 2021/12/14 14:39
  */
 @Schema(title = "验证码类别")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)

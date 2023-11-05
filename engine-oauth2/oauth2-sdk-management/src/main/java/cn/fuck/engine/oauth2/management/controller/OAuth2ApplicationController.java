@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -25,7 +24,8 @@ import java.util.Set;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 应用管理接口")
 })
-public class OAuth2ApplicationController extends BaseController<OAuth2ApplicationService, OAuth2Application, OAuth2Application, OAuth2ApplicationDTO, OAuth2ApplicationDTO, OAuth2Application> {
+public class OAuth2ApplicationController
+        extends BaseController<OAuth2ApplicationService, OAuth2Application, OAuth2ApplicationDTO, OAuth2ApplicationDTO, OAuth2Application, OAuth2Application> {
 
     @Operation(summary = "给应用分配Scope", description = "给应用分配Scope")
     @PutMapping("/updateScope")
@@ -35,18 +35,4 @@ public class OAuth2ApplicationController extends BaseController<OAuth2Applicatio
         return Result.success();
     }
 
-    @Override
-    public void handlerSave(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
-        baseService.handlerSave(oAuth2ApplicationDTO);
-    }
-
-    @Override
-    public void handlerUpdate(OAuth2ApplicationDTO oAuth2ApplicationDTO) {
-        baseService.handlerUpdate(oAuth2ApplicationDTO);
-    }
-
-    @Override
-    public Boolean handlerDelete(List<String> ids) {
-        return baseService.handlerDelete(ids);
-    }
 }

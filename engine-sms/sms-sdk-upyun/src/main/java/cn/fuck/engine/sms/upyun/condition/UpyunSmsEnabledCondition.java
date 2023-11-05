@@ -2,19 +2,16 @@ package cn.fuck.engine.sms.upyun.condition;
 
 import cn.fuck.engine.assistant.core.context.PropertyResolver;
 import cn.fuck.engine.sms.core.constants.SmsConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * <p>Description: 又拍短信开启条件 </p>
- * @date : 2022/1/27 16:23
  */
+@Slf4j
 public class UpyunSmsEnabledCondition implements Condition {
-
-    private static final Logger log = LoggerFactory.getLogger(UpyunSmsEnabledCondition.class);
 
     @SuppressWarnings("NullableProblems")
     @Override

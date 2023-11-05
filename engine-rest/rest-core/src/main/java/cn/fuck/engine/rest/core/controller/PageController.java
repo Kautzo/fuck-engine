@@ -8,19 +8,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.hutool.core.bean.BeanUtil;
 import org.dromara.hutool.core.collection.CollUtil;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-public interface PageController<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends Controller<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface PageController<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends Controller<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 处理查询参数

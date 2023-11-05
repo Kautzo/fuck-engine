@@ -8,7 +8,6 @@ import org.springframework.security.core.AuthenticationException;
 
 /**
  * <p>Description: 平台认证基础Exception </p>
- * @date : 2021/10/16 14:41
  */
 public class PlatformAuthenticationException extends AuthenticationException implements FuckException {
 

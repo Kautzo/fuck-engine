@@ -1,10 +1,11 @@
 package cn.fuck.engine.upms.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
-import cn.fuck.engine.upms.entity.SysPermission;
+import cn.fuck.engine.data.core.service.impl.BaseManagerImpl;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.upms.entity.SysRole;
 import cn.fuck.engine.upms.entity.SysRolePermission;
 import cn.fuck.engine.upms.entity.SysUserRole;
+import cn.fuck.engine.upms.manager.SysRoleManager;
 import cn.fuck.engine.upms.mapper.SysRoleMapper;
 import cn.fuck.engine.upms.service.SysRolePermissionService;
 import cn.fuck.engine.upms.service.SysRoleService;
@@ -23,13 +24,14 @@ import java.util.*;
  */
 @Slf4j
 @Service
-public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
+public class SysRoleServiceImpl
+        extends BaseServiceImpl<SysRoleManager, SysRole, SysRole, SysRole, SysRole, SysRole>
+        implements SysRoleService {
 
     @Autowired
     private SysRolePermissionService sysRolePermissionService;
     @Autowired
     private SysUserRoleService sysUserRoleService;
-
 
     @Override
     @Transactional
@@ -77,22 +79,17 @@ public class SysRoleServiceImpl extends BaseServiceImpl<SysRoleMapper, SysRole> 
         }
     }
 
-
-
     @Override
     public SysRole getByRoleCode(String roleCode) {
-        return getOne(Wrappers.lambdaQuery(SysRole.class).eq(SysRole::getRoleCode, roleCode).last("LIMIT 1"));
+        return baseManger.getOne(Wrappers.lambdaQuery(SysRole.class).eq(SysRole::getRoleCode, roleCode).last("LIMIT 1"));
     }
 
     @Override
-    @Transactional
-    public Boolean handlerDelete(List<String> ids) {
-        removeByIds(ids);
-        sysRolePermissionService.remove(Wrappers.lambdaQuery(SysRolePermission.class)
-                .in(SysRolePermission::getRoleId, ids));
-        sysUserRoleService.remove(Wrappers.lambdaQuery(SysUserRole.class)
-                .in(SysUserRole::getRoleId, ids));
-        return true;
+    public boolean removeByIds(Collection<String> idList) {
+        super.removeByIds(idList);
+        sysRolePermissionService.removeByRoleIdS(idList);
+        sysUserRoleService.removeByRoleIds(idList);
+        return Boolean.TRUE;
     }
 
 }

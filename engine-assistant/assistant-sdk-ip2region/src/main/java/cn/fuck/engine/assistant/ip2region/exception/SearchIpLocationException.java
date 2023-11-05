@@ -5,7 +5,6 @@ import cn.fuck.engine.assistant.core.exception.PlatformException;
 
 /**
  * <p>Description: TODO </p>
- * @date : 2023/10/24 13:13
  */
 public class SearchIpLocationException extends PlatformException {
 

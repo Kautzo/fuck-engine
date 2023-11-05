@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,7 +24,8 @@ import java.util.List;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统权限管理接口")
 })
-public class SysPermissionController extends BaseController<SysPermissionService, SysPermission, SysPermission, SysPermission, SysPermission, SysPermission> {
+public class SysPermissionController
+        extends BaseController<SysPermissionService, SysPermission, SysPermission, SysPermission, SysPermission, SysPermission> {
 
     @AccessLimited
     @Operation(summary = "获取全部权限", description = "获取全部权限数据列表")
@@ -31,10 +33,5 @@ public class SysPermissionController extends BaseController<SysPermissionService
     public Result<List<SysPermission>> list() {
         List<SysPermission> sysAuthorities = baseService.list();
         return Result.content(sysAuthorities);
-    }
-
-    @Override
-    public Boolean handlerDelete(List<String> ids) {
-        return baseService.handlerDelete(ids);
     }
 }

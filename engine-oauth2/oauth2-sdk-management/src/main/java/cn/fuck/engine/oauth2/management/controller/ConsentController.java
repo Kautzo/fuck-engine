@@ -67,7 +67,7 @@ public class ConsentController {
         // 之前已经授权过的scope
         Set<String> previouslyApprovedScopes = new HashSet<>();
         // 获取客户端注册信息
-        OAuth2Application application = this.applicationService.findByClientId(clientId);
+        OAuth2Application application = this.applicationService.getByClientId(clientId);
         // 获取当前Client下用户之前的consent信息
         OAuth2AuthorizationConsent currentAuthorizationConsent = this.authorizationConsentService.findById(clientId, principal.getName());
         // 当前Client下用户已经授权的scope

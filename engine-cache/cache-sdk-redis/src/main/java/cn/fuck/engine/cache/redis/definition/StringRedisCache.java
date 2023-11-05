@@ -7,7 +7,6 @@ import org.springframework.beans.factory.InitializingBean;
  * <p>
  * 很多使用Redis进行缓存的数据都比较简单，通常就是单一的键值对存储。例如，手机验证码、JustAuth的State数据、第三方集成的Token等。
  * 因此，抽象出SimpleRedisCache，对此类操作进行定义。
- * @date : 2021/5/21 23:37
  */
 public interface StringRedisCache extends InitializingBean {
 

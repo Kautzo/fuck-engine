@@ -27,7 +27,6 @@ import java.util.Objects;
 
 /**
  * <p>Description: 拼图滑块验证码处理器 </p>
- * @date : 2021/12/11 15:29
  */
 @Component
 public class JigsawCaptchaRenderer extends AbstractBehaviorRenderer<String, Coordinate> {

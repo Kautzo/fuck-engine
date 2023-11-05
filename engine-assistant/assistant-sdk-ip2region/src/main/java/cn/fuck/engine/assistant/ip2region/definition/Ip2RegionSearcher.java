@@ -7,7 +7,6 @@ import java.util.function.Function;
 
 /**
  * <p>Description: IP 定位离线搜索定义 </p>
- * @date : 2023/10/23 12:40
  */
 public interface Ip2RegionSearcher {
 

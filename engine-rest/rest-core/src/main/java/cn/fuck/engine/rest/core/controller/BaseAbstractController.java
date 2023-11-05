@@ -1,7 +1,7 @@
 package cn.fuck.engine.rest.core.controller;
 
 import cn.fuck.engine.data.core.entity.MPEntity;
-import cn.fuck.engine.data.core.service.BaseService;
+import cn.fuck.engine.rest.core.service.BaseService;
 import com.baomidou.mybatisplus.core.toolkit.ReflectionKit;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 可以让业务Controller继承 SuperSimpleController 后，按需实现 *Controller 接口
  *
  */
-public abstract class BaseAbstractController<S extends BaseService<Entity>,
-        Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        implements Controller<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public abstract class BaseAbstractController<S extends BaseService<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>,
+        Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        implements Controller<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     @Autowired
     protected S baseService;
@@ -36,7 +36,7 @@ public abstract class BaseAbstractController<S extends BaseService<Entity>,
     }
 
     @Override
-    public BaseService<Entity> getBaseService() {
+    public BaseService<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> getBaseService() {
         return baseService;
     }
 

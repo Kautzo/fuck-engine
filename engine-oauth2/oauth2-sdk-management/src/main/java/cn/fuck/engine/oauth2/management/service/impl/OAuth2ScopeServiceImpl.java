@@ -1,22 +1,22 @@
 package cn.fuck.engine.oauth2.management.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.oauth2.management.dto.OAuth2PermissionDTO;
 import cn.fuck.engine.oauth2.management.dto.OAuth2ScopeDTO;
-import cn.fuck.engine.oauth2.management.entity.OAuth2ApplicationScope;
 import cn.fuck.engine.oauth2.management.entity.OAuth2Scope;
 import cn.fuck.engine.oauth2.management.entity.OAuth2ScopePermission;
-import cn.fuck.engine.oauth2.management.mapper.OAuth2ScopeMapper;
+import cn.fuck.engine.oauth2.management.manager.OAuth2ScopeManager;
 import cn.fuck.engine.oauth2.management.service.OAuth2ApplicationScopeService;
+import cn.fuck.engine.oauth2.management.service.OAuth2DeviceScopeService;
 import cn.fuck.engine.oauth2.management.service.OAuth2ScopePermissionService;
 import cn.fuck.engine.oauth2.management.service.OAuth2ScopeService;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.dromara.hutool.core.collection.CollUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,13 +24,18 @@ import java.util.stream.Collectors;
 /**
  * <p> Description : OauthScopeService </p>
  */
+@Slf4j
 @Service
-public class OAuth2ScopeServiceImpl extends BaseServiceImpl<OAuth2ScopeMapper, OAuth2Scope> implements OAuth2ScopeService {
+public class OAuth2ScopeServiceImpl
+        extends BaseServiceImpl<OAuth2ScopeManager, OAuth2Scope, OAuth2Scope, OAuth2Scope, OAuth2Scope, OAuth2Scope>
+        implements OAuth2ScopeService {
 
     @Autowired
     private OAuth2ScopePermissionService scopePermissionService;
     @Autowired
     private OAuth2ApplicationScopeService applicationScopeService;
+    @Autowired
+    private OAuth2DeviceScopeService deviceScopeService;
 
     @Override
     public void updateScopePermission(OAuth2ScopeDTO scopeDTO) {
@@ -84,19 +89,21 @@ public class OAuth2ScopeServiceImpl extends BaseServiceImpl<OAuth2ScopeMapper, O
 
     @Override
     public OAuth2Scope getByScopeCode(String scopeCode) {
-        return getOne(Wrappers.lambdaQuery(OAuth2Scope.class)
-                .eq(OAuth2Scope::getScopeCode, scopeCode)
-                .last("LIMIT 1"));
+        return baseManger.getByScopeCode(scopeCode);
     }
 
     @Override
-    @Transactional
-    public Boolean handlerDelete(List<String> ids) {
-        removeByIds(ids);
-        scopePermissionService.remove(Wrappers.lambdaQuery(OAuth2ScopePermission.class)
-                .in(OAuth2ScopePermission::getScopeId, ids));
-        applicationScopeService.remove(Wrappers.lambdaQuery(OAuth2ApplicationScope.class)
-                .in(OAuth2ApplicationScope::getScopeId, ids));
+    public List<OAuth2Scope> getByScopeCodes(List<String> scopeCodes) {
+        return baseManger.getByScopeCodes(scopeCodes);
+    }
+
+    @Override
+    public boolean removeByIds(Collection<String> idList) {
+        super.removeByIds(idList);
+        scopePermissionService.removeByScopeIds(idList);
+        applicationScopeService.removeByScopeIds(idList);
+        deviceScopeService.removeByScopeIds(idList);
         return Boolean.TRUE;
     }
+
 }

@@ -6,7 +6,6 @@ import cn.fuck.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: 验证码为空 </p>
- * @date : 2021/12/24 18:11
  */
 public class CaptchaIsEmptyException extends PlatformException {
 

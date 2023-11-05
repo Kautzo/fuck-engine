@@ -8,7 +8,6 @@ import org.dromara.hutool.swing.captcha.GifCaptcha;
 
 /**
  * <p>Description: Hutool GIF验证码 </p>
- * @date : 2021/12/23 23:08
  */
 public class GifCaptchaRenderer extends AbstractGraphicRenderer {
 

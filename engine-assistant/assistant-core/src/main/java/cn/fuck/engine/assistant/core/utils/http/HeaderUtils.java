@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class HeaderUtils {
 
-    public static final String X_Fuck_SESSION_ID = "X-Fuck-Session-id";
-    public static final String X_Fuck_FROM_IN = "X-Fuck-From-In";
-    public static final String X_Fuck_TENANT_ID = "X-Fuck-Tenant-Id";
-    public static final String X_Fuck_OPEN_ID = "X-Fuck-Open-Id";
+    public static final String X_FUCK_SESSION_ID = "X-Fuck-Session-id";
+    public static final String X_FUCK_FROM_IN = "X-Fuck-From-In";
+    public static final String X_FUCK_TENANT_ID = "X-Fuck-Tenant-Id";
+    public static final String X_FUCK_OPEN_ID = "X-Fuck-Open-Id";
 
     /**
      * 获取头信息
@@ -83,7 +83,7 @@ public class HeaderUtils {
      * @return X_FUCK_SESSION 头信息
      */
     public static String getFuckSession(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_Fuck_SESSION_ID);
+        return getHeader(httpServletRequest, X_FUCK_SESSION_ID);
     }
 
     /**
@@ -93,7 +93,7 @@ public class HeaderUtils {
      * @return X_FUCK_SESSION 请求头内容
      */
     public static String getFuckSession(ServerHttpRequest serverHttpRequest) {
-        return getHeader(serverHttpRequest, X_Fuck_SESSION_ID);
+        return getHeader(serverHttpRequest, X_FUCK_SESSION_ID);
     }
 
     /**
@@ -103,7 +103,7 @@ public class HeaderUtils {
      * @return X_FUCK_SESSION 请求头内容
      */
     public static String getFuckSession(HttpInputMessage httpInputMessage) {
-        return getHeader(httpInputMessage.getHeaders(), X_Fuck_SESSION_ID);
+        return getHeader(httpInputMessage.getHeaders(), X_FUCK_SESSION_ID);
     }
 
     /**
@@ -113,7 +113,7 @@ public class HeaderUtils {
      * @return X_FUCK_TENANT_ID 请求头内容
      */
     public static String getFuckTenantId(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_Fuck_TENANT_ID);
+        return getHeader(httpServletRequest, X_FUCK_TENANT_ID);
     }
 
     /**
@@ -123,7 +123,7 @@ public class HeaderUtils {
      * @return X_FUCK_FROM_IN 请求头内容
      */
     public static String getFuckFromIn(HttpServletRequest httpServletRequest) {
-        return getHeader(httpServletRequest, X_Fuck_FROM_IN);
+        return getHeader(httpServletRequest, X_FUCK_FROM_IN);
     }
 
     /**

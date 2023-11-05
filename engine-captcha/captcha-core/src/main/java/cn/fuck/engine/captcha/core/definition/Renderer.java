@@ -6,7 +6,6 @@ import cn.fuck.engine.captcha.core.dto.Verification;
 
 /**
  * <p>Description: 基础绘制器定义 </p>
- * @date : 2021/12/21 15:36
  */
 public interface Renderer {
 

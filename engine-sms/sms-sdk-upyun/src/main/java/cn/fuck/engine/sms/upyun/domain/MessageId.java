@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>Description: 手机号发送短信的结果 </p>
- * @date : 2021/5/26 14:20
  */
 public class MessageId {
 

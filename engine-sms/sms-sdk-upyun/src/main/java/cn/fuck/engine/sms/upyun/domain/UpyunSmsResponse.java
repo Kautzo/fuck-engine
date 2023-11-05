@@ -7,7 +7,6 @@ import java.util.Collection;
 
 /**
  * <p>Description: 发送响应 </p>
- * @date : 2021/5/26 16:15
  */
 public class UpyunSmsResponse {
 

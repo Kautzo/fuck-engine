@@ -4,7 +4,6 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 
 /**
  * <p>Description: Request Mapping 收集远程事件 </p>
- * @date : 2021/8/6 11:23
  */
 public class RemoteRequestMappingGatherEvent extends RemoteApplicationEvent {
 

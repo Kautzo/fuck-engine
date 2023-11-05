@@ -8,7 +8,6 @@ import org.dromara.hutool.swing.captcha.ShearCaptcha;
 
 /**
  * <p>Description: Hutool扭曲干扰验证码绘制器 </p>
- * @date : 2021/12/23 23:08
  */
 public class ShearCaptchaRenderer extends AbstractGraphicRenderer {
 

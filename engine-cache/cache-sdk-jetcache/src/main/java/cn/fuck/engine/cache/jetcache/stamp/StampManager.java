@@ -19,8 +19,6 @@ import java.util.concurrent.TimeUnit;
  *
  * @param <K> 签章缓存对应Key值的类型。
  * @param <V> 签章缓存存储数据，对应的具体存储值的类型，
- * @author : gengwei.zheng
- * @date : 2021/8/22 15:00
  */
 public interface StampManager<K, V> extends InitializingBean {
 

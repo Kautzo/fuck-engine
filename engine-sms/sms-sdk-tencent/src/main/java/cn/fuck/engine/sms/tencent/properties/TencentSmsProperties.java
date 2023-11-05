@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 腾讯云短信配置 </p>
- * @date : 2021/5/26 16:22
  */
 @ConfigurationProperties(prefix = SmsConstants.PROPERTY_PREFIX_TENCENT)
 public class TencentSmsProperties extends AbstractSmsProperties {

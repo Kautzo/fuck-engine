@@ -15,7 +15,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 设置认证用户信息 </p>
- * @date : 2021/10/24 18:52
  */
 public class WebSocketPrincipalHandshakeHandler extends DefaultHandshakeHandler {
 

@@ -13,9 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: 又拍短信发送配置类 </p>
- * @date : 2021/5/25 15:25
  */
-
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnUpyunSmsEnabled
 @EnableConfigurationProperties(UpyunSmsProperties.class)

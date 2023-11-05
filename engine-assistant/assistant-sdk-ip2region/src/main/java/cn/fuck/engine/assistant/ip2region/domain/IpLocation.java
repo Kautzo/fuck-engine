@@ -11,7 +11,6 @@ import java.util.Set;
 
 /**
  * <p>Description: Ip 信息详情 </p>
- * @date : 2023/10/22 23:00
  */
 public class IpLocation implements Serializable {
 

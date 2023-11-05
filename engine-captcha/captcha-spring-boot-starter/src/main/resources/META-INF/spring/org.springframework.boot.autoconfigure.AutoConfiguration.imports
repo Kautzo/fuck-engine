@@ -1,4 +1,4 @@
-cn.fuck.engine.captcha.autoconfigure.CaptchaAutoConfiguration
 cn.fuck.engine.captcha.autoconfigure.BehaviorCaptchaAutoConfiguration
 cn.fuck.engine.captcha.autoconfigure.GraphicCaptchaAutoConfiguration
 cn.fuck.engine.captcha.autoconfigure.HutoolCaptchaAutoConfiguration
+cn.fuck.engine.captcha.autoconfigure.CaptchaAutoConfiguration

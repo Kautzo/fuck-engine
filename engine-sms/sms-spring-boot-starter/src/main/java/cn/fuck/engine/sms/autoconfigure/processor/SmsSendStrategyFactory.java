@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: 短信发送工厂 </p>
- * @date : 2021/5/26 16:52
  */
 @Component
 public class SmsSendStrategyFactory {

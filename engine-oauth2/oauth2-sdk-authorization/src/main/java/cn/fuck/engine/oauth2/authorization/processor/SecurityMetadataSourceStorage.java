@@ -7,9 +7,8 @@ import cn.fuck.engine.cache.jetcache.utils.JetCacheUtils;
 import cn.fuck.engine.oauth2.core.constants.OAuth2Constants;
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
@@ -18,11 +17,10 @@ import java.util.List;
 
 /**
  * <p>Description: SecurityAttribute 本地存储 </p>
- * @date : 2021/7/30 15:05
  */
+@Slf4j
 public class SecurityMetadataSourceStorage {
 
-    private static final Logger log = LoggerFactory.getLogger(SecurityMetadataSourceStorage.class);
     private static final String KEY_COMPATIBLE = "COMPATIBLE";
     /**
      * 模式匹配权限缓存。主要存储 包含 "*"、"?" 和 "{"、"}" 等特殊字符的路径权限。

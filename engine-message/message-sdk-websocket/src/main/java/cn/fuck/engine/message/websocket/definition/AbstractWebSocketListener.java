@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationListener;
 
 /**
  * <p>Description: 公共 WebSocketUserListener </p>
- * @date : 2022/12/29 22:20
  */
 public abstract class AbstractWebSocketListener<E extends ApplicationEvent> implements ApplicationListener<E> {
 

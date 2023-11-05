@@ -8,7 +8,6 @@ import org.springframework.core.Ordered;
 
 /**
  * <p>Description: 标准内置错误代码 </p>
- * @date : 2023/9/25 0:00
  */
 public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
     @Override

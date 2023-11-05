@@ -10,7 +10,6 @@ import org.springframework.messaging.simp.user.SimpUser;
 
 /**
  * <p>Description: WebSocket 消息发送器 </p>
- * @date : 2023/9/14 16:34
  */
 public interface WebSocketMessageSender {
 

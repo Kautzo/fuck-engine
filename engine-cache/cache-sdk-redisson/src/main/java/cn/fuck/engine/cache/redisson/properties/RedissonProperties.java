@@ -11,7 +11,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: Redisson 配置 </p>
- * @date : 2021/10/22 14:02
  */
 @ConfigurationProperties(prefix = CacheConstants.PROPERTY_REDIS_REDISSON)
 public class RedissonProperties {

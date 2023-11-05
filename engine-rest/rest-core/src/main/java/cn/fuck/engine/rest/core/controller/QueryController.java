@@ -5,16 +5,15 @@ import cn.fuck.engine.data.core.entity.MPEntity;
 import cn.fuck.engine.rest.core.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.hutool.core.bean.BeanUtil;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
  * 查询Controller
  */
-public interface QueryController<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends PageController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface QueryController<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends PageController<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 查询
@@ -24,9 +23,9 @@ public interface QueryController<Entity extends MPEntity, QueryDTO, SaveDTO, Upd
      */
     @Idempotent
     @Schema(description = "单体查询")
-    @RequestMapping(value = "/getById", method = RequestMethod.GET)
+    @GetMapping
     default Result<ResultVO> getById(@RequestParam String id) {
-        return Result.content(BeanUtil.toBean(getBaseService().findById(id), getResultVOClass()));
+        return Result.content(BeanUtil.toBean(getBaseService().getById(id), getResultVOClass()));
     }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.http.server.ServletServerHttpResponse;
 
 /**
  * <p>Description: WebSocket 通用工具类 </p>
- * @date : 2022/12/30 12:17
  */
 public class WebSocketUtils {
 

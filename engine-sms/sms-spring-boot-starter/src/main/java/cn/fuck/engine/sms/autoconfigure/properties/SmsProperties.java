@@ -9,7 +9,6 @@ import java.time.Duration;
 
 /**
  * <p>Description: 短信验证码配置属性 </p>
- * @date : 2021/5/26 17:02
  */
 @ConfigurationProperties(prefix = SmsConstants.PROPERTY_PREFIX_SMS)
 public class SmsProperties {

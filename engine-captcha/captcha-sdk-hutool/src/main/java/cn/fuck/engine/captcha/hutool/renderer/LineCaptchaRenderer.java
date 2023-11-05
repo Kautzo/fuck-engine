@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: Hutool Line Captcha </p>
- * @date : 2021/12/23 22:44
  */
 @Component
 public class LineCaptchaRenderer extends AbstractGraphicRenderer {

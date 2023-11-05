@@ -1,9 +1,9 @@
 package cn.fuck.engine.oauth2.data.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.oauth2.data.entity.FuckRegisteredClient;
-import cn.fuck.engine.oauth2.data.mapper.FuckRegisteredClientMapper;
+import cn.fuck.engine.oauth2.data.manager.FuckRegisteredClientManager;
 import cn.fuck.engine.oauth2.data.service.FuckRegisteredClientService;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,11 +18,13 @@ import java.util.Optional;
  */
 @Slf4j
 @Service
-public class FuckRegisteredClientServiceImpl extends BaseServiceImpl<FuckRegisteredClientMapper, FuckRegisteredClient> implements FuckRegisteredClientService {
+public class FuckRegisteredClientServiceImpl
+        extends BaseServiceImpl<FuckRegisteredClientManager, FuckRegisteredClient, FuckRegisteredClient, FuckRegisteredClient, FuckRegisteredClient, FuckRegisteredClient>
+        implements FuckRegisteredClientService {
 
     @Override
     public Optional<FuckRegisteredClient> getByClientId(String clientId) {
-        return getOneOpt(Wrappers.lambdaQuery(FuckRegisteredClient.class)
+        return baseManger.getOneOpt(Wrappers.lambdaQuery(FuckRegisteredClient.class)
                 .eq(FuckRegisteredClient::getClientId, clientId)
                 .last("LIMIT 1"));
     }

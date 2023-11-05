@@ -17,7 +17,6 @@ import java.io.IOException;
 
 /**
  * <p>Description: 默认的Ip2Region查询实现 </p>
- * @date : 2023/10/23 15:28
  */
 public class DefaultIp2RegionSearcher implements Ip2RegionSearcher, InitializingBean, DisposableBean {
 

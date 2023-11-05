@@ -1,7 +1,7 @@
 ## 工程结构
 
 ```
-gtb-engine
+fuck-engine
 ├── dependencies -- 工程Maven顶级依赖，统一控制版本和依赖
 ├── engine-assistant -- 核心通用代码包
 ├    ├── assistant-core -- 核心通用代码

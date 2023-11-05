@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * <p> Description : 基于Hutool的Aes加解密工具 </p>
- * @date : 2020/1/28 17:25
  */
 public class SymmetricUtils {
 

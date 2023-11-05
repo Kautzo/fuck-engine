@@ -12,7 +12,6 @@ import org.springframework.messaging.simp.user.SimpUserRegistry;
 
 /**
  * <p>Description: Web Socket 多实例服务端消息发送 </p>
- * @date : 2021/10/24 18:47
  */
 public class MultipleInstanceMessageSender extends SingleInstanceMessageSender {
 

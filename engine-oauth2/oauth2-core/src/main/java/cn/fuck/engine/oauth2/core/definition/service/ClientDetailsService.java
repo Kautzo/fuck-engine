@@ -6,7 +6,6 @@ import java.util.Set;
 
 /**
  * <p>Description: 客户端操作基础接口 </p>
- * @date : 2022/4/1 18:16
  */
 public interface ClientDetailsService {
 

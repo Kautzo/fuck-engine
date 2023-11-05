@@ -12,8 +12,6 @@ import java.time.Duration;
  *
  * @param <K> 验证码缓存对应Key值的类型。
  * @param <V> 验证码缓存存储数据的值的类型
- * @author : gengwei.zheng
- * @date : 2021/12/11 13:53
  */
 public abstract class AbstractBehaviorRenderer<K, V> extends AbstractRenderer<K, V> {
 

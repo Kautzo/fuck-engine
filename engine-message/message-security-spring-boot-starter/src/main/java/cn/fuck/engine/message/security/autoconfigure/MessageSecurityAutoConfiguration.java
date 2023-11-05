@@ -8,7 +8,6 @@ import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
 
 /**
  * <p>Description: Security Event 自动配置 </p>
- * @date : 2022/1/23 12:13
  */
 @AutoConfiguration
 @RemoteApplicationEventScan({

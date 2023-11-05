@@ -1,9 +1,9 @@
 package cn.fuck.engine.oauth2.data.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.oauth2.data.entity.FuckAuthorizationConsent;
-import cn.fuck.engine.oauth2.data.mapper.FuckAuthorizationConsentMapper;
+import cn.fuck.engine.oauth2.data.manager.FuckAuthorizationConsentManager;
 import cn.fuck.engine.oauth2.data.service.FuckAuthorizationConsentService;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,11 +17,13 @@ import java.util.Optional;
  */
 @Slf4j
 @Service
-public class FuckAuthorizationConsentServiceImpl extends BaseServiceImpl<FuckAuthorizationConsentMapper, FuckAuthorizationConsent> implements FuckAuthorizationConsentService {
+public class FuckAuthorizationConsentServiceImpl
+        extends BaseServiceImpl<FuckAuthorizationConsentManager, FuckAuthorizationConsent, FuckAuthorizationConsent, FuckAuthorizationConsent, FuckAuthorizationConsent, FuckAuthorizationConsent>
+        implements FuckAuthorizationConsentService {
 
     @Override
     public Optional<FuckAuthorizationConsent> findByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
-        Optional<FuckAuthorizationConsent> result = getOneOpt(Wrappers.lambdaQuery(FuckAuthorizationConsent.class)
+        Optional<FuckAuthorizationConsent> result = baseManger.getOneOpt(Wrappers.lambdaQuery(FuckAuthorizationConsent.class)
                 .eq(FuckAuthorizationConsent::getRegisteredClientId, registeredClientId)
                 .eq(FuckAuthorizationConsent::getPrincipalName, principalName)
                 .last("LIMIT 1"));
@@ -31,7 +33,7 @@ public class FuckAuthorizationConsentServiceImpl extends BaseServiceImpl<FuckAut
 
     @Override
     public void deleteByRegisteredClientIdAndPrincipalName(String registeredClientId, String principalName) {
-        remove(Wrappers.lambdaQuery(FuckAuthorizationConsent.class)
+        baseManger.remove(Wrappers.lambdaQuery(FuckAuthorizationConsent.class)
                 .eq(FuckAuthorizationConsent::getRegisteredClientId, registeredClientId)
                 .eq(FuckAuthorizationConsent::getPrincipalName, principalName));
         log.trace("[FUCK] |- FuckAuthorizationConsentService Service deleteByRegisteredClientIdAndPrincipalName.");

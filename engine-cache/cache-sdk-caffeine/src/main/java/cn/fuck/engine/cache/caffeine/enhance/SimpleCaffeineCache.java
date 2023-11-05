@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * <p>Description: Caffeine 简单封装 </p>
- * @date : 2023/4/12 18:41
  */
 public class SimpleCaffeineCache {
 

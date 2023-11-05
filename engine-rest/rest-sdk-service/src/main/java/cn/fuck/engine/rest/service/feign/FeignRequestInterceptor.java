@@ -70,7 +70,7 @@ public class FeignRequestInterceptor implements RequestInterceptor {
             log.debug("[FUCK] |- Feign Request Interceptor copy all need transfer header!");
 
             // 检查 Tenant Id 的可用性。
-            String tenantIdHeader = HeaderUtils.X_Fuck_TENANT_ID;
+            String tenantIdHeader = HeaderUtils.X_FUCK_TENANT_ID;
             if (!headers.containsKey(tenantIdHeader)) {
                 String tenantId = TenantContextHolder.getTenantId();
                 if (StringUtils.isNotBlank(tenantId)) {

@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>Description: OAuth2 扩展 接口 </p>
- * @date : 2022/7/7 17:05
  */
 @RestController
 @RequestMapping("/oauth2")

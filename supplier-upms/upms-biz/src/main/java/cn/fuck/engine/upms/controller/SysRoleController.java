@@ -53,8 +53,4 @@ public class SysRoleController extends BaseController<SysRoleService, SysRole, S
         return Result.success();
     }
 
-    @Override
-    public Boolean handlerDelete(List<String> ids) {
-        return baseService.handlerDelete(ids);
-    }
 }

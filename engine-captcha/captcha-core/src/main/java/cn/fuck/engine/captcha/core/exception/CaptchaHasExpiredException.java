@@ -6,7 +6,6 @@ import cn.fuck.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: 验证码已过期 </p>
- * @date : 2021/12/15 18:06
  */
 public class CaptchaHasExpiredException extends PlatformException {
 

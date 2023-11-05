@@ -4,7 +4,6 @@ import com.google.common.base.MoreObjects;
 
 /**
  * <p>Description: 响应结果 </p>
- * @date : 2021/5/25 14:50
  */
 public class ChinaMobileSmsResult {
 

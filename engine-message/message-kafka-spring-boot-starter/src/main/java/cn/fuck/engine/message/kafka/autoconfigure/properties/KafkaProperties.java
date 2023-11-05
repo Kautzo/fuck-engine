@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 消息队列配置 </p>
- * @date : 2021/8/7 23:55
  */
 @ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_KAFKA)
 public class KafkaProperties {

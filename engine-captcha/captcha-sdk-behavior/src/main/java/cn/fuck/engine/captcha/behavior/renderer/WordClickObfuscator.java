@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * <p>Description: 文字点选信息混淆器 </p>
- * @date : 2021/12/17 12:19
  */
 public class WordClickObfuscator {
     /**

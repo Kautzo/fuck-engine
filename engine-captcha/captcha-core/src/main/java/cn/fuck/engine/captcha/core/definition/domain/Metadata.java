@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * <p>Description: 图形验证码元数据 </p>
- * @date : 2021/12/11 12:25
  */
 public class Metadata {
 

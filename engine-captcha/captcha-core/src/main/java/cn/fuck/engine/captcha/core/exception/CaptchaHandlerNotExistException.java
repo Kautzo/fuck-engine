@@ -6,7 +6,6 @@ import cn.fuck.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: 验证码处理器不存在 </p>
- * @date : 2021/12/15 17:53
  */
 public class CaptchaHandlerNotExistException extends PlatformException {
 

@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 
 /**
  * <p>Description: 腾讯云短信发送处理器 </p>
- * @date : 2021/5/25 15:59
  */
 public class TencentSmsSendHandler extends AbstractSmsSendHandler {
 

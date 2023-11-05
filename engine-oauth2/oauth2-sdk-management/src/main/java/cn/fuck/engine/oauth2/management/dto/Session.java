@@ -4,7 +4,6 @@ import com.google.common.base.MoreObjects;
 
 /**
  * <p>Description: Session响应实体 </p>
- * @date : 2021/10/2 11:42
  */
 public class Session extends SessionExchange {
 

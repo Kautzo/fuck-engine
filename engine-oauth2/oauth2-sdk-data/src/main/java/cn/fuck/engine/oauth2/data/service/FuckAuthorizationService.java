@@ -1,12 +1,13 @@
 package cn.fuck.engine.oauth2.data.service;
 
-import cn.fuck.engine.data.core.service.BaseService;
 import cn.fuck.engine.oauth2.data.entity.FuckAuthorization;
+import cn.fuck.engine.rest.core.service.BaseService;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface FuckAuthorizationService extends BaseService<FuckAuthorization> {
+public interface FuckAuthorizationService
+        extends BaseService<FuckAuthorization, FuckAuthorization, FuckAuthorization, FuckAuthorization, FuckAuthorization> {
 
     Optional<FuckAuthorization> findByState(String state);
     Optional<FuckAuthorization> findByAuthorizationCode(String authorizationCode);

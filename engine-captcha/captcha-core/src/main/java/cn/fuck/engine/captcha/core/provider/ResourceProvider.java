@@ -30,7 +30,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: 验证码静态资源加载器 </p>
- * @date : 2021/12/22 18:52
  */
 @Component
 public class ResourceProvider implements InitializingBean {

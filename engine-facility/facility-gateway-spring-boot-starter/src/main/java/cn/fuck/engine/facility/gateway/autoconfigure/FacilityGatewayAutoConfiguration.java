@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * <p>Description: 基础设置自动配置 </p>
- * @date : 2022/2/5 19:09
  */
 @AutoConfiguration
 public class FacilityGatewayAutoConfiguration {

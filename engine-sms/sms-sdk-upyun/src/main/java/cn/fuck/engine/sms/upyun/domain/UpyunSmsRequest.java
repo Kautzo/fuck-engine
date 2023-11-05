@@ -6,7 +6,6 @@ import com.google.common.base.MoreObjects;
 
 /**
  * <p>Description: 又拍网发送短信请求实体 </p>
- * @date : 2021/5/26 14:17
  */
 public class UpyunSmsRequest {
 

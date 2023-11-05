@@ -19,17 +19,12 @@
 
         <dependency>
             <groupId>cn.fuck.engine</groupId>
-            <artifactId>oauth2-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.fuck.engine</groupId>
             <artifactId>message-core</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.fuck.engine</groupId>
-            <artifactId>data-sdk-mybatis-plus</artifactId>
+            <artifactId>data-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

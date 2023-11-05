@@ -4,7 +4,6 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 
 /**
  * <p>Description: Security Metadata 远程刷新事件 </p>
- * @date : 2021/8/6 11:24
  */
 public class RemoteSecurityMetadataSyncEvent extends RemoteApplicationEvent {
 

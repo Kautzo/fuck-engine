@@ -16,7 +16,6 @@ import java.util.List;
 
 /**
  * <p>Description: Definition 自动配置 </p>
- * @date : 2022/1/13 20:00
  */
 @AutoConfiguration
 @Import({

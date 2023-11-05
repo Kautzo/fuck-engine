@@ -12,7 +12,6 @@ import org.springframework.security.core.Authentication;
  * <p>
  * 这里没有用基础定义的 PlatformAuthorizationException。主要问题是在自定义表单登录时，如果使用基础的 {@link org.springframework.security.core.AuthenticationException}，
  * 在 Spring Security 标准代码中该Exception将不会抛出，而是进行二次的用户验证，这将导致在验证过程中直接跳过验证码的校验。
- * @date : 2022/4/12 22:33
  * @see org.springframework.security.authentication.ProviderManager#authenticate(Authentication)
  */
 public class OAuth2CaptchaException extends AccountStatusException implements FuckException {

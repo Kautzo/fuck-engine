@@ -5,7 +5,6 @@ import cn.fuck.engine.assistant.core.domain.Feedback;
 
 /**
  * <p>Description: 验证码为空 </p>
- * @date : 2021/12/24 18:08
  */
 public class OAuth2CaptchaIsEmptyException extends OAuth2CaptchaException {
 

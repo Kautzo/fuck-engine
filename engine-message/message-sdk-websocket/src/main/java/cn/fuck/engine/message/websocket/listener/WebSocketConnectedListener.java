@@ -15,7 +15,6 @@ import org.springframework.web.socket.messaging.SessionConnectedEvent;
  * <p>Description: WebSocketUserOnlineListener </p>
  * <p>
  * 使用监听方式，主要为了将 WebSocket 基本配置，与应用操作解耦。避免产生注入循环。
- * @date : 2022/12/29 22:17
  */
 @Component
 public class WebSocketConnectedListener extends AbstractWebSocketListener<SessionConnectedEvent> {

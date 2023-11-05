@@ -2,7 +2,6 @@ package cn.fuck.engine.rest.core.controller;
 
 import cn.fuck.engine.assistant.core.domain.Result;
 import cn.fuck.engine.data.core.entity.MPEntity;
-import cn.fuck.engine.rest.core.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +14,8 @@ import java.util.List;
 /**
  * 删除Controller
  */
-public interface DeleteController<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends Controller<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface DeleteController<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends Controller<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 删除方法
@@ -49,7 +48,7 @@ public interface DeleteController<Entity extends MPEntity, QueryDTO, SaveDTO, Up
      * @param ids id
      * @return true false, 调用默认更新, 返回其他不调用默认更新
      */
-    default Boolean handlerDelete(List<String> ids) {
+    default boolean handlerDelete(List<String> ids) {
         return getBaseService().removeByIds(ids);
     }
 }

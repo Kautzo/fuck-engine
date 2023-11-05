@@ -13,7 +13,6 @@ import java.nio.charset.StandardCharsets;
  * <p>Description: IpV6查询 </p>
  * <p>
  * 基于 <a href="https://github.com/ZX-Inc/zxipdb-java">zxipdb-java</a> 改造
- * @date : 2023/10/22 22:15
  */
 public class IpV6Searcher {
 

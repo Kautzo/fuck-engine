@@ -11,7 +11,6 @@ import java.util.function.Consumer;
 
 /**
  * <p>Description: WebSocket 点对点消息跨实例处理 </p>
- * @date : 2023/9/14 17:06
  */
 public class MultipleInstanceMessageSyncConsumer<T> implements Consumer<WebSocketMessage<T>> {
 

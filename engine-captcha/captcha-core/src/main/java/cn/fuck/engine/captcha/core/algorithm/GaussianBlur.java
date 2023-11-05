@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 
 /**
  * <p>Description: 高斯模糊算法 </p>
- * @date : 2021/12/11 12:23
  */
 public class GaussianBlur {
 

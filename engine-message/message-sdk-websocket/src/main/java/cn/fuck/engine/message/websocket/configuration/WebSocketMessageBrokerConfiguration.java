@@ -23,7 +23,6 @@ import org.springframework.web.socket.config.annotation.WebSocketTransportRegist
 
 /**
  * <p>Description: WebSocketMessageBrokerConfigurer </p>
- * @date : 2022/12/4 19:19
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({WebSocketProperties.class})

@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: Caffeine 配置 </p>
- * @date : 2022/5/23 17:56
  */
 @Configuration(proxyBeanMethods = false)
 public class CacheCaffeineConfiguration {

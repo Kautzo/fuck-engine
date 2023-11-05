@@ -1,9 +1,11 @@
 package cn.fuck.engine.upms.service.impl;
 
-import cn.fuck.engine.data.core.service.impl.BaseServiceImpl;
+import cn.fuck.engine.data.core.service.impl.BaseManagerImpl;
+import cn.fuck.engine.rest.core.service.impl.BaseServiceImpl;
 import cn.fuck.engine.upms.entity.SysAttributePermission;
 import cn.fuck.engine.upms.entity.SysPermission;
 import cn.fuck.engine.upms.entity.SysRolePermission;
+import cn.fuck.engine.upms.manager.SysPermissionManager;
 import cn.fuck.engine.upms.mapper.SysPermissionMapper;
 import cn.fuck.engine.upms.service.SysAttributePermissionService;
 import cn.fuck.engine.upms.service.SysPermissionService;
@@ -13,13 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
  * <p>Description: SysPermissionService </p>
  */
 @Service
-public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermissionMapper, SysPermission> implements SysPermissionService {
+public class SysPermissionServiceImpl
+        extends BaseServiceImpl<SysPermissionManager, SysPermission, SysPermission, SysPermission, SysPermission, SysPermission>
+        implements SysPermissionService {
 
     @Autowired
     private SysRolePermissionService sysRolePermissionService;
@@ -28,12 +33,11 @@ public class SysPermissionServiceImpl extends BaseServiceImpl<SysPermissionMappe
 
     @Override
     @Transactional
-    public Boolean handlerDelete(List<String> ids) {
-        removeByIds(ids);
-        sysRolePermissionService.remove(Wrappers.lambdaQuery(SysRolePermission.class)
-                .in(SysRolePermission::getPermissionId, ids));
-        sysAttributePermissionService.remove(Wrappers.lambdaQuery(SysAttributePermission.class)
-                .in(SysAttributePermission::getPermissionId, ids));
-        return true;
+    public boolean removeByIds(Collection<String> idList) {
+        super.removeByIds(idList);
+        sysRolePermissionService.removeByPermissionIdS(idList);
+        sysAttributePermissionService.removeByPermissionIds(idList);
+        return Boolean.TRUE;
     }
+
 }

@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>Description: 验证码返回数据基础类 </p>
- * @date : 2021/12/13 17:06
  */
 public abstract class Captcha extends AbstractDTO {
 

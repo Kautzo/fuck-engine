@@ -9,7 +9,6 @@ import org.springframework.messaging.simp.user.SimpUserRegistry;
 
 /**
  * <p>Description: WebSocketMessageSender 抽象实现 </p>
- * @date : 2023/9/14 17:22
  */
 public abstract class AbstractWebSocketMessageSender implements WebSocketMessageSender {
 

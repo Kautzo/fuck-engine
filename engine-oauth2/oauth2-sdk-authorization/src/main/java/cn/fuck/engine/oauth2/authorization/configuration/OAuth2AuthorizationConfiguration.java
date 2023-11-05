@@ -1,5 +1,6 @@
 package cn.fuck.engine.oauth2.authorization.configuration;
 
+import cn.fuck.engine.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import cn.fuck.engine.oauth2.authorization.auditing.FuckMetaObjectHandler;
 import cn.fuck.engine.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import cn.fuck.engine.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;

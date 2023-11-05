@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * <p>Description: 验证数据实体 </p>
- * @date : 2021/12/14 16:04
  */
 public class Verification extends Captcha {
 

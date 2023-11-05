@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * <p>Description: Message 模块自动注入配置 </p>
- * @date : 2022/2/4 17:08
  */
 @AutoConfiguration
 public class MessageAutoConfiguration {

@@ -7,9 +7,6 @@ import cn.fuck.engine.oauth2.management.service.OAuth2ScopeService;
 import cn.fuck.engine.rest.core.annotation.AccessLimited;
 import cn.fuck.engine.rest.core.controller.BaseController;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.*;
@@ -48,10 +45,5 @@ public class OAuth2ScopeController extends BaseController<OAuth2ScopeService, OA
     public Result<OAuth2Scope> getByScopeCode(@RequestParam("scopeCode") String scopeCode) {
         OAuth2Scope scope = baseService.getByScopeCode(scopeCode);
         return Result.content(scope);
-    }
-
-    @Override
-    public Boolean handlerDelete(List<String> ids) {
-        return baseService.handlerDelete(ids);
     }
 }

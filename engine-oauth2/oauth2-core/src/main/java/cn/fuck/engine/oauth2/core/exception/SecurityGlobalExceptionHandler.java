@@ -30,7 +30,6 @@ import java.util.Map;
 
 /**
  * <p>Description: 统一异常处理器 </p>
- * @date : 2019/11/18 8:12
  */
 @RestControllerAdvice
 public class SecurityGlobalExceptionHandler {

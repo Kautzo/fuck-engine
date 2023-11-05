@@ -4,7 +4,6 @@ import cn.fuck.engine.assistant.core.definition.constants.BaseConstants;
 
 /**
  * <p>Description: 验证码常量 </p>
- * @date : 2022/1/18 19:06
  */
 public interface CaptchaConstants extends BaseConstants {
 

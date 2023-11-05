@@ -17,7 +17,6 @@ import java.util.List;
 
 /**
  * <p>Description: 数组转字符串序列化 </p>
- * @date : 2022/3/18 12:16
  */
 public class ArrayOrStringToListDeserializer extends StdDeserializer<List<String>> {
 

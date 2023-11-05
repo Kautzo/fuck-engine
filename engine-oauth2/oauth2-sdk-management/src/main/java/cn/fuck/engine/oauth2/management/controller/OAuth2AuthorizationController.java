@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>Description: OAuth2 认证管理接口 </p>
- * @date : 2022/3/1 18:52
  */
 @RestController
 @RequestMapping("/authorize/authorization")

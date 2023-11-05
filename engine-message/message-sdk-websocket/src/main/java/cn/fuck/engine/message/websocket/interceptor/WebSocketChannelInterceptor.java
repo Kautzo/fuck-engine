@@ -21,7 +21,6 @@ import java.util.List;
  * <p>Description: Websocket消息监听 </p>
  * <p>
  * 用于监听websocket用户连接情况
- * @date : 2021/10/24 18:50
  */
 public class WebSocketChannelInterceptor implements ChannelInterceptor {
 

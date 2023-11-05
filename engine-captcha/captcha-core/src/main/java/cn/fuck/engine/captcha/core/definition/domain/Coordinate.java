@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 /**
  * <p>Description: 坐标 </p>
- * @date : 2021/12/11 15:30
  */
 public class Coordinate implements Serializable {
 

@@ -12,7 +12,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * <p>Description: WebSocket 单实例环境判断条件 </p>
- * @date : 2023/9/14 13:50
  */
 public class SingleWebSocketInstanceCondition implements Condition {
 

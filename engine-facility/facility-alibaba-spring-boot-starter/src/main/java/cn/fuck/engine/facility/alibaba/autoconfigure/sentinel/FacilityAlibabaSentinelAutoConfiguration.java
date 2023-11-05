@@ -26,7 +26,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 /**
  * <p>Description: 基础设施 Sentinel 配置 </p>
- * @date : 2022/2/5 17:57
  */
 @AutoConfiguration(before = SentinelFeignAutoConfiguration.class)
 @ConditionalOnClass({SphU.class, Feign.class})

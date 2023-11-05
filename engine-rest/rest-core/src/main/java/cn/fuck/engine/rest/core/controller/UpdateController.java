@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * 修改Controller
  */
-public interface UpdateController<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends Controller<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface UpdateController<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends Controller<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 修改
@@ -22,9 +22,8 @@ public interface UpdateController<Entity extends MPEntity, QueryDTO, SaveDTO, Up
      */
     @Schema(title = "修改", description = "修改UpdateDTO中不为空的字段")
     @PutMapping
-    default Result<?> update(@RequestBody @Validated UpdateDTO updateDTO) {
-        handlerUpdate(updateDTO);
-        return Result.success();
+    default Result<ResultVO> update(@RequestBody @Validated UpdateDTO updateDTO) {
+        return Result.content(handlerUpdate(updateDTO));
     }
 
     /**
@@ -32,7 +31,8 @@ public interface UpdateController<Entity extends MPEntity, QueryDTO, SaveDTO, Up
      *
      * @param updateDTO 修改DTO
      */
-    default void handlerUpdate(UpdateDTO updateDTO) {
-        getBaseService().updateById(BeanUtil.toBean(updateDTO, getEntityClass()));
+    default ResultVO handlerUpdate(UpdateDTO updateDTO) {
+        Entity entity = getBaseService().updateById(updateDTO);
+        return BeanUtil.toBean(entity, getResultVOClass());
     }
 }

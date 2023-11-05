@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * <p>Description: 开启传统kafka使用方式支持 </p>
- * @date : 2021/8/11 20:32
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

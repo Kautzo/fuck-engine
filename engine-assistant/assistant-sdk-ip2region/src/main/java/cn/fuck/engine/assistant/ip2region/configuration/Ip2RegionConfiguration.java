@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * <p>Description: Ip2Region 配置 </p>
- * @date : 2023/10/24 11:59
  */
 @AutoConfiguration
 @EnableConfigurationProperties(Ip2RegionProperties.class)

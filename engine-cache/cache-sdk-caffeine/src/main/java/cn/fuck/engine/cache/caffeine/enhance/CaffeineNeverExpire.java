@@ -6,7 +6,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * <p>Description: Caffeine 缓存永不过期时间配置 </p>
- * @date : 2021/7/30 15:07
  */
 public class CaffeineNeverExpire<K, V> implements Expiry<K, V> {
 

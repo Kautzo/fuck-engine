@@ -10,7 +10,6 @@ import java.util.Map;
 
 /**
  * <p>Description: WebSocket通道 </p>
- * @date : 2021/10/24 18:41
  */
 public enum WebSocketChannel {
     /**

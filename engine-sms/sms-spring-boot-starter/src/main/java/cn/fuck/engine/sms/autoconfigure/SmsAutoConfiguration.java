@@ -24,7 +24,6 @@ import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: 发送短信统一配置 </p>
- * @date : 2021/5/25 12:03
  */
 @AutoConfiguration
 @ConditionalOnSmsEnabled

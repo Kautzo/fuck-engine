@@ -7,5 +7,10 @@ ${AnsiColor.BLUE}
  ╚██╗╚██╗        ██╔╝██╔╝
   ╚═╝ ╚═╝        ╚═╝ ╚═╝
 
-${AnsiColor.BRIGHT_YELLOW} :: FUCK Platform :: ${application.formatted-version}  based on  ${AnsiColor.RED}:: Spring Boot :: ${spring-boot.formatted-version}
-
+${AnsiColor.BRIGHT_YELLOW} :: GTB Platform :: ${application.formatted-version}  based on  ${AnsiColor.RED}:: Spring Boot :: ${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_GREEN}
+Application Version: @project.artifactId@ - @project.version@
+当前服务: ${spring.application.name}   激活环境: ${spring.profiles.active}
+Nacos Enable: ${spring.cloud.nacos.config.enabled}
+Nacos访问地址: http://${spring.cloud.nacos.config.server-addr}/nacos    Nacos命名空间: ${spring.cloud.nacos.config.namespace}
+${AnsiColor.DEFAULT}

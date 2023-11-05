@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: Kafka Message 模块自动注入配置 </p>
- * @date : 2022/1/20 19:07
  */
 @AutoConfiguration
 @Import({KafkaConfiguration.class})

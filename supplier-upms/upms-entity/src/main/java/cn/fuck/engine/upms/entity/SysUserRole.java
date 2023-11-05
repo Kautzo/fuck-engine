@@ -1,14 +1,17 @@
 package cn.fuck.engine.upms.entity;
 
+import cn.fuck.engine.data.core.entity.MPEntity;
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(callSuper = true)
 @TableName("sys_user_role")
-public class SysUserRole {
+public class SysUserRole extends MPEntity {
 
     @Schema(title = "id")
     @TableId(type = IdType.ASSIGN_ID)

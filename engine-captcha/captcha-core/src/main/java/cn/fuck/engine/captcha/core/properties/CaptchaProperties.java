@@ -8,7 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 验证码配置参数 </p>
- * @date : 2021/12/11 12:25
  */
 @ConfigurationProperties(prefix = CaptchaConstants.PROPERTY_PREFIX_CAPTCHA)
 public class CaptchaProperties {

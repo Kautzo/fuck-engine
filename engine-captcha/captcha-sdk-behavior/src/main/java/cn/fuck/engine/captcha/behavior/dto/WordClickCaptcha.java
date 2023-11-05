@@ -5,7 +5,6 @@ import com.google.common.base.MoreObjects;
 
 /**
  * <p>Description: 文字点选验证码返回前台信息 </p>
- * @date : 2021/12/14 11:35
  */
 public class WordClickCaptcha extends Captcha {
 

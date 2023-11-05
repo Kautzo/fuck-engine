@@ -1,20 +1,20 @@
 package cn.fuck.engine.rest.core.controller;
 
 import cn.fuck.engine.data.core.entity.MPEntity;
-import cn.fuck.engine.data.core.service.BaseService;
+import cn.fuck.engine.rest.core.service.BaseService;
 
 
 /**
  * <p> Description : Controller基础定义 </p>
  */
-public interface Controller<Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public interface Controller<Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
     /**
      * 获取Service
      *
      * @return Service
      */
-    BaseService<Entity> getBaseService();
+    BaseService<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> getBaseService();
 
     /**
      * 获取实体的类型

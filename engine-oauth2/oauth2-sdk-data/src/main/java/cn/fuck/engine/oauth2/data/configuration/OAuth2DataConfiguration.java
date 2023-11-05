@@ -23,7 +23,8 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 @Slf4j
 @Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = {
-        "cn.fuck.engine.oauth2"
+        "cn.fuck.engine.oauth2.data.service",
+        "cn.fuck.engine.oauth2.data.manager",
 })
 public class OAuth2DataConfiguration {
 

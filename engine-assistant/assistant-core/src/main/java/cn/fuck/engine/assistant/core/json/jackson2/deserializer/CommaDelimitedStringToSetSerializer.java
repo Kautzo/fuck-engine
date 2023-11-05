@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  * <p>Description: 逗号分隔字符串序列化为集合 </p>
- * @date : 2023/5/22 14:37
  */
 public class CommaDelimitedStringToSetSerializer extends StdSerializer<String> {
     public CommaDelimitedStringToSetSerializer() {

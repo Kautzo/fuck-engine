@@ -56,7 +56,7 @@ public class CacheJetCacheAutoConfiguration {
     @Primary
     @ConditionalOnMissingBean
     public FuckCacheManager fuckCacheManager(JetCacheCreateCacheFactory jetCacheCreateCacheFactory,
-                                                  CacheProperties cacheProperties) {
+                                             CacheProperties cacheProperties) {
         FuckCacheManager fuckCacheManager = new FuckCacheManager(jetCacheCreateCacheFactory, cacheProperties);
         fuckCacheManager.setAllowNullValues(cacheProperties.getAllowNullValues());
         log.trace("[FUCK] |- Bean [Jet Cache FUCK Cache Manager] Auto Configure.");

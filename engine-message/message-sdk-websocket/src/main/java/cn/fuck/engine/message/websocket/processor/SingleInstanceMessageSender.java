@@ -6,7 +6,6 @@ import org.springframework.messaging.simp.user.SimpUserRegistry;
 
 /**
  * <p>Description: Web Socket 单一实例服务端消息发送 </p>
- * @date : 2021/10/24 18:47
  */
 public class SingleInstanceMessageSender extends AbstractWebSocketMessageSender {
 

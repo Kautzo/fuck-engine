@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * <p>Description: 又拍云短信配置 </p>
- * @date : 2021/5/26 14:18
  */
 @ConfigurationProperties(prefix = SmsConstants.PROPERTY_PREFIX_UPYUN)
 public class UpyunSmsProperties extends AbstractSmsProperties {

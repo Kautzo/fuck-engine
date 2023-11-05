@@ -192,4 +192,8 @@ public class Result<T> implements Serializable {
         result.put("error", error);
         return result;
     }
+
+    public Boolean getIsSuccess() {
+        return HttpStatus.SC_OK == status;
+    }
 }

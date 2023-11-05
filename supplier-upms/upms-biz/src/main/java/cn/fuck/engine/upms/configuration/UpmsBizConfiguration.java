@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = {"cn.fuck.engine.upms"})
-public class UpmsConfiguration {
+public class UpmsBizConfiguration {
 
 
     @PostConstruct

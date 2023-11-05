@@ -7,7 +7,6 @@ import org.dromara.hutool.core.util.RandomUtil;
 
 /**
  * <p>Description: 手机短信验证码签章 </p>
- * @date : 2021/8/26 17:44
  */
 public class VerificationCodeStampManager extends AbstractStampManager<String, String> {
 

@@ -4,7 +4,6 @@ import cn.fuck.engine.captcha.core.dto.Captcha;
 
 /**
  * <p>Description: 滑块拼图验证码返回前端信息 </p>
- * @date : 2021/12/13 17:06
  */
 public class JigsawCaptcha extends Captcha {
 

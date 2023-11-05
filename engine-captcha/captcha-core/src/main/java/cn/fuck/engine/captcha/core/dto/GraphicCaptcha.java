@@ -5,7 +5,6 @@ import com.google.common.base.Objects;
 
 /**
  * <p>Description: 图形验证码 </p>
- * @date : 2021/12/21 22:19
  */
 public class GraphicCaptcha extends Captcha {
 

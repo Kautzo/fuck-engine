@@ -27,7 +27,6 @@ import java.util.function.Consumer;
 
 /**
  * <p>Description: WebSocket 处理器相关配置 </p>
- * @date : 2022/12/29 15:52
  */
 @AutoConfiguration
 public class MessageWebSocketAutoConfiguration {

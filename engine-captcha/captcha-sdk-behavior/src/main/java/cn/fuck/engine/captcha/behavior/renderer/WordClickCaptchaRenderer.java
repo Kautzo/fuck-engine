@@ -28,7 +28,6 @@ import java.util.stream.IntStream;
 
 /**
  * <p>Description: 文字点选验证码处理器 </p>
- * @date : 2021/12/14 9:31
  */
 @Component
 public class WordClickCaptchaRenderer extends AbstractBehaviorRenderer<String, List<Coordinate>> {

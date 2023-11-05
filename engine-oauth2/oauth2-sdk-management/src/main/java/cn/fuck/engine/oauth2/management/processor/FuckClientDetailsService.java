@@ -32,7 +32,7 @@ public class FuckClientDetailsService implements EnhanceClientDetailsService {
     @Override
     public Set<FuckGrantedAuthority> findAuthoritiesById(String clientId) {
 
-        OAuth2Application application = applicationService.findByClientId(clientId);
+        OAuth2Application application = applicationService.getByClientId(clientId);
         if (ObjectUtils.isNotEmpty(application)) {
             List<OAuth2Scope> scopes = application.getScopes();
             Set<FuckGrantedAuthority> result = new HashSet<>();

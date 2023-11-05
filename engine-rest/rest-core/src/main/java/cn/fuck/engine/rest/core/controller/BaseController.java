@@ -1,7 +1,7 @@
 package cn.fuck.engine.rest.core.controller;
 
 import cn.fuck.engine.data.core.entity.MPEntity;
-import cn.fuck.engine.data.core.service.BaseService;
+import cn.fuck.engine.rest.core.service.BaseService;
 
 
 /**
@@ -18,12 +18,12 @@ import cn.fuck.engine.data.core.service.BaseService;
  * <p>
  *
  */
-public abstract class BaseController<Service extends BaseService<Entity>, Entity extends MPEntity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        extends BaseAbstractController<Service, Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>
-        implements SaveController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
-        UpdateController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
-        DeleteController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO>,
-        QueryController<Entity, QueryDTO, SaveDTO, UpdateDTO, ResultVO> {
+public abstract class BaseController<Service extends BaseService<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>, Entity extends MPEntity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        extends BaseAbstractController<Service, Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>
+        implements SaveController<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>,
+        UpdateController<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>,
+        DeleteController<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO>,
+        QueryController<Entity, SaveDTO, UpdateDTO, QueryDTO, ResultVO> {
 
 
 }

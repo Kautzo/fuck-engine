@@ -26,7 +26,6 @@ import java.io.IOException;
 
 /**
  * <p>Description: Redisson配置 </p>
- * @date : 2021/10/22 13:56
  */
 @AutoConfiguration
 @ConditionalOnRedissonEnabled

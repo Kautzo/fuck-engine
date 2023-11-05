@@ -5,7 +5,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * <p>Description: 移动短信发送请求实体 </p>
- * @date : 2021/5/25 22:51
  */
 public class ChinaMobileSmsRequest {
 

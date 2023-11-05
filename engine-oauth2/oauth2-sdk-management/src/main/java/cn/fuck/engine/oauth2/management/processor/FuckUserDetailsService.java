@@ -37,7 +37,7 @@ public class FuckUserDetailsService implements EnhanceUserDetailsService {
 //    public FuckUserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
 //        FuckUser fuckUser = strategyUserDetailsService.findUserDetailsByUsername(username);
 //        log.debug("[FUCK] |- UserDetailsService loaded user : [{}]", username);
-//        return HerodotusUser;
+//        return fuckUser;
 //    }
 
     @Override
