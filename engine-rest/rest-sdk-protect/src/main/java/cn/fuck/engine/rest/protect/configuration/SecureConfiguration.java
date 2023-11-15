@@ -32,7 +32,8 @@ public class SecureConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public IdempotentStampManager idempotentStampManager(SecureProperties secureProperties) {
+    public IdempotentStampManager idempotentStampManager(SecureProperties secureProperties,
+                                                         JetCacheCreateCacheFactory jetCacheCreateCacheFactory) {
         IdempotentStampManager idempotentStampManager = new IdempotentStampManager(secureProperties);
         log.trace("[FUCK] |- Bean [Idempotent Stamp Manager] Auto Configure.");
         return idempotentStampManager;

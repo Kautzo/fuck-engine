@@ -14,7 +14,7 @@
                 FROM
                     sys_attribute sa
                 WHERE
-                    si.interface_id = sa.attribute_id
+                    si.id = sa.id
             )
     </select>
 </mapper>

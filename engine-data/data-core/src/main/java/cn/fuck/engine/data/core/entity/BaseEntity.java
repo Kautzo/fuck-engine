@@ -20,7 +20,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 public abstract class BaseEntity extends MPEntity {
 
-    @Schema(title = "ID")
+    @Schema(title = "Id")
     @TableId(type = IdType.ASSIGN_ID)
     protected String id;
 
