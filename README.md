@@ -21,9 +21,7 @@ fuck-engine
 ├    └── captcha-spring-boot-starter -- Captcha  模块统一 Starter
 ├── engine-data -- 数据访问模块
 ├    ├── data-core -- 数据访问共性通用代码
-├    ├── data-sdk-jpa -- JPA 及Hibernate 配置代码模块
 ├    ├── data-sdk-mybatis-plus -- MybatisPlus 相关代码模块
-├    ├── data-sdk-tenant -- 基于JPA的多租户核心代码模块
 ├    └── data-spring-boot-starter -- Data 模块统一 Starter
 ├── engine-facility -- 微服务基础设施模块
 ├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配模块
@@ -40,7 +38,7 @@ fuck-engine
 ├    ├── oauth2-core -- OAuth2 共性通用代码模块
 ├    ├── oauth2-sdk-authentication -- Spring Authorization Server 认证逻辑处理模块
 ├    ├── oauth2-sdk-authorization -- Spring Authorization Server 授权逻辑处理模块
-├    ├── oauth2-sdk-data-jpa -- 基于 Spring Data JPA 封装的 Spring Authorization Server 数据访问代码模块
+├    ├── oauth2-sdk-data -- 封装的 Spring Authorization Server 数据访问代码模块
 ├    └── oauth2-sdk-management -- Spring Authorization Server 应用管理模块
 ├── engine-rest -- 服务Rest接口模块
 ├    ├── rest-core -- 服务 Rest 接口共性通用代码
@@ -62,7 +60,6 @@ fuck-engine
 ├    └── sms-spring-boot-starter -- SMS 模块统一 Starter
 ├── engine-supplier -- 应用支持模块
 ├    ├── supplier-sdk-message -- 消息功能支持模块
-├    ├── supplier-sdk-tenant -- 多租户功能支持模块
 ├    ├── supplier-sdk-upms-logic -- UPMS 基础服务支持模块
 ├    └── supplier-sdk-upms-rest -- UPMS 基础服务 REST 模块
 └──  readme -- README
